@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#030305"/>
+  <rect x="2" y="2" width="60" height="60" rx="12" stroke="#c8ff00" stroke-width="2" stroke-opacity="0.4"/>
+  <!-- Central Microchip Silicon Core -->
+  <rect x="18" y="18" width="28" height="28" rx="6" fill="#12141c" stroke="#c8ff00" stroke-width="2"/>
+  <circle cx="32" cy="32" r="5" fill="#c8ff00"/>
+  <!-- Traces and Nodes -->
+  <path d="M32 6V18M32 46V58M6 32H18M46 32H58" stroke="#c8ff00" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="32" cy="6" r="2.5" fill="#c8ff00"/>
+  <circle cx="32" cy="58" r="2.5" fill="#c8ff00"/>
+  <circle cx="6" cy="32" r="2.5" fill="#c8ff00"/>
+  <circle cx="58" cy="32" r="2.5" fill="#c8ff00"/>
+</svg>

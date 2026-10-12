@@ -8,12 +8,14 @@ import ContactUs from './pages/ContactUs';
 import Footer from './components/Footer';
 import ContactCookiePopup from './components/ContactCookiePopup';
 
-// Helper to determine initial page from URL pathname
+// Helper to determine initial page from URL pathname or hash
 function getPageFromPath() {
+  const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '');
   const path = window.location.pathname.toLowerCase().replace(/^\/|\/$/g, '');
-  if (path === 'about' || path === 'about-us') return 'about';
-  if (path === 'services' || path === 'work' || path === 'services-work') return 'services';
-  if (path === 'contact' || path === 'contact-us') return 'contact';
+  const target = hash || path;
+  if (target.includes('about')) return 'about';
+  if (target.includes('services') || target.includes('work')) return 'services';
+  if (target.includes('contact')) return 'contact';
   return 'home';
 }
 

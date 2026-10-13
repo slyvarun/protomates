@@ -64,7 +64,7 @@ export default function ServicesWork({ onNavigate }) {
     if (onNavigate) {
       onNavigate('contact', { audience: audienceId });
     } else {
-      window.location.href = '/contact';
+      window.location.hash = '#contact';
     }
   };
 
@@ -820,7 +820,7 @@ export default function ServicesWork({ onNavigate }) {
             Share your title, abstract, or requirement statement today. Our lead engineers review incoming scopes within 2 hours.
           </p>
           <button
-            onClick={() => (onNavigate ? onNavigate('contact') : (window.location.href = '/contact'))}
+            onClick={() => (onNavigate ? onNavigate('contact') : (window.location.hash = '#contact'))}
             className="btn-primary"
             style={{ cursor: 'pointer' }}
           >

@@ -24,7 +24,7 @@ export default function InteractiveHeroTrackButtons({ onNavigate }) {
     if (onNavigate) {
       onNavigate('contact', { audience: trackId });
     } else {
-      window.location.pathname = '/contact';
+      window.location.hash = '#contact';
     }
   };
 

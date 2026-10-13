@@ -51,7 +51,7 @@ export default function Navbar({
     if (onNavigate) {
       onNavigate(pageId);
     } else {
-      window.location.pathname = pageId === 'home' ? '/' : `/${pageId}`;
+      window.location.hash = pageId === 'home' ? '' : `#${pageId}`;
     }
   };
 

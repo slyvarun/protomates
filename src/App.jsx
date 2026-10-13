@@ -12,7 +12,8 @@ import ContactCookiePopup from './components/ContactCookiePopup';
 function getPageFromPath() {
   const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '');
   const path = window.location.pathname.toLowerCase().replace(/^\/|\/$/g, '');
-  const target = hash || path;
+  const cleanPath = path.split('/').filter((p) => p && p !== 'protomates').join('/');
+  const target = hash || cleanPath;
   if (target.includes('about')) return 'about';
   if (target.includes('services') || target.includes('work')) return 'services';
   if (target.includes('contact')) return 'contact';
@@ -63,7 +64,11 @@ export default function App() {
     };
 
     window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
+    };
   }, []);
 
   // Navigation handler with URL sync
@@ -73,9 +78,11 @@ export default function App() {
     setIntroStage('ready');
     setTypedText('PROTOMATES');
 
-    const targetPath = pageId === 'home' ? '/' : `/${pageId}`;
-    if (window.location.pathname !== targetPath) {
-      window.history.pushState({}, '', targetPath);
+    const targetHash = pageId === 'home' ? '' : `#${pageId}`;
+    const basePath = window.location.pathname.split('#')[0];
+    const newUrl = targetHash ? `${basePath}${targetHash}` : basePath;
+    if (window.location.hash !== targetHash) {
+      window.history.pushState({}, '', newUrl);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);

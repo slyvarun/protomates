@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PrototypeModal from './PrototypeModal';
+import { getAssetUrl } from '../utils/assetUrl';
 
 const prototypes = [
   {
@@ -9,7 +10,7 @@ const prototypes = [
     cat: 'PCB Designing',
     title: 'High-Density Multi-Layer PCB Template',
     specs: 'Multi-layer routing • Impedance matching • SMD layout • Production Gerbers',
-    img: '/pcb_design_template.jpg',
+    img: getAssetUrl('pcb_design_template.jpg'),
     category: 'PCB Designing & EDA CAD',
     desc: 'Professional multi-layer high-speed PCB template featuring impedance-controlled routing, FPGA/SoC integration, gold surface plating, and production Gerber files.',
     chips: ['Altium Designer', 'Multi-Layer Stackup', 'Impedance Matched', 'Production Gerbers']
@@ -21,7 +22,7 @@ const prototypes = [
     cat: 'IoT Prototyping',
     title: 'ESP32 Smart Telemetry & Sensor Node',
     specs: 'Live OLED display • Dual-core Wi-Fi/BLE • Sensor bus • Real-time cloud sync',
-    img: '/esp32_iot.jpg',
+    img: getAssetUrl('esp32_iot.jpg'),
     category: 'IoT Prototyping & Wireless',
     desc: 'Complete ESP32 IoT development prototype equipped with dual-core processing, OLED dashboard, I2C sensor fusion, Wi-Fi telemetry, and MQTT cloud sync.',
     chips: ['ESP32 WROOM', 'OLED Display', 'I2C Sensors', 'Wi-Fi & BLE', 'MQTT Cloud Sync']
@@ -33,7 +34,7 @@ const prototypes = [
     cat: 'Embedded Prototyping',
     title: 'Arduino Mechatronics & Automation Rig',
     specs: 'Sensor shield • Servo control • 16x2 Telemetry LCD • Modular breadboard',
-    img: '/arduino_prototype.jpg',
+    img: getAssetUrl('arduino_prototype.jpg'),
     category: 'Microcontroller Prototyping',
     desc: 'Precision Arduino Uno robotics and automation workbench featuring servo motors, digital sensor shields, telemetry LCD display, and real-time I/O control.',
     chips: ['Arduino Uno', 'Robotics Shield', 'Servo Actuator', 'Character LCD', 'Real-Time I/O']
@@ -45,7 +46,7 @@ const prototypes = [
     cat: 'AI/ML Hardware',
     title: 'Edge AI Vision & Neural Network Unit',
     specs: 'On-device neural inference • Smart camera • Bounding box detection • ARM NPU',
-    img: '/aiml_hardware.jpg',
+    img: getAssetUrl('aiml_hardware.jpg'),
     category: 'AI/ML Hardware Systems',
     desc: 'Real-time edge artificial intelligence prototype running deep neural network inference with integrated camera module, Jetson/ARM processor, and live video analysis.',
     chips: ['Jetson Nano / ARM', 'Camera Module', 'Neural Network', 'Edge AI Inference', 'OpenCV']
@@ -57,7 +58,7 @@ const prototypes = [
     cat: 'Academic Project',
     title: 'Autonomous Robotics Capstone & Documentation',
     specs: 'Autonomous chassis • Custom PCB layout • Full project documentation • Viva prep',
-    img: '/academic_prototype.jpg',
+    img: getAssetUrl('academic_prototype.jpg'),
     category: 'Academic Final Year Project',
     desc: 'IEEE-standard autonomous mobile robotics system complete with obstacle navigation, custom circuit shield, telemetry dashboard, full thesis report, and viva guide.',
     chips: ['IEEE Publication Standard', 'Custom PCB Shield', 'Telemetry Screen', 'Full Thesis & Viva']
@@ -69,7 +70,7 @@ const prototypes = [
     cat: 'Multi-Field Prototype',
     title: 'Industrial Environmental Telemetry Unit',
     specs: 'Gas & climate probes • Rugged enclosure • Wireless RF module • Clean harness',
-    img: '/multifield_prototype.jpg',
+    img: getAssetUrl('multifield_prototype.jpg'),
     category: 'Cross-Domain Prototype',
     desc: 'Multi-domain engineering prototype designed for environmental sensing, smart agriculture, and industrial automation inside a custom ruggedized enclosure.',
     chips: ['Multi-Sensor Array', 'Wireless RF / GSM', 'Precision Enclosure', 'Industrial 4.0', 'Smart Agri']

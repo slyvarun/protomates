@@ -2,6 +2,7 @@ import React, { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
+import { getAssetUrl } from '../utils/assetUrl';
 
 // Master Concentric Hologram Pedestal on the Floor
 function HologramTrioRings({ position = [0, -1.8, 0] }) {
@@ -134,7 +135,7 @@ function useNormalizedModel(path, targetDim) {
 // Kinematics: Lissajous Figure-8 Orbital Sweep + Mechanical Turntable Pitch
 // -------------------------------------------------------------
 function ArduinoUnoBoard({ targetDim, basePosition, mouseRef, isFocused }) {
-  const model = useNormalizedModel('/arduino_uno.glb', targetDim);
+  const model = useNormalizedModel(getAssetUrl('arduino_uno.glb'), targetDim);
   const groupRef = useRef();
 
   useFrame((state, delta) => {
@@ -195,7 +196,7 @@ function ArduinoUnoBoard({ targetDim, basePosition, mouseRef, isFocused }) {
 // Kinematics: Quantum Levitation Wave + Gyroscopic Precession + Pulsing Beacon
 // -------------------------------------------------------------
 function Esp32Board({ targetDim, basePosition, mouseRef, isFocused }) {
-  const model = useNormalizedModel('/esp32_wroom_32_-_low_poly_photorealistic.glb', targetDim);
+  const model = useNormalizedModel(getAssetUrl('esp32_wroom_32_-_low_poly_photorealistic.glb'), targetDim);
   const groupRef = useRef();
   const beaconLightRef = useRef();
 
@@ -262,7 +263,7 @@ function Esp32Board({ targetDim, basePosition, mouseRef, isFocused }) {
 // Kinematics: Aerodynamic Banking Glide Physics
 // -------------------------------------------------------------
 function RaspberryPiBoard({ targetDim, basePosition, mouseRef, isFocused }) {
-  const model = useNormalizedModel('/raspberry_pi.glb', targetDim);
+  const model = useNormalizedModel(getAssetUrl('raspberry_pi.glb'), targetDim);
   const groupRef = useRef();
 
   useFrame((state, delta) => {

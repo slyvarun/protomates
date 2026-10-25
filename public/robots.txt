@@ -5,4 +5,4 @@ Disallow: /scratch/
 Disallow: /temp/
 
 # Sitemaps
-Sitemap: https://protomateslabs.js.org/sitemap.xml
+Sitemap: https://fskps.tech/sitemap.xml

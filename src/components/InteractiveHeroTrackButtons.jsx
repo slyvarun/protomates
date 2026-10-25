@@ -52,9 +52,11 @@ export default function InteractiveHeroTrackButtons({ onNavigate }) {
             key={track.id}
             onClick={() => handleTrackAction(track.id)}
             style={{
-              background: '#ffffff',
-              border: '1px solid #e2e8f0',
-              borderRadius: '10px',
+              background: 'rgba(255, 255, 255, 0.88)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              border: '1px solid rgba(226, 232, 240, 0.9)',
+              borderRadius: '12px',
               padding: '16px 20px',
               cursor: 'pointer',
               textAlign: 'left',

@@ -125,7 +125,7 @@ export default function App() {
   }, [showIntro]);
 
   return (
-    <div className="protomates-app" style={{ position: 'relative', minHeight: '100vh', background: '#ffffff' }}>
+    <div className="protomates-app" style={{ position: 'relative', minHeight: '100vh', background: 'transparent' }}>
       {/* 1. CINEMATIC LANDING INTRO ANIMATION ON ENTRANCE */}
       {showIntro && (
         <LandingIntroAnimation onComplete={() => setShowIntro(false)} />

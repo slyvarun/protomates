@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle2, ChevronDown } from 'lucide-react';
+import { CheckCircle2, ChevronDown, Mail } from 'lucide-react';
+import LinkedInIcon from '../components/LinkedInIcon';
 import RoleIntakeForm from '../components/RoleIntakeForm';
 
 const FAQS = [
@@ -122,14 +123,59 @@ export default function ContactUs({ initialAudience = 'students' }) {
                   border: '1px solid rgba(0, 82, 255, 0.2)',
                   borderRadius: '10px',
                   color: 'var(--text-primary)',
-                  textDecoration: 'none'
+                  textDecoration: 'none',
+                  transition: 'all 0.2s',
+                  marginBottom: '12px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--accent)';
+                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(0, 82, 255, 0.12)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(0, 82, 255, 0.2)';
+                  e.currentTarget.style.boxShadow = 'none';
                 }}
               >
+                <Mail size={22} color="var(--accent)" style={{ flexShrink: 0 }} />
                 <div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--accent)', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
                     Formal Scope Documents &amp; Papers
                   </div>
                   <div style={{ fontSize: '0.95rem', fontWeight: 600 }}>consultant.fsk@gmail.com</div>
+                </div>
+              </a>
+
+              <a
+                href="https://linkedin.com/company/fskprototypingservices"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '14px',
+                  padding: '16px 20px',
+                  background: 'rgba(10, 102, 194, 0.05)',
+                  border: '1px solid rgba(10, 102, 194, 0.25)',
+                  borderRadius: '10px',
+                  color: 'var(--text-primary)',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#0a66c2';
+                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(10, 102, 194, 0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(10, 102, 194, 0.25)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                <LinkedInIcon size={22} color="#0a66c2" style={{ flexShrink: 0 }} />
+                <div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: '#0a66c2', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                    Official LinkedIn Page
+                  </div>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 600 }}>linkedin.com/company/fskprototypingservices</div>
                 </div>
               </a>
             </div>

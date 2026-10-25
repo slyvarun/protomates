@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FSKLogo from './FSKLogo';
+import LinkedInIcon from './LinkedInIcon';
 import { Mail, Clock, Shield, Lock, Send, CheckCircle2 } from 'lucide-react';
 
 export default function Footer({ onNavigate }) {
@@ -91,14 +92,14 @@ export default function Footer({ onNavigate }) {
               Specialized engineering laboratory building physical working hardware, custom PCBs, and university/Scopus-grade documentation for Students, Scholars, and Startups.
             </p>
 
-            <div style={{ display: 'flex', gap: '12px' }}>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               <a
                 href="mailto:consultant.fsk@gmail.com"
                 style={{
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '9px 16px',
+                  padding: '9px 14px',
                   background: '#ffffff',
                   border: '1px solid #e2e8f0',
                   borderRadius: '6px',
@@ -108,10 +109,52 @@ export default function Footer({ onNavigate }) {
                   fontSize: '0.75rem',
                   fontWeight: 600,
                   letterSpacing: '0.5px',
-                  boxShadow: 'var(--shadow-sm)'
+                  boxShadow: 'var(--shadow-sm)',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--accent)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#e2e8f0';
                 }}
               >
-                Email Engineering Team
+                <Mail size={14} />
+                <span>Email Lab</span>
+              </a>
+
+              <a
+                href="https://linkedin.com/company/fskprototypingservices"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '9px 14px',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '6px',
+                  color: '#0a66c2',
+                  textDecoration: 'none',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.5px',
+                  boxShadow: 'var(--shadow-sm)',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#0a66c2';
+                  e.currentTarget.style.background = 'rgba(10, 102, 194, 0.04)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#e2e8f0';
+                  e.currentTarget.style.background = '#ffffff';
+                }}
+              >
+                <LinkedInIcon size={14} color="#0a66c2" />
+                <span>LinkedIn</span>
               </a>
             </div>
           </div>
@@ -229,6 +272,40 @@ export default function Footer({ onNavigate }) {
                 <Mail size={16} color="var(--accent)" />
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem' }}>
                   consultant.fsk@gmail.com
+                </span>
+              </a>
+
+              <a
+                href="https://linkedin.com/company/fskprototypingservices"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '10px 14px',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '8px',
+                  color: '#090d16',
+                  textDecoration: 'none',
+                  fontSize: '0.84rem',
+                  fontWeight: 600,
+                  transition: 'all 0.2s',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#0a66c2';
+                  e.currentTarget.style.color = '#0a66c2';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#e2e8f0';
+                  e.currentTarget.style.color = '#090d16';
+                }}
+              >
+                <LinkedInIcon size={16} color="#0a66c2" />
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem' }}>
+                  linkedin.com/company/fskprototypingservices
                 </span>
               </a>
             </div>

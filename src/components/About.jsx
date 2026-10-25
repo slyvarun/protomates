@@ -104,7 +104,7 @@ export default function About() {
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'var(--accent)';
                   e.currentTarget.style.color = 'var(--accent)';
-                  e.currentTarget.style.background = 'rgba(0, 82, 255, 0.04)';
+                  e.currentTarget.style.background = 'rgba(1, 42, 45,  0.04)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = '#e2e8f0';

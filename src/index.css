@@ -1,43 +1,43 @@
 :root {
-  /* Luminous White Theme Palette */
+  /* CBRE Crisp White & Deep Spruce Palette */
   --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
+  --bg-secondary: #f6f8f8;
   --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
+  --bg-card-hover: #edf2f2;
   
-  /* Precision Slate Typography */
-  --text-primary: #090d16;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --text-light: #94a3b8;
+  /* CBRE Precision Typography (#012A2D & #435355) */
+  --text-primary: #012A2D;
+  --text-secondary: #435355;
+  --text-muted: #596e70;
+  --text-light: #7e9496;
   
-  /* Technical Engineering Accents (Apple / Linear / Keyence Blue) */
-  --accent: #0052ff;
-  --accent-hover: #0040db;
-  --accent-subtle: rgba(0, 82, 255, 0.08);
-  --accent-cyan: #0284c7;
-  --accent2: #0284c7;
-  --accent3: #2563eb;
-  --accent-emerald: #059669;
+  /* Technical Engineering Accents (CBRE #012A2D Spruce & #435355 Slate) */
+  --accent: #012A2D;
+  --accent-hover: #033c40;
+  --accent-subtle: rgba(1, 42, 45, 0.08);
+  --accent-cyan: #435355;
+  --accent2: #435355;
+  --accent3: #1a4245;
+  --accent-emerald: #012A2D;
   
   /* Architectural Borders & Dividers */
-  --border: #e2e8f0;
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-focus: #0052ff;
+  --border: rgba(67, 83, 85, 0.18);
+  --border-subtle: rgba(1, 42, 45, 0.08);
+  --border-focus: #012A2D;
   
-  /* Backward-compatible semantic mappings */
+  /* Semantic backward-compatible mappings */
   --black: #ffffff;
-  --dark: #f8fafc;
+  --dark: #f6f8f8;
   --card: #ffffff;
-  --card-hover: #f8fafc;
-  --white: #090d16;
-  --gray: #64748b;
+  --card-hover: #edf2f2;
+  --white: #012A2D;
+  --gray: #435355;
   
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.08), 0 10px 20px -8px rgba(15, 23, 42, 0.04);
-  --shadow-accent: 0 12px 28px -6px rgba(0, 82, 255, 0.28);
+  /* Elevation Shadows tuned to #012A2D */
+  --shadow-sm: 0 1px 3px rgba(1, 42, 45, 0.06), 0 1px 2px rgba(1, 42, 45, 0.04);
+  --shadow-md: 0 10px 25px -5px rgba(1, 42, 45, 0.08), 0 8px 10px -6px rgba(1, 42, 45, 0.04);
+  --shadow-lg: 0 20px 35px -10px rgba(1, 42, 45, 0.12), 0 10px 20px -8px rgba(1, 42, 45, 0.05);
+  --shadow-accent: 0 12px 28px -6px rgba(1, 42, 45, 0.32);
   
   /* Typography - Unified Single Font Across Entire Website */
   --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -76,7 +76,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(1, 42, 45, 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
   z-index: 1;
@@ -88,10 +88,10 @@ body::before {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f4f7f7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #b5c2c4;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -152,13 +152,13 @@ section {
   gap: 10px;
   border: 1px solid transparent;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 82, 255, 0.28);
+  box-shadow: 0 4px 14px rgba(1, 42, 45, 0.28);
 }
 .btn-primary:hover {
   background: var(--accent-hover);
   color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 82, 255, 0.38);
+  box-shadow: 0 8px 24px rgba(1, 42, 45, 0.38);
 }
 
 .btn-ghost {
@@ -311,7 +311,7 @@ section {
 }
 
 .glass-card:hover {
-  border-color: rgba(0, 82, 255, 0.35);
+  border-color: rgba(1, 42, 45,  0.35);
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }

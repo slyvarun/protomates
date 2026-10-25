@@ -119,8 +119,8 @@ export default function ContactUs({ initialAudience = 'students' }) {
                   alignItems: 'center',
                   gap: '14px',
                   padding: '16px 20px',
-                  background: 'rgba(0, 82, 255, 0.05)',
-                  border: '1px solid rgba(0, 82, 255, 0.2)',
+                  background: 'rgba(1, 42, 45,  0.05)',
+                  border: '1px solid rgba(1, 42, 45,  0.2)',
                   borderRadius: '10px',
                   color: 'var(--text-primary)',
                   textDecoration: 'none',
@@ -129,10 +129,10 @@ export default function ContactUs({ initialAudience = 'students' }) {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'var(--accent)';
-                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(0, 82, 255, 0.12)';
+                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(1, 42, 45,  0.12)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(0, 82, 255, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(1, 42, 45,  0.2)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >

@@ -109,10 +109,10 @@ export default function ContactCookiePopup({ onNavigate }) {
         maxWidth: '420px',
         width: 'calc(100vw - 48px)',
         background: '#ffffff',
-        border: '1.5px solid #0052ff',
+        border: '1.5px solid #012A2D',
         borderRadius: '16px',
         padding: '24px 26px',
-        boxShadow: '0 25px 60px rgba(15, 23, 42, 0.18), 0 0 25px rgba(0, 82, 255, 0.1)',
+        boxShadow: '0 25px 60px rgba(15, 23, 42, 0.18), 0 0 25px rgba(1, 42, 45,  0.1)',
         backdropFilter: 'blur(20px)',
         animation: 'popUpSpring 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards'
       }}
@@ -124,7 +124,7 @@ export default function ContactCookiePopup({ onNavigate }) {
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '0.68rem',
-              color: '#0052ff',
+              color: '#012A2D',
               letterSpacing: '1px',
               fontWeight: 700,
               textTransform: 'uppercase'
@@ -180,7 +180,7 @@ export default function ContactCookiePopup({ onNavigate }) {
             borderRadius: '10px',
             padding: '16px',
             textAlign: 'center',
-            color: '#0052ff',
+            color: '#012A2D',
             fontSize: '0.88rem',
             fontWeight: 600
           }}
@@ -202,9 +202,9 @@ export default function ContactCookiePopup({ onNavigate }) {
                 key={p.id}
                 onClick={() => setRole(p.id)}
                 style={{
-                  background: role === p.id ? '#0052ff' : '#f8fafc',
+                  background: role === p.id ? '#012A2D' : '#f8fafc',
                   color: role === p.id ? '#ffffff' : '#475569',
-                  border: role === p.id ? '1px solid #0052ff' : '1px solid #e2e8f0',
+                  border: role === p.id ? '1px solid #012A2D' : '1px solid #e2e8f0',
                   borderRadius: '6px',
                   padding: '6px 4px',
                   fontFamily: 'var(--font-mono)',
@@ -298,7 +298,7 @@ export default function ContactCookiePopup({ onNavigate }) {
           color: '#64748b'
         }}
       >
-        <Lock size={12} color="#0052ff" /> 100% Confidential • Fast Engineering Response
+        <Lock size={12} color="#012A2D" /> 100% Confidential • Fast Engineering Response
       </div>
     </div>
   );

@@ -110,7 +110,7 @@ export default function Navbar({
                 border: '1px solid rgba(255, 255, 255, 0.85)',
                 borderRadius: '999px',
                 alignItems: 'center',
-                boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 4px 16px rgba(0, 82, 255, 0.04)'
+                boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 4px 16px rgba(1, 42, 45,  0.04)'
               }}
             >
               {navItems.map((item) => {
@@ -121,7 +121,7 @@ export default function Navbar({
                       onClick={() => handleNavClick(item.id)}
                       style={{
                         background: isActive ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
-                        border: isActive ? '1px solid rgba(0, 82, 255, 0.14)' : '1px solid transparent',
+                        border: isActive ? '1px solid rgba(1, 42, 45,  0.14)' : '1px solid transparent',
                         borderRadius: '999px',
                         padding: '8px 18px',
                         cursor: 'pointer',
@@ -129,7 +129,7 @@ export default function Navbar({
                         fontSize: '0.84rem',
                         fontWeight: isActive ? 700 : 500,
                         color: isActive ? 'var(--accent)' : 'var(--text-secondary)',
-                        boxShadow: isActive ? '0 4px 12px rgba(0, 82, 255, 0.12), 0 1px 2px rgba(15, 23, 42, 0.04)' : 'none',
+                        boxShadow: isActive ? '0 4px 12px rgba(1, 42, 45,  0.12), 0 1px 2px rgba(15, 23, 42, 0.04)' : 'none',
                         transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
                         display: 'inline-flex',
                         alignItems: 'center',
@@ -178,7 +178,7 @@ export default function Navbar({
                   fontSize: '0.82rem',
                   fontWeight: 700,
                   cursor: 'pointer',
-                  boxShadow: '0 4px 14px rgba(0, 82, 255, 0.3)'
+                  boxShadow: '0 4px 14px rgba(1, 42, 45,  0.3)'
                 }}
               >
                 Start A Project
@@ -194,7 +194,7 @@ export default function Navbar({
                   color: 'var(--text-primary)',
                   padding: '8px',
                   borderRadius: '10px',
-                  boxShadow: '0 4px 14px rgba(0, 82, 255, 0.06)',
+                  boxShadow: '0 4px 14px rgba(1, 42, 45,  0.06)',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -249,7 +249,7 @@ export default function Navbar({
                     background: isActive ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.65)',
                     backdropFilter: 'blur(16px)',
                     WebkitBackdropFilter: 'blur(16px)',
-                    border: isActive ? '1px solid rgba(0, 82, 255, 0.3)' : '1px solid rgba(255, 255, 255, 0.8)',
+                    border: isActive ? '1px solid rgba(1, 42, 45,  0.3)' : '1px solid rgba(255, 255, 255, 0.8)',
                     borderRadius: '12px',
                     padding: '16px 20px',
                     textAlign: 'left',

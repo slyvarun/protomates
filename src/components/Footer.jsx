@@ -234,7 +234,7 @@ export default function Footer({ onNavigate }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
-                  boxShadow: '0 4px 14px rgba(0, 82, 255, 0.25)'
+                  boxShadow: '0 4px 14px rgba(1, 42, 45,  0.25)'
                 }}
               >
                 <span>Start Project Intake &amp; 1-on-1 Meet</span>

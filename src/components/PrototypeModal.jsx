@@ -39,7 +39,7 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
           overflowY: 'auto',
           position: 'relative',
           borderRadius: '16px',
-          boxShadow: '0 30px 80px rgba(15, 23, 42, 0.2), 0 4px 16px rgba(0, 82, 255, 0.08)'
+          boxShadow: '0 30px 80px rgba(15, 23, 42, 0.2), 0 4px 16px rgba(1, 42, 45,  0.08)'
         }}
       >
         <button
@@ -89,7 +89,7 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
               position: 'absolute',
               inset: 0,
               backgroundImage:
-                'radial-gradient(circle at 1px 1px, rgba(0, 82, 255, 0.08) 1px, transparent 0)',
+                'radial-gradient(circle at 1px 1px, rgba(1, 42, 45, 0.06) 1px, transparent 0)',
               backgroundSize: '20px 20px',
               pointerEvents: 'none'
             }}
@@ -103,8 +103,8 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
                 fontWeight: 800,
                 padding: '5px 12px',
                 background: '#ffffff',
-                border: '1.5px solid #0052ff',
-                color: '#0052ff',
+                border: '1.5px solid #012A2D',
+                color: '#012A2D',
                 borderRadius: '6px',
                 letterSpacing: '1px'
               }}
@@ -119,8 +119,8 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
                   fontWeight: 600,
                   padding: '5px 12px',
                   background: '#ffffff',
-                  border: '1px solid #cbd5e1',
-                  color: '#334155',
+                  border: '1px solid rgba(67, 83, 85, 0.25)',
+                  color: '#435355',
                   borderRadius: '6px'
                 }}
               >
@@ -133,17 +133,17 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '0.85rem',
-              color: '#1e293b',
+              color: '#012A2D',
               lineHeight: 1.6,
               background: '#ffffff',
               padding: '14px 20px',
               borderRadius: '8px',
-              border: '1px solid #e2e8f0',
+              border: '1px solid rgba(67, 83, 85, 0.2)',
               position: 'relative',
               zIndex: 1
             }}
           >
-            <span style={{ color: '#0052ff', fontWeight: 700, display: 'block', fontSize: '0.7rem', letterSpacing: '1.2px', textTransform: 'uppercase', marginBottom: '4px' }}>
+            <span style={{ color: '#012A2D', fontWeight: 700, display: 'block', fontSize: '0.7rem', letterSpacing: '1.2px', textTransform: 'uppercase', marginBottom: '4px' }}>
               Hardware Specifications &amp; Interface Standards:
             </span>
             {prototype.specs}
@@ -155,7 +155,7 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '0.75rem',
-              color: '#0052ff',
+              color: '#012A2D',
               letterSpacing: '2px',
               fontWeight: 700,
               textTransform: 'uppercase',
@@ -171,7 +171,7 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
               fontSize: 'clamp(2rem, 3.5vw, 2.6rem)',
               fontWeight: 800,
               letterSpacing: '-0.5px',
-              color: '#090d16',
+              color: '#012A2D',
               lineHeight: 1.15,
               marginBottom: '16px'
             }}
@@ -179,15 +179,15 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
             {prototype.title}
           </h3>
 
-          <p style={{ color: '#475569', fontSize: '1.02rem', lineHeight: 1.7, marginBottom: '24px' }}>
+          <p style={{ color: '#435355', fontSize: '1.02rem', lineHeight: 1.7, marginBottom: '24px' }}>
             {prototype.desc}
           </p>
 
           {prototype.deliverables && (
             <div
               style={{
-                background: '#f8fafc',
-                border: '1px solid #e2e8f0',
+                background: '#f6f8f8',
+                border: '1px solid rgba(67, 83, 85, 0.2)',
                 padding: '18px 24px',
                 borderRadius: '12px',
                 marginBottom: '26px'
@@ -198,7 +198,7 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.75rem',
                   fontWeight: 700,
-                  color: '#090d16',
+                  color: '#012A2D',
                   letterSpacing: '1.5px',
                   textTransform: 'uppercase',
                   display: 'flex',
@@ -209,7 +209,7 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
               >
                 Included Deliverables Pack:
               </div>
-              <p style={{ color: '#334155', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
+              <p style={{ color: '#435355', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
                 {prototype.deliverables}
               </p>
             </div>
@@ -223,9 +223,9 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.72rem',
                   padding: '6px 12px',
-                  background: '#f1f5f9',
-                  border: '1px solid #e2e8f0',
-                  color: '#0052ff',
+                  background: '#f6f8f8',
+                  border: '1px solid rgba(67, 83, 85, 0.2)',
+                  color: '#012A2D',
                   fontWeight: 600,
                   borderRadius: '6px'
                 }}

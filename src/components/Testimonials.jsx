@@ -106,7 +106,7 @@ export default function Testimonials() {
               transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(0, 82, 255, 0.35)';
+              e.currentTarget.style.borderColor = 'rgba(1, 42, 45,  0.35)';
               e.currentTarget.style.boxShadow = 'var(--shadow-md)';
               e.currentTarget.style.transform = 'translateY(-3px)';
             }}
@@ -130,7 +130,7 @@ export default function Testimonials() {
                     fontWeight: 700,
                     letterSpacing: '1px',
                     color: 'var(--accent)',
-                    background: 'rgba(0, 82, 255, 0.05)',
+                    background: 'rgba(1, 42, 45,  0.05)',
                     padding: '3px 8px',
                     borderRadius: '4px',
                     textTransform: 'uppercase'
@@ -151,7 +151,7 @@ export default function Testimonials() {
                   width: '40px',
                   height: '40px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #0052ff, #0284c7)',
+                  background: 'linear-gradient(135deg, #012A2D, #435355)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',

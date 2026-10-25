@@ -18,7 +18,7 @@ export default function Contact() {
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'radial-gradient(ellipse at center, rgba(0, 82, 255, 0.05) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(1, 42, 45,  0.05) 0%, transparent 70%)',
           pointerEvents: 'none'
         }}
       />

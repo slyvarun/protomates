@@ -7,7 +7,7 @@ const TRACKS = [
     role: 'Students',
     badge: 'Capstones & Degrees',
     subtitle: 'Flawless hardware + viva defense',
-    accent: '#0052ff'
+    accent: '#012A2D'
   },
   {
     id: 'scholars',
@@ -15,7 +15,7 @@ const TRACKS = [
     role: 'Scholars & PhDs',
     badge: '1-on-1 Research Meet',
     subtitle: 'Thesis writing, dissertation docs & capstone consultation',
-    accent: '#0284c7'
+    accent: '#435355'
   },
   {
     id: 'startups',
@@ -23,7 +23,7 @@ const TRACKS = [
     role: 'Startup Founders',
     badge: '1-on-1 Founder Meet',
     subtitle: 'Confidential MVP feasibility & investor demo consultation',
-    accent: '#059669'
+    accent: '#012A2D'
   }
 ];
 
@@ -70,12 +70,12 @@ export default function InteractiveHeroTrackButtons({ onNavigate }) {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = track.accent;
-              e.currentTarget.style.boxShadow = `0 10px 24px -4px rgba(0, 82, 255, 0.14), 0 0 0 1px ${track.accent}`;
+              e.currentTarget.style.boxShadow = `0 10px 24px -4px rgba(1, 42, 45, 0.16), 0 0 0 1px ${track.accent}`;
               e.currentTarget.style.transform = 'translateY(-2px)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#e2e8f0';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(15, 23, 42, 0.03)';
+              e.currentTarget.style.borderColor = 'rgba(67, 83, 85, 0.2)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(1, 42, 45, 0.03)';
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
@@ -105,7 +105,7 @@ export default function InteractiveHeroTrackButtons({ onNavigate }) {
                     fontFamily: 'var(--font-display)',
                     fontSize: '1.05rem',
                     fontWeight: 800,
-                    color: '#090d16',
+                    color: '#012A2D',
                     letterSpacing: '-0.01em'
                   }}
                 >

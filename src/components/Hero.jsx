@@ -32,7 +32,7 @@ export default function Hero({ onNavigate }) {
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            'radial-gradient(circle at 1px 1px, rgba(0, 82, 255, 0.04) 1px, transparent 0)',
+            'radial-gradient(circle at 1px 1px, rgba(1, 42, 45,  0.04) 1px, transparent 0)',
           backgroundSize: '32px 32px',
           pointerEvents: 'none',
           zIndex: 0
@@ -66,7 +66,7 @@ export default function Hero({ onNavigate }) {
           }}
         >
           <span>WE BUILD HARDWARE. </span>
-          <span style={{ color: '#475569' }}>WE AUTHOR PAPERS. </span>
+          <span style={{ color: '#435355' }}>WE AUTHOR PAPERS. </span>
           <br />
           <span style={{ color: 'var(--accent)' }}>FOR THREE INNOVATORS.</span>
         </h1>
@@ -116,8 +116,8 @@ export default function Hero({ onNavigate }) {
             className="btn-ghost"
             style={{
               cursor: 'pointer',
-              border: '1px solid #cbd5e1',
-              color: '#090d16',
+              border: '1px solid rgba(67, 83, 85, 0.25)',
+              color: '#012A2D',
               padding: isMobile ? '12px 20px' : '14px 24px',
               fontSize: isMobile ? '0.85rem' : '0.92rem',
               fontWeight: 600

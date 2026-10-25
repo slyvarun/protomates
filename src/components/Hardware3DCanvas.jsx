@@ -56,7 +56,7 @@ function CameraParallaxRig({ mouseRef, focalPoint = [1.8, 0.1, 0] }) {
 // Elegant Micro-Orbit Precision Halo
 function PrecisionOrbitHalo({
   radius = 1.3,
-  color = '#0052ff',
+  color = '#012A2D',
   speed = 0.4,
   tilt = [0.45, 0.1, 0],
   tube = 0.007
@@ -93,7 +93,7 @@ function AntiGravityBoard({
   floatAmplitude = 0.14,
   rotSpeed = 0.18,
   phaseOffset = 0,
-  haloColor = '#0052ff',
+  haloColor = '#012A2D',
   haloRadius = 1.3,
   haloTilt = [0.5, 0.2, 0]
 }) {
@@ -172,7 +172,7 @@ function StudioBlueprintDatum({ position = [1.8, -2.1, 0] }) {
       {/* Outer Precision Ring */}
       <mesh ref={ringRef1}>
         <ringGeometry args={[3.2, 3.22, 64]} />
-        <meshBasicMaterial color="#0052ff" transparent opacity={0.18} side={THREE.DoubleSide} />
+        <meshBasicMaterial color="#012A2D" transparent opacity={0.18} side={THREE.DoubleSide} />
       </mesh>
 
       {/* Middle Reference Ring */}
@@ -188,7 +188,7 @@ function StudioBlueprintDatum({ position = [1.8, -2.1, 0] }) {
       </mesh>
       <mesh position={[0, 0, -0.01]}>
         <circleGeometry args={[2.0, 48]} />
-        <meshBasicMaterial color="#0052ff" transparent opacity={0.03} />
+        <meshBasicMaterial color="#012A2D" transparent opacity={0.03} />
       </mesh>
     </group>
   );
@@ -219,7 +219,7 @@ function AntiGravityHardwareScene({ mouseRef }) {
       <ambientLight intensity={1.65} color="#ffffff" />
       <directionalLight position={[6, 12, 8]} intensity={2.6} color="#ffffff" />
       <directionalLight position={[-6, 7, 5]} intensity={1.3} color="#f0f9ff" />
-      <directionalLight position={[2, -4, -6]} intensity={1.2} color="#0052ff" />
+      <directionalLight position={[2, -4, -6]} intensity={1.2} color="#012A2D" />
 
       <group position={clusterOffset}>
         {/* 1. ESP32 WROOM (Center Foreground Primary Anchor) */}
@@ -232,7 +232,7 @@ function AntiGravityHardwareScene({ mouseRef }) {
           floatAmplitude={0.16}
           rotSpeed={0.16}
           phaseOffset={0}
-          haloColor="#0284c7"
+          haloColor="#435355"
           haloRadius={1.42}
           haloTilt={[0.55, -0.25, 0.15]}
         />
@@ -247,7 +247,7 @@ function AntiGravityHardwareScene({ mouseRef }) {
           floatAmplitude={0.14}
           rotSpeed={0.14}
           phaseOffset={2.4}
-          haloColor="#0052ff"
+          haloColor="#012A2D"
           haloRadius={1.25}
           haloTilt={[0.48, 0.35, -0.1]}
         />
@@ -262,7 +262,7 @@ function AntiGravityHardwareScene({ mouseRef }) {
           floatAmplitude={0.15}
           rotSpeed={0.15}
           phaseOffset={4.8}
-          haloColor="#0052ff"
+          haloColor="#012A2D"
           haloRadius={1.3}
           haloTilt={[0.45, -0.3, 0.2]}
         />

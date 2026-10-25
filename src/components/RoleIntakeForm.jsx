@@ -199,7 +199,7 @@ export default function RoleIntakeForm({
         border: '1px solid #e2e8f0',
         borderRadius: '16px',
         padding: isHeroInline ? 'clamp(20px, 4vw, 36px)' : 'clamp(24px, 4vw, 40px)',
-        boxShadow: '0 20px 45px -10px rgba(0, 82, 255, 0.08), 0 2px 10px rgba(15, 23, 42, 0.04)',
+        boxShadow: '0 20px 45px -10px rgba(1, 42, 45,  0.08), 0 2px 10px rgba(15, 23, 42, 0.04)',
         position: 'relative'
       }}
     >
@@ -239,8 +239,8 @@ export default function RoleIntakeForm({
           }}
         >
           {[
-            { id: 'students', num: '01', label: 'Students', sub: 'Capstones & Degrees', color: '#0052ff' },
-            { id: 'scholars', num: '02', label: 'Scholars & PhDs', sub: '1-on-1 Research Meet', color: '#0284c7' },
+            { id: 'students', num: '01', label: 'Students', sub: 'Capstones & Degrees', color: '#012A2D' },
+            { id: 'scholars', num: '02', label: 'Scholars & PhDs', sub: '1-on-1 Research Meet', color: '#435355' },
             { id: 'startups', num: '03', label: 'Startup Founders', sub: '1-on-1 Founder Meet', color: '#059669' }
           ].map((item) => {
             const isActive = role === item.id;
@@ -427,7 +427,7 @@ export default function RoleIntakeForm({
                         key={type}
                         onClick={() => setFormData({ ...formData, studentProjectType: type })}
                         style={{
-                          background: isSelected ? 'rgba(0, 82, 255, 0.08)' : '#ffffff',
+                          background: isSelected ? 'rgba(1, 42, 45,  0.08)' : '#ffffff',
                           border: isSelected ? '1.5px solid var(--accent)' : '1px solid #cbd5e1',
                           color: isSelected ? 'var(--accent)' : 'var(--text-primary)',
                           borderRadius: '8px',
@@ -490,7 +490,7 @@ export default function RoleIntakeForm({
                         key={dom.id}
                         onClick={() => setFormData({ ...formData, studentDomain: dom.id })}
                         style={{
-                          background: isSelected ? 'rgba(0, 82, 255, 0.08)' : '#ffffff',
+                          background: isSelected ? 'rgba(1, 42, 45,  0.08)' : '#ffffff',
                           border: isSelected ? '1.5px solid var(--accent)' : '1px solid #cbd5e1',
                           color: isSelected ? 'var(--accent)' : 'var(--text-primary)',
                           borderRadius: '8px',
@@ -596,7 +596,7 @@ export default function RoleIntakeForm({
                         color: 'var(--text-primary)',
                         fontSize: '0.86rem',
                         outline: 'none',
-                        boxShadow: '0 0 0 3px rgba(0, 82, 255, 0.08)'
+                        boxShadow: '0 0 0 3px rgba(1, 42, 45,  0.08)'
                       }}
                     />
                   </div>
@@ -719,7 +719,7 @@ export default function RoleIntakeForm({
                         outline: 'none',
                         resize: 'vertical',
                         lineHeight: 1.5,
-                        boxShadow: '0 0 0 3px rgba(0, 82, 255, 0.08)'
+                        boxShadow: '0 0 0 3px rgba(1, 42, 45,  0.08)'
                       }}
                     />
                   </div>
@@ -735,8 +735,8 @@ export default function RoleIntakeForm({
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
               <div
                 style={{
-                  background: 'rgba(2, 132, 199, 0.05)',
-                  border: '1px solid rgba(2, 132, 199, 0.2)',
+                  background: 'rgba(67, 83, 85,  0.05)',
+                  border: '1px solid rgba(67, 83, 85,  0.2)',
                   borderRadius: '10px',
                   padding: '14px 16px',
                   display: 'flex',
@@ -744,7 +744,7 @@ export default function RoleIntakeForm({
                   gap: '12px'
                 }}
               >
-                <Users size={22} color="#0284c7" />
+                <Users size={22} color="#435355" />
                 <div style={{ fontSize: '0.84rem', color: '#0369a1', lineHeight: 1.4 }}>
                   <strong>1-on-1 Scholar Engineering Review:</strong> Connect directly with our research project leads for thesis documentation, dissertation structuring, or applied capstone systems.
                 </div>
@@ -780,9 +780,9 @@ export default function RoleIntakeForm({
                         key={srv}
                         onClick={() => setFormData({ ...formData, scholarService: srv })}
                         style={{
-                          background: isSelected ? 'rgba(2, 132, 199, 0.08)' : '#ffffff',
-                          border: isSelected ? '1.5px solid #0284c7' : '1px solid #cbd5e1',
-                          color: isSelected ? '#0284c7' : 'var(--text-primary)',
+                          background: isSelected ? 'rgba(67, 83, 85,  0.08)' : '#ffffff',
+                          border: isSelected ? '1.5px solid #435355' : '1px solid #cbd5e1',
+                          color: isSelected ? '#435355' : 'var(--text-primary)',
                           borderRadius: '8px',
                           padding: '10px 12px',
                           fontFamily: 'var(--font-body)',
@@ -830,9 +830,9 @@ export default function RoleIntakeForm({
                         key={item.mode}
                         onClick={() => setFormData({ ...formData, scholarMeetPreference: item.mode })}
                         style={{
-                          background: isSelected ? 'rgba(2, 132, 199, 0.08)' : '#ffffff',
-                          border: isSelected ? '1.5px solid #0284c7' : '1px solid #cbd5e1',
-                          color: isSelected ? '#0284c7' : 'var(--text-primary)',
+                          background: isSelected ? 'rgba(67, 83, 85,  0.08)' : '#ffffff',
+                          border: isSelected ? '1.5px solid #435355' : '1px solid #cbd5e1',
+                          color: isSelected ? '#435355' : 'var(--text-primary)',
                           borderRadius: '8px',
                           padding: '10px 12px',
                           fontFamily: 'var(--font-body)',
@@ -845,7 +845,7 @@ export default function RoleIntakeForm({
                           textAlign: 'left'
                         }}
                       >
-                        <Icon size={15} color={isSelected ? '#0284c7' : '#64748b'} />
+                        <Icon size={15} color={isSelected ? '#435355' : '#64748b'} />
                         <span>{item.mode}</span>
                       </button>
                     );
@@ -1177,7 +1177,7 @@ export default function RoleIntakeForm({
                 fontWeight: 700,
                 cursor: isSubmitting ? 'not-allowed' : 'pointer',
                 opacity: isSubmitting ? 0.7 : 1,
-                boxShadow: '0 6px 20px -4px rgba(0, 82, 255, 0.35)'
+                boxShadow: '0 6px 20px -4px rgba(1, 42, 45,  0.35)'
               }}
             >
               {isSubmitting ? (

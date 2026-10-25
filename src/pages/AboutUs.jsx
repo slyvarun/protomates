@@ -17,7 +17,7 @@ export default function AboutUs({ onNavigate }) {
             right: '-60px',
             width: '550px',
             height: '550px',
-            background: 'radial-gradient(circle, rgba(0, 82, 255, 0.05), transparent 70%)',
+            background: 'radial-gradient(circle, rgba(1, 42, 45,  0.05), transparent 70%)',
             filter: 'blur(100px)',
             pointerEvents: 'none'
           }}
@@ -144,7 +144,7 @@ export default function AboutUs({ onNavigate }) {
                     width: '38px',
                     height: '38px',
                     borderRadius: '8px',
-                    background: 'rgba(0, 82, 255, 0.08)',
+                    background: 'rgba(1, 42, 45,  0.08)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -173,12 +173,12 @@ export default function AboutUs({ onNavigate }) {
                     width: '38px',
                     height: '38px',
                     borderRadius: '8px',
-                    background: 'rgba(2, 132, 199, 0.08)',
+                    background: 'rgba(67, 83, 85,  0.08)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
-                    color: '#0284c7',
+                    color: '#435355',
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.82rem',
                     fontWeight: 800
@@ -260,7 +260,7 @@ export default function AboutUs({ onNavigate }) {
                 transition: 'all 0.25s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(0, 82, 255, 0.35)';
+                e.currentTarget.style.borderColor = 'rgba(1, 42, 45,  0.35)';
                 e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                 e.currentTarget.style.transform = 'translateY(-3px)';
               }}
@@ -318,7 +318,7 @@ export default function AboutUs({ onNavigate }) {
                 transition: 'all 0.25s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(2, 132, 199, 0.35)';
+                e.currentTarget.style.borderColor = 'rgba(67, 83, 85,  0.35)';
                 e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                 e.currentTarget.style.transform = 'translateY(-3px)';
               }}
@@ -331,7 +331,7 @@ export default function AboutUs({ onNavigate }) {
               <div>
                 <div
                   style={{
-                    color: '#0284c7',
+                    color: '#435355',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '10px',
@@ -354,7 +354,7 @@ export default function AboutUs({ onNavigate }) {
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {['MATLAB, Python, Simulink & ANSYS simulations', 'Hardware-in-the-Loop (HIL) testbed verification', 'Publication-grade LaTeX manuscript & BibTeX formatting', 'Comparative evaluation graphs & reviewer rebuttal support'].map((f, i) => (
                     <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem', color: '#475569' }}>
-                      <span style={{ color: '#0284c7', fontWeight: 800 }}>—</span> {f}
+                      <span style={{ color: '#435355', fontWeight: 800 }}>—</span> {f}
                     </li>
                   ))}
                 </ul>
@@ -468,7 +468,7 @@ export default function AboutUs({ onNavigate }) {
                   transition: 'all 0.25s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(0, 82, 255, 0.3)';
+                  e.currentTarget.style.borderColor = 'rgba(1, 42, 45,  0.3)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {

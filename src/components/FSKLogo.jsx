@@ -40,7 +40,7 @@ export default function FSKLogo({ compact = false, size = 'default', showTagline
               fontSize: fskFontSize,
               fontWeight: 900,
               letterSpacing: '-0.025em',
-              color: '#090d16',
+              color: '#012A2D',
               lineHeight: 0.95
             }}
           >
@@ -52,7 +52,7 @@ export default function FSKLogo({ compact = false, size = 'default', showTagline
               width: isLarge ? '6px' : '5px',
               height: isLarge ? '6px' : '5px',
               borderRadius: '50%',
-              background: '#0052ff',
+              background: '#012A2D',
               marginLeft: '2px'
             }}
           />
@@ -65,7 +65,7 @@ export default function FSKLogo({ compact = false, size = 'default', showTagline
               fontSize: taglineFontSize,
               fontWeight: 700,
               letterSpacing: '1.8px',
-              color: '#64748b',
+              color: '#435355',
               textTransform: 'uppercase',
               marginTop: '4px',
               lineHeight: 1

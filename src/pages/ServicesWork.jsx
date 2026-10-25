@@ -55,7 +55,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
             right: '-60px',
             width: '600px',
             height: '600px',
-            background: 'radial-gradient(circle, rgba(0, 82, 255, 0.05), transparent 70%)',
+            background: 'radial-gradient(circle, rgba(1, 42, 45,  0.05), transparent 70%)',
             filter: 'blur(90px)',
             pointerEvents: 'none'
           }}
@@ -89,9 +89,9 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
               margin: '0 0 32px'
             }}
           >
-            Explore our specialized engineering services tailored for <strong style={{ color: '#0052ff' }}>Students</strong>,{' '}
-            <strong style={{ color: '#0284c7' }}>Professional Scholars</strong>, and{' '}
-            <strong style={{ color: '#090d16' }}>Startup Founders</strong> — alongside our portfolio of battle-tested hardware prototypes and research documentation.
+            Explore our specialized engineering services tailored for <strong style={{ color: '#012A2D' }}>Students</strong>,{' '}
+            <strong style={{ color: '#435355' }}>Professional Scholars</strong>, and{' '}
+            <strong style={{ color: '#012A2D' }}>Startup Founders</strong> — alongside our portfolio of battle-tested hardware prototypes and research documentation.
           </p>
 
           <div style={{ display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -107,8 +107,8 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
               className="btn-ghost"
               style={{
                 cursor: 'pointer',
-                border: '1px solid #cbd5e1',
-                color: '#090d16',
+                border: '1px solid rgba(67, 83, 85, 0.25)',
+                color: '#012A2D',
                 padding: '12px 24px',
                 fontSize: '0.92rem',
                 fontWeight: 600
@@ -121,30 +121,30 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
       </section>
 
       {/* Part 1: Specialized Service Tracks for the 3 Innovators */}
-      <section style={{ padding: '80px 48px', background: '#f8fafc', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
+      <section style={{ padding: '80px 48px', background: '#f6f8f8', borderTop: '1px solid rgba(67, 83, 85, 0.18)', borderBottom: '1px solid rgba(67, 83, 85, 0.18)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div className="section-label">Tailored Service Tracks</div>
           <h2 className="section-title">
-            SERVICES BY <span style={{ color: '#0052ff' }}>AUDIENCE</span>
+            SERVICES BY <span style={{ color: '#012A2D' }}>AUDIENCE</span>
           </h2>
-          <p style={{ color: '#64748b', fontSize: '1.02rem', lineHeight: 1.7, maxWidth: '750px', marginBottom: '40px' }}>
+          <p style={{ color: '#435355', fontSize: '1.02rem', lineHeight: 1.7, maxWidth: '750px', marginBottom: '40px' }}>
             Each track is designed with distinct engineering standards, documentation formats, and coaching protocols to match your exact milestone goals.
           </p>
 
           {/* Track Switcher */}
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
             {[
-              { id: 'students', label: 'For Students (Academic Projects)', activeBg: '#0052ff', activeColor: '#ffffff' },
-              { id: 'scholars', label: 'For Professional Scholars (Research Papers)', activeBg: '#0284c7', activeColor: '#ffffff' },
-              { id: 'startups', label: 'For Startups (Commercial MVPs)', activeBg: '#4f46e5', activeColor: '#ffffff' }
+              { id: 'students', label: 'For Students (Academic Projects)', activeBg: '#012A2D', activeColor: '#ffffff' },
+              { id: 'scholars', label: 'For Professional Scholars (Research Papers)', activeBg: '#435355', activeColor: '#ffffff' },
+              { id: 'startups', label: 'For Startups (Commercial MVPs)', activeBg: '#012A2D', activeColor: '#ffffff' }
             ].map((track) => (
               <button
                 key={track.id}
                 onClick={() => setSelectedTrack(track.id)}
                 style={{
                   background: selectedTrack === track.id ? track.activeBg : '#ffffff',
-                  color: selectedTrack === track.id ? track.activeColor : '#334155',
-                  border: selectedTrack === track.id ? `1px solid ${track.activeBg}` : '1px solid #e2e8f0',
+                  color: selectedTrack === track.id ? track.activeColor : '#435355',
+                  border: selectedTrack === track.id ? `1px solid ${track.activeBg}` : '1px solid rgba(67, 83, 85, 0.2)',
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.8rem',
                   letterSpacing: '0.5px',
@@ -152,7 +152,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                   borderRadius: '8px',
                   cursor: 'pointer',
                   fontWeight: selectedTrack === track.id ? '700' : '500',
-                  boxShadow: selectedTrack === track.id ? '0 4px 14px rgba(0, 82, 255, 0.2)' : '0 1px 3px rgba(0,0,0,0.03)',
+                  boxShadow: selectedTrack === track.id ? '0 4px 14px rgba(1, 42, 45, 0.25)' : '0 1px 3px rgba(0,0,0,0.03)',
                   transition: 'all 0.2s'
                 }}
               >
@@ -167,23 +167,23 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
               className="mobile-card-compact"
               style={{
                 background: '#ffffff',
-                border: '1.5px solid #0052ff',
+                border: '1.5px solid #012A2D',
                 borderRadius: '16px',
                 padding: 'clamp(20px, 4vw, 44px)',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
                 gap: '32px',
-                boxShadow: '0 10px 30px rgba(0, 82, 255, 0.06)'
+                boxShadow: '0 10px 30px rgba(1, 42, 45, 0.08)'
               }}
             >
               <div>
-                <div style={{ color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>
+                <div style={{ color: '#012A2D', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>
                   Student Track • B.Tech / M.Tech / Diploma Capstones
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 800, color: '#090d16', marginBottom: '16px', lineHeight: 1.2 }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 800, color: '#012A2D', marginBottom: '16px', lineHeight: 1.2 }}>
                   Full Academic Project Undertakings &amp; Documentation
                 </h3>
-                <p style={{ color: '#475569', fontSize: '0.96rem', lineHeight: 1.8, marginBottom: '24px' }}>
+                <p style={{ color: '#435355', fontSize: '0.96rem', lineHeight: 1.8, marginBottom: '24px' }}>
                   We handle the complete project lifecycle from base paper selection to final viva defense. We build 100% working hardware and author an extensive university-compliant thesis so you achieve the highest grades without stress.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -195,41 +195,41 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                     '1-on-1 Viva Defense mock rehearsals & code walkthroughs',
                     'Doorstep pan-India physical hardware dispatch'
                   ].map((item, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.92rem', color: '#1e293b' }}>
-                      <span style={{ color: '#0052ff', fontWeight: 800 }}>—</span> {item}
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.92rem', color: '#012A2D' }}>
+                      <span style={{ color: '#012A2D', fontWeight: 800 }}>—</span> {item}
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '32px' }}>
-                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#0052ff', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
+              <div style={{ background: '#f6f8f8', border: '1px solid rgba(67, 83, 85, 0.2)', borderRadius: '12px', padding: '32px' }}>
+                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#012A2D', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
                   Standard Deliverables Included:
                 </h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                   <div style={{ display: 'flex', gap: '14px' }}>
-                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(0, 82, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>01</span>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(1, 42, 45, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#012A2D', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>01</span>
                     <div>
-                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Working Hardware Unit:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
+                      <strong style={{ color: '#012A2D', fontSize: '0.92rem' }}>Working Hardware Unit:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#435355', lineHeight: 1.5 }}>
                         Fully assembled, wired, and tested physical device with sensor calibration and labeled pins.
                       </p>
                     </div>
                   </div>
                   <div style={{ display: 'flex', gap: '14px' }}>
-                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(0, 82, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>02</span>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(1, 42, 45, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#012A2D', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>02</span>
                     <div>
-                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Complete University Documentation:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
+                      <strong style={{ color: '#012A2D', fontSize: '0.92rem' }}>Complete University Documentation:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#435355', lineHeight: 1.5 }}>
                         Formatted thesis, synopsis, circuit schematics, block diagrams, flowchart, and seminar PPT.
                       </p>
                     </div>
                   </div>
                   <div style={{ display: 'flex', gap: '14px' }}>
-                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(0, 82, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>03</span>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(1, 42, 45, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#012A2D', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>03</span>
                     <div>
-                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Personalized Viva Preparation:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
+                      <strong style={{ color: '#012A2D', fontSize: '0.92rem' }}>Personalized Viva Preparation:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#435355', lineHeight: 1.5 }}>
                         1-on-1 screen share explaining every line of code, circuit component, and examiner FAQs.
                       </p>
                     </div>
@@ -244,17 +244,17 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
               className="mobile-card-compact"
               style={{
                 background: '#ffffff',
-                border: '1.5px solid #0284c7',
+                border: '1.5px solid #435355',
                 borderRadius: '16px',
                 padding: 'clamp(20px, 4vw, 44px)',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
                 gap: '32px',
-                boxShadow: '0 10px 30px rgba(2, 132, 199, 0.06)'
+                boxShadow: '0 10px 30px rgba(67, 83, 85,  0.06)'
               }}
             >
               <div>
-                <div style={{ color: '#0284c7', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>
+                <div style={{ color: '#435355', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>
                   Scholar Track • PhD Candidates &amp; Scientific Researchers
                 </div>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 800, color: '#090d16', marginBottom: '16px', lineHeight: 1.2 }}>
@@ -273,19 +273,19 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                     'Reviewer rebuttal support & empirical validation experiments'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.92rem', color: '#1e293b' }}>
-                      <span style={{ color: '#0284c7', fontWeight: 800 }}>—</span> {item}
+                      <span style={{ color: '#435355', fontWeight: 800 }}>—</span> {item}
                     </div>
                   ))}
                 </div>
               </div>
 
               <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '32px' }}>
-                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#0284c7', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
+                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#435355', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
                   Research Deliverables Package:
                 </h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                   <div style={{ display: 'flex', gap: '14px' }}>
-                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(2, 132, 199, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0284c7', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>01</span>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(67, 83, 85,  0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#435355', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>01</span>
                     <div>
                       <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Experimental Testbed / Simulation Rig:</strong>
                       <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
@@ -294,7 +294,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                     </div>
                   </div>
                   <div style={{ display: 'flex', gap: '14px' }}>
-                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(2, 132, 199, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0284c7', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>02</span>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(67, 83, 85,  0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#435355', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>02</span>
                     <div>
                       <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Camera-Ready LaTeX Manuscript:</strong>
                       <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
@@ -303,7 +303,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                     </div>
                   </div>
                   <div style={{ display: 'flex', gap: '14px' }}>
-                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(2, 132, 199, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0284c7', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>03</span>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(67, 83, 85,  0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#435355', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>03</span>
                     <div>
                       <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Peer-Review Rebuttal Pack:</strong>
                       <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
@@ -400,7 +400,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
         <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div className="section-label">Engineering Capabilities</div>
           <h2 className="section-title">
-            SIX CORE <span style={{ color: '#0052ff' }}>DOMAINS</span>
+            SIX CORE <span style={{ color: '#012A2D' }}>DOMAINS</span>
           </h2>
 
           <div
@@ -426,9 +426,9 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                   transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#0052ff';
+                  e.currentTarget.style.borderColor = '#012A2D';
                   e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 82, 255, 0.09)';
+                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(1, 42, 45,  0.09)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = '#e2e8f0';
@@ -438,7 +438,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
               >
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', fontWeight: 800, color: '#0052ff', letterSpacing: '1px' }}>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', fontWeight: 800, color: '#012A2D', letterSpacing: '1px' }}>
                       {item.num} //
                     </span>
                     <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#64748b', letterSpacing: '1px', textTransform: 'uppercase' }}>
@@ -446,7 +446,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                     </span>
                   </div>
 
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#0052ff', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#012A2D', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>
                     {item.badge}
                   </div>
 
@@ -490,7 +490,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
             <div>
               <div className="section-label">Showcase &amp; Portfolio</div>
               <h2 className="section-title">
-                OUR PROVEN <span style={{ color: '#0052ff' }}>WORK</span>
+                OUR PROVEN <span style={{ color: '#012A2D' }}>WORK</span>
               </h2>
             </div>
             <p style={{ maxWidth: '520px', color: '#64748b', fontSize: '1rem', lineHeight: 1.7, margin: 0 }}>
@@ -513,9 +513,9 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                 key={f.id}
                 onClick={() => setActiveFilter(f.id)}
                 style={{
-                  background: activeFilter === f.id ? '#0052ff' : '#ffffff',
+                  background: activeFilter === f.id ? '#012A2D' : '#ffffff',
                   color: activeFilter === f.id ? '#ffffff' : '#475569',
-                  border: activeFilter === f.id ? '1px solid #0052ff' : '1px solid #e2e8f0',
+                  border: activeFilter === f.id ? '1px solid #012A2D' : '1px solid #e2e8f0',
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.75rem',
                   letterSpacing: '0.5px',
@@ -523,7 +523,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                   borderRadius: '8px',
                   cursor: 'pointer',
                   fontWeight: activeFilter === f.id ? '700' : '500',
-                  boxShadow: activeFilter === f.id ? '0 4px 12px rgba(0, 82, 255, 0.2)' : '0 1px 3px rgba(0,0,0,0.03)',
+                  boxShadow: activeFilter === f.id ? '0 4px 12px rgba(1, 42, 45,  0.2)' : '0 1px 3px rgba(0,0,0,0.03)',
                   transition: 'all 0.2s'
                 }}
               >
@@ -555,9 +555,9 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                   transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#0052ff';
+                  e.currentTarget.style.borderColor = '#012A2D';
                   e.currentTarget.style.transform = 'translateY(-6px)';
-                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 82, 255, 0.12)';
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(1, 42, 45,  0.12)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = '#e2e8f0';
@@ -581,7 +581,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                       position: 'absolute',
                       inset: 0,
                       backgroundImage:
-                        'radial-gradient(circle at 1px 1px, rgba(0, 82, 255, 0.08) 1px, transparent 0)',
+                        'radial-gradient(circle at 1px 1px, rgba(1, 42, 45,  0.08) 1px, transparent 0)',
                       backgroundSize: '16px 16px',
                       pointerEvents: 'none'
                     }}
@@ -606,8 +606,8 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                         fontWeight: 800,
                         padding: '4px 10px',
                         background: '#ffffff',
-                        border: '1.5px solid #0052ff',
-                        color: '#0052ff',
+                        border: '1.5px solid #012A2D',
+                        color: '#012A2D',
                         borderRadius: '6px',
                         letterSpacing: '0.8px'
                       }}
@@ -645,7 +645,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                       zIndex: 1
                     }}
                   >
-                    <span style={{ color: '#0052ff', fontWeight: 700, display: 'block', fontSize: '0.65rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '3px' }}>
+                    <span style={{ color: '#012A2D', fontWeight: 700, display: 'block', fontSize: '0.65rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '3px' }}>
                       Interface &amp; Hardware Specs:
                     </span>
                     {proto.specs}
@@ -654,7 +654,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
 
                 <div style={{ padding: '28px', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' }}>
                   <div>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#0052ff', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#012A2D', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>
                       {proto.category || proto.cat}
                     </div>
 
@@ -679,7 +679,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                           lineHeight: 1.5
                         }}
                       >
-                        <strong style={{ color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '1px', textTransform: 'uppercase', display: 'block', marginBottom: '3px' }}>
+                        <strong style={{ color: '#012A2D', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '1px', textTransform: 'uppercase', display: 'block', marginBottom: '3px' }}>
                           Delivered Pack:
                         </strong>
                         {proto.deliverables}
@@ -713,8 +713,8 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                         width: '100%',
                         padding: '12px',
                         background: '#ffffff',
-                        border: '1.5px solid #0052ff',
-                        color: '#0052ff',
+                        border: '1.5px solid #012A2D',
+                        color: '#012A2D',
                         fontFamily: 'var(--font-mono)',
                         fontSize: '0.75rem',
                         fontWeight: 700,
@@ -729,12 +729,12 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                         transition: 'all 0.2s'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = '#0052ff';
+                        e.currentTarget.style.background = '#012A2D';
                         e.currentTarget.style.color = '#ffffff';
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background = '#ffffff';
-                        e.currentTarget.style.color = '#0052ff';
+                        e.currentTarget.style.color = '#012A2D';
                       }}
                     >
                       Inspect Specs &amp; Deliverables
@@ -752,7 +752,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
         <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div className="section-label">Deliverables Comparison</div>
           <h2 className="section-title">
-            WHAT EACH TRACK <span style={{ color: '#0052ff' }}>RECEIVES</span>
+            WHAT EACH TRACK <span style={{ color: '#012A2D' }}>RECEIVES</span>
           </h2>
 
           <div style={{ overflowX: 'auto', marginTop: '36px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 16px rgba(15, 23, 42, 0.03)' }}>
@@ -769,10 +769,10 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                   <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#090d16' }}>
                     DELIVERABLE ITEM
                   </th>
-                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#0052ff' }}>
+                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#012A2D' }}>
                     STUDENTS
                   </th>
-                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#0284c7' }}>
+                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#435355' }}>
                     SCHOLARS
                   </th>
                   <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#4f46e5' }}>
@@ -809,7 +809,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
         <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div className="section-label">Execution Lifecycle</div>
           <h2 className="section-title">
-            FROM CONCEPT TO <span style={{ color: '#0052ff' }}>DELIVERY</span>
+            FROM CONCEPT TO <span style={{ color: '#012A2D' }}>DELIVERY</span>
           </h2>
 
           <div
@@ -842,7 +842,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.25rem', fontWeight: 800, color: '#0052ff', marginBottom: '14px' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.25rem', fontWeight: 800, color: '#012A2D', marginBottom: '14px' }}>
                     {st.step}
                   </div>
                   <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 800, color: '#090d16', margin: '0 0 10px' }}>
@@ -864,7 +864,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
           </div>
           <h2 className="section-title">
             HAVE A PROJECT OR <br />
-            <span style={{ color: '#0052ff' }}>PAPER IN MIND?</span>
+            <span style={{ color: '#012A2D' }}>PAPER IN MIND?</span>
           </h2>
           <p style={{ color: '#475569', fontSize: '1.08rem', lineHeight: 1.8, marginBottom: '36px' }}>
             Share your title, abstract, or requirement statement today. Our lead engineers review incoming scopes within 2 hours.

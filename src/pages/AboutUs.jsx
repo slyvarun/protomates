@@ -445,8 +445,8 @@ export default function AboutUs({ onNavigate }) {
                 desc: 'Altium Designer 365, KiCad 8, and EasyEDA Pro for multi-layer routing, impedance matching, and Gerber/BOM generation.'
               },
               {
-                title: 'Edge AI Compute Cluster',
-                desc: 'NVIDIA Jetson Orin Nano, Coral Edge TPU, Raspberry Pi 5, and GPU workstations for real-time PyTorch & OpenCV inference.'
+                title: 'Microcontroller & IoT Workbench',
+                desc: 'Arduino, ESP32, Raspberry Pi, and sensor modules for basic electronics, student projects, and IoT automation.'
               },
               {
                 title: 'Precision SMT & Rework Station',

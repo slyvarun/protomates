@@ -12,7 +12,7 @@ export default function Navbar({
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 20);
     };
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 900);
@@ -54,16 +54,19 @@ export default function Navbar({
           left: 0,
           right: 0,
           zIndex: 1000,
-          padding: isMobile ? '14px 20px' : '16px 48px',
+          padding: isMobile ? '12px 18px' : '14px 48px',
           background: scrolled
-            ? 'rgba(255, 255, 255, 0.95)'
-            : 'rgba(255, 255, 255, 0.86)',
-          backdropFilter: 'blur(20px)',
+            ? 'rgba(255, 255, 255, 0.72)'
+            : 'rgba(255, 255, 255, 0.55)',
+          backdropFilter: 'blur(24px) saturate(190%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(190%)',
           borderBottom: scrolled
-            ? '1px solid rgba(226, 232, 240, 0.9)'
-            : '1px solid rgba(226, 232, 240, 0.5)',
-          boxShadow: scrolled ? '0 4px 20px -2px rgba(15, 23, 42, 0.05)' : 'none',
-          transition: 'all 0.25s ease'
+            ? '1px solid rgba(255, 255, 255, 0.8)'
+            : '1px solid rgba(255, 255, 255, 0.5)',
+          boxShadow: scrolled
+            ? '0 12px 35px -5px rgba(0, 82, 255, 0.08), 0 2px 8px rgba(15, 23, 42, 0.03)'
+            : '0 4px 20px -2px rgba(15, 23, 42, 0.03)',
+          transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
         }}
       >
         <div
@@ -85,7 +88,7 @@ export default function Navbar({
             <FSKLogo compact={isMobile} />
           </div>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links — Frosted Glass Island */}
           {!isMobile && (
             <ul
               style={{
@@ -93,11 +96,14 @@ export default function Navbar({
                 gap: '6px',
                 listStyle: 'none',
                 margin: 0,
-                padding: '4px',
-                background: 'rgba(241, 245, 249, 0.75)',
-                border: '1px solid #e2e8f0',
+                padding: '4px 6px',
+                background: 'rgba(255, 255, 255, 0.60)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid rgba(255, 255, 255, 0.85)',
                 borderRadius: '999px',
-                alignItems: 'center'
+                alignItems: 'center',
+                boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 4px 16px rgba(0, 82, 255, 0.04)'
               }}
             >
               {navItems.map((item) => {
@@ -107,8 +113,8 @@ export default function Navbar({
                     <button
                       onClick={() => handleNavClick(item.id)}
                       style={{
-                        background: isActive ? '#ffffff' : 'transparent',
-                        border: 'none',
+                        background: isActive ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+                        border: isActive ? '1px solid rgba(0, 82, 255, 0.14)' : '1px solid transparent',
                         borderRadius: '999px',
                         padding: '8px 18px',
                         cursor: 'pointer',
@@ -116,17 +122,23 @@ export default function Navbar({
                         fontSize: '0.84rem',
                         fontWeight: isActive ? 700 : 500,
                         color: isActive ? 'var(--accent)' : 'var(--text-secondary)',
-                        boxShadow: isActive ? '0 2px 8px rgba(15, 23, 42, 0.06)' : 'none',
+                        boxShadow: isActive ? '0 4px 12px rgba(0, 82, 255, 0.12), 0 1px 2px rgba(15, 23, 42, 0.04)' : 'none',
                         transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '6px'
                       }}
                       onMouseEnter={(e) => {
-                        if (!isActive) e.currentTarget.style.color = 'var(--text-primary)';
+                        if (!isActive) {
+                          e.currentTarget.style.color = 'var(--text-primary)';
+                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.5)';
+                        }
                       }}
                       onMouseLeave={(e) => {
-                        if (!isActive) e.currentTarget.style.color = 'var(--text-secondary)';
+                        if (!isActive) {
+                          e.currentTarget.style.color = 'var(--text-secondary)';
+                          e.currentTarget.style.background = 'transparent';
+                        }
                       }}
                     >
                       {isActive && (
@@ -158,7 +170,8 @@ export default function Navbar({
                   padding: '10px 22px',
                   fontSize: '0.82rem',
                   fontWeight: 700,
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 14px rgba(0, 82, 255, 0.3)'
                 }}
               >
                 Start A Project
@@ -167,12 +180,14 @@ export default function Navbar({
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 style={{
-                  background: '#ffffff',
-                  border: '1px solid #e2e8f0',
+                  background: 'rgba(255, 255, 255, 0.75)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255, 255, 255, 0.85)',
                   color: 'var(--text-primary)',
                   padding: '8px',
-                  borderRadius: '8px',
-                  boxShadow: 'var(--shadow-sm)',
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 14px rgba(0, 82, 255, 0.06)',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -186,14 +201,15 @@ export default function Navbar({
         </div>
       </nav>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu — Frosted Glass Screen */}
       {isMobile && mobileMenuOpen && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(255, 255, 255, 0.98)',
-            backdropFilter: 'blur(20px)',
+            background: 'rgba(255, 255, 255, 0.85)',
+            backdropFilter: 'blur(30px) saturate(190%)',
+            WebkitBackdropFilter: 'blur(30px) saturate(190%)',
             zIndex: 999,
             padding: '85px 24px 30px',
             display: 'flex',
@@ -205,8 +221,8 @@ export default function Navbar({
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <div
               style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.72rem',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.74rem',
                 color: 'var(--accent)',
                 letterSpacing: '2px',
                 fontWeight: 700,
@@ -223,13 +239,15 @@ export default function Navbar({
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
                   style={{
-                    background: isActive ? 'rgba(0, 82, 255, 0.05)' : '#ffffff',
-                    border: isActive ? '1px solid rgba(0, 82, 255, 0.2)' : '1px solid #e2e8f0',
-                    borderRadius: '10px',
+                    background: isActive ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.65)',
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    border: isActive ? '1px solid rgba(0, 82, 255, 0.3)' : '1px solid rgba(255, 255, 255, 0.8)',
+                    borderRadius: '12px',
                     padding: '16px 20px',
                     textAlign: 'left',
                     fontFamily: 'var(--font-display)',
-                    fontSize: '1.2rem',
+                    fontSize: '1.15rem',
                     fontWeight: 600,
                     color: isActive ? 'var(--accent)' : 'var(--text-primary)',
                     display: 'flex',
@@ -245,7 +263,7 @@ export default function Navbar({
             })}
           </div>
 
-          <div style={{ paddingTop: '20px', borderTop: '1px solid #e2e8f0' }}>
+          <div style={{ paddingTop: '20px', borderTop: '1px solid rgba(226, 232, 240, 0.8)' }}>
             <button
               onClick={() => handleNavClick('contact')}
               className="btn-primary"

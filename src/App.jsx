@@ -7,7 +7,6 @@ import ServicesWork from './pages/ServicesWork';
 import ContactUs from './pages/ContactUs';
 import Footer from './components/Footer';
 import ContactCookiePopup from './components/ContactCookiePopup';
-import LandingIntroAnimation from './components/LandingIntroAnimation';
 import FlowingBlurAura from './components/FlowingBlurAura';
 
 // Helper to determine initial page from URL pathname or hash
@@ -25,16 +24,6 @@ function getPageFromPath() {
 export default function App() {
   const [currentPage, setCurrentPage] = useState(getPageFromPath);
   const [pageProps, setPageProps] = useState({});
-
-  // Landing Page Intro Animation State - runs once per visit
-  const [showIntro, setShowIntro] = useState(() => {
-    return !sessionStorage.getItem('fsk_intro_completed');
-  });
-
-  const handleIntroComplete = useCallback(() => {
-    sessionStorage.setItem('fsk_intro_completed', 'true');
-    setShowIntro(false);
-  }, []);
 
   // Lenis smooth scroll
   useEffect(() => {
@@ -120,34 +109,18 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // Escape key skips intro animation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && showIntro) {
-        handleIntroComplete();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [showIntro, handleIntroComplete]);
-
   return (
     <div className="protomates-app" style={{ position: 'relative', minHeight: '100vh', background: 'transparent' }}>
-      {/* 1. CINEMATIC LANDING INTRO ANIMATION ON ENTRANCE */}
-      {showIntro && (
-        <LandingIntroAnimation onComplete={handleIntroComplete} />
-      )}
-
-      {/* 2. CHROMATIC BLUR AURA FLOWING OVER THE WHOLE SCREEN */}
+      {/* 1. CHROMATIC BLUR AURA FLOWING OVER THE WHOLE SCREEN */}
       <FlowingBlurAura />
 
-      {/* 3. FIXED HEADER NAVBAR */}
+      {/* 2. GLASSMORPHIC FIXED HEADER NAVBAR */}
       <Navbar
         activePage={currentPage}
         onNavigate={handleNavigate}
       />
 
-      {/* 4. MAIN ROUTED PAGE CONTENT */}
+      {/* 3. MAIN ROUTED PAGE CONTENT */}
       <main style={{ position: 'relative', zIndex: 1 }}>
         <div key={currentPage} className="page-transition-container">
           {currentPage === 'home' && (
@@ -163,10 +136,10 @@ export default function App() {
         </div>
       </main>
 
-      {/* 5. FOOTER */}
+      {/* 4. FOOTER */}
       <Footer onNavigate={handleNavigate} />
 
-      {/* 6. 10-Minute Consultation Lead Widget */}
+      {/* 5. 10-Minute Consultation Lead Widget */}
       <ContactCookiePopup onNavigate={handleNavigate} />
     </div>
   );

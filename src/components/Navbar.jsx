@@ -167,45 +167,29 @@ export default function Navbar({
             </ul>
           )}
 
-          {/* Right Section: Desktop CTA or Mobile Hamburger */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            {!isMobile ? (
-              <button
-                onClick={() => handleNavClick('contact')}
-                className="btn-primary"
-                style={{
-                  padding: '10px 22px',
-                  fontSize: '0.82rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 14px rgba(1, 42, 45,  0.3)'
-                }}
-              >
-                Start A Project
-              </button>
-            ) : (
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.75)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.85)',
-                  color: 'var(--text-primary)',
-                  padding: '8px',
-                  borderRadius: '10px',
-                  boxShadow: '0 4px 14px rgba(1, 42, 45,  0.06)',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              >
-                {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
-            )}
-          </div>
+          {/* Mobile Hamburger Toggle */}
+          {isMobile && (
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              style={{
+                background: 'rgba(255, 255, 255, 0.75)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid rgba(255, 255, 255, 0.85)',
+                color: 'var(--text-primary)',
+                padding: '8px',
+                borderRadius: '10px',
+                boxShadow: '0 4px 14px rgba(1, 42, 45,  0.06)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          )}
         </div>
       </nav>
 

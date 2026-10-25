@@ -40,18 +40,18 @@ export default function ContactUs({ initialAudience = 'students' }) {
   return (
     <div style={{ background: 'transparent', minHeight: '100vh', color: 'var(--text-primary)' }}>
       {/* Hero Header */}
-      <section style={{ padding: '120px 48px 40px', background: 'transparent', position: 'relative' }}>
+      <section style={{ padding: 'clamp(80px, 12vw, 120px) clamp(18px, 4vw, 48px) clamp(20px, 4vw, 40px)', background: 'transparent', position: 'relative' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', textAlign: 'left' }}>
           <div className="section-label">Engineering Project Intake</div>
 
           <h1
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2.6rem, 5.2vw, 4.4rem)',
+              fontSize: 'clamp(2rem, 5.2vw, 4.4rem)',
               fontWeight: 900,
               lineHeight: 1.08,
               letterSpacing: '-0.03em',
-              margin: '0 0 18px',
+              margin: '0 0 14px',
               maxWidth: '920px',
               color: 'var(--text-primary)'
             }}
@@ -63,20 +63,21 @@ export default function ContactUs({ initialAudience = 'students' }) {
 
           <p
             style={{
-              fontSize: '1.08rem',
+              fontSize: 'clamp(0.92rem, 2vw, 1.08rem)',
               color: 'var(--text-secondary)',
-              lineHeight: 1.7,
+              lineHeight: 1.6,
               maxWidth: '740px',
-              margin: '0 0 32px'
+              margin: '0 0 20px'
             }}
           >
-            Fill in your project topic, academic base paper, or custom MVP requirements. Our engineering team provides feasibility reviews and fixed BOM quotes within 2 hours.
+            <span>Fill in your project topic, base paper, or MVP requirements. </span>
+            <span className="mobile-hide">Our engineering team provides feasibility reviews and fixed BOM quotes within 2 hours.</span>
           </p>
         </div>
       </section>
 
       {/* Main Content Area */}
-      <section style={{ padding: '40px 48px 90px', background: '#f8fafc', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
+      <section style={{ padding: 'clamp(20px, 4vw, 40px) clamp(18px, 4vw, 48px) clamp(40px, 6vw, 90px)', background: '#f8fafc', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
         <div
           style={{
             maxWidth: '1200px',
@@ -84,7 +85,7 @@ export default function ContactUs({ initialAudience = 'students' }) {
             width: '100%',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
-            gap: '32px',
+            gap: '24px',
             alignItems: 'start'
           }}
         >
@@ -94,21 +95,22 @@ export default function ContactUs({ initialAudience = 'students' }) {
           </div>
 
           {/* Right Column: Direct Channels & Guarantees */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {/* Direct Instant Channels Card */}
             <div
+              className="mobile-card-compact"
               style={{
                 background: '#ffffff',
                 border: '1px solid #e2e8f0',
                 borderRadius: '16px',
-                padding: '32px',
+                padding: 'clamp(20px, 3.5vw, 32px)',
                 boxShadow: 'var(--shadow-sm)'
               }}
             >
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '12px' }}>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
                 DIRECT FAST CHANNELS
               </h3>
-              <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '20px' }}>
+              <p className="mobile-hide" style={{ color: '#64748b', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '16px' }}>
                 Need immediate answers regarding base paper viability, hardware parts availability, or an urgent viva timeline? Reach out directly.
               </p>
 
@@ -117,31 +119,23 @@ export default function ContactUs({ initialAudience = 'students' }) {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '14px',
-                  padding: '16px 20px',
-                  background: 'rgba(1, 42, 45,  0.05)',
-                  border: '1px solid rgba(1, 42, 45,  0.2)',
+                  gap: '12px',
+                  padding: '12px 16px',
+                  background: 'rgba(1, 42, 45, 0.05)',
+                  border: '1px solid rgba(1, 42, 45, 0.2)',
                   borderRadius: '10px',
                   color: 'var(--text-primary)',
                   textDecoration: 'none',
                   transition: 'all 0.2s',
-                  marginBottom: '12px'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--accent)';
-                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(1, 42, 45,  0.12)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(1, 42, 45,  0.2)';
-                  e.currentTarget.style.boxShadow = 'none';
+                  marginBottom: '10px'
                 }}
               >
-                <Mail size={22} color="var(--accent)" style={{ flexShrink: 0 }} />
+                <Mail size={20} color="var(--accent)" style={{ flexShrink: 0 }} />
                 <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--accent)', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
-                    Formal Scope Documents &amp; Papers
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.64rem', color: 'var(--accent)', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                    Formal Scope &amp; Papers
                   </div>
-                  <div style={{ fontSize: '0.95rem', fontWeight: 600 }}>consultant.fsk@gmail.com</div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 600 }}>consultant.fsk@gmail.com</div>
                 </div>
               </a>
 
@@ -152,8 +146,8 @@ export default function ContactUs({ initialAudience = 'students' }) {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '14px',
-                  padding: '16px 20px',
+                  gap: '12px',
+                  padding: '12px 16px',
                   background: 'rgba(10, 102, 194, 0.05)',
                   border: '1px solid rgba(10, 102, 194, 0.25)',
                   borderRadius: '10px',
@@ -161,49 +155,42 @@ export default function ContactUs({ initialAudience = 'students' }) {
                   textDecoration: 'none',
                   transition: 'all 0.2s'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#0a66c2';
-                  e.currentTarget.style.boxShadow = '0 4px 14px rgba(10, 102, 194, 0.15)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(10, 102, 194, 0.25)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
               >
-                <LinkedInIcon size={32} style={{ flexShrink: 0 }} />
+                <LinkedInIcon size={24} style={{ flexShrink: 0 }} />
                 <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: '#0a66c2', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
-                    LinkedIn
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.64rem', color: '#0a66c2', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                    LinkedIn Direct
                   </div>
-                  <div style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-primary)' }}>FSK Prototyping Services</div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-primary)' }}>FSK Prototyping Services</div>
                 </div>
               </a>
             </div>
 
             {/* Lab Guarantees Card */}
             <div
+              className="mobile-card-compact"
               style={{
                 background: '#ffffff',
                 border: '1px solid #e2e8f0',
                 borderRadius: '16px',
-                padding: '32px',
+                padding: 'clamp(20px, 3.5vw, 32px)',
                 boxShadow: 'var(--shadow-sm)'
               }}
             >
-              <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--accent)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '18px', fontWeight: 700 }}>
+              <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--accent)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '14px', fontWeight: 700 }}>
                 FSK Client Protections
               </h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {[
-                  { title: '100% Non-Disclosure Agreement (NDA)', desc: 'Your project ideas, proprietary datasets, and patents are legally protected.' },
+                  { title: 'Full IP & Idea Ownership', desc: 'Your project ideas, proprietary datasets, and source files belong 100% to you.' },
                   { title: 'Physical Hardware Video Verification', desc: 'Watch your assembled device function live before final doorstep dispatch.' },
                   { title: 'Zero Plagiarism University Guarantee', desc: 'Every thesis and paper is authored from scratch with original diagrams.' }
                 ].map((g, i) => (
-                  <div key={i} style={{ display: 'flex', gap: '12px' }}>
-                    <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '0.95rem', lineHeight: 1.4 }}>•</span>
+                  <div key={i} style={{ display: 'flex', gap: '10px' }}>
+                    <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '0.9rem', lineHeight: 1.4 }}>•</span>
                     <div>
-                      <strong style={{ color: 'var(--text-primary)', fontSize: '0.88rem' }}>{g.title}</strong>
-                      <p style={{ margin: '2px 0 0', fontSize: '0.8rem', color: '#64748b' }}>{g.desc}</p>
+                      <strong style={{ color: 'var(--text-primary)', fontSize: '0.84rem' }}>{g.title}</strong>
+                      <p className="mobile-hide" style={{ margin: '2px 0 0', fontSize: '0.78rem', color: '#64748b' }}>{g.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -214,7 +201,7 @@ export default function ContactUs({ initialAudience = 'students' }) {
       </section>
 
       {/* FAQ Accordion Section */}
-      <section style={{ padding: '80px 48px', background: '#ffffff' }}>
+      <section style={{ padding: 'clamp(40px, 6vw, 80px) clamp(18px, 4vw, 48px)', background: '#ffffff' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div className="section-label">Frequently Answered Questions</div>
           <h2 className="section-title">
@@ -222,12 +209,15 @@ export default function ContactUs({ initialAudience = 'students' }) {
             <span style={{ color: 'var(--accent)' }}>TO KNOW</span>
           </h2>
 
-          <div style={{ maxWidth: '960px', marginTop: '36px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ maxWidth: '960px', marginTop: '28px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {FAQS.map((faq, idx) => {
               const isOpen = activeFaq === idx;
+              // On mobile, hide FAQs beyond the first 3 unless open to keep screen clean
+              const isHiddenOnMobile = idx >= 3 && !isOpen;
               return (
                 <div
                   key={idx}
+                  className={isHiddenOnMobile ? 'mobile-hide' : ''}
                   style={{
                     background: '#ffffff',
                     border: isOpen ? '1px solid var(--accent)' : '1px solid #e2e8f0',
@@ -241,7 +231,7 @@ export default function ContactUs({ initialAudience = 'students' }) {
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
                     style={{
                       width: '100%',
-                      padding: '20px 24px',
+                      padding: '16px 20px',
                       background: 'transparent',
                       border: 'none',
                       color: 'var(--text-primary)',
@@ -250,12 +240,12 @@ export default function ContactUs({ initialAudience = 'students' }) {
                       alignItems: 'center',
                       textAlign: 'left',
                       cursor: 'pointer',
-                      gap: '16px'
+                      gap: '12px'
                     }}
                   >
-                    <span style={{ fontSize: '0.98rem', fontWeight: 600 }}>{faq.q}</span>
+                    <span style={{ fontSize: '0.92rem', fontWeight: 600 }}>{faq.q}</span>
                     <ChevronDown
-                      size={18}
+                      size={17}
                       color="var(--accent)"
                       style={{
                         transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -266,7 +256,7 @@ export default function ContactUs({ initialAudience = 'students' }) {
                   </button>
 
                   {isOpen && (
-                    <div style={{ padding: '0 24px 20px', color: '#64748b', fontSize: '0.92rem', lineHeight: 1.7 }}>
+                    <div style={{ padding: '0 20px 16px', color: '#64748b', fontSize: '0.88rem', lineHeight: 1.65 }}>
                       {faq.a}
                     </div>
                   )}

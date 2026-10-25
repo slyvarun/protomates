@@ -512,6 +512,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
               <button
                 key={f.id}
                 onClick={() => setActiveFilter(f.id)}
+                className={['pcb', 'iot', 'ai'].includes(f.id) ? 'mobile-hide' : ''}
                 style={{
                   background: activeFilter === f.id ? '#012A2D' : '#ffffff',
                   color: activeFilter === f.id ? '#ffffff' : '#475569',
@@ -519,7 +520,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.75rem',
                   letterSpacing: '0.5px',
-                  padding: '9px 18px',
+                  padding: '8px 14px',
                   borderRadius: '8px',
                   cursor: 'pointer',
                   fontWeight: activeFilter === f.id ? '700' : '500',
@@ -755,7 +756,8 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
             WHAT EACH TRACK <span style={{ color: '#012A2D' }}>RECEIVES</span>
           </h2>
 
-          <div style={{ overflowX: 'auto', marginTop: '36px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 16px rgba(15, 23, 42, 0.03)' }}>
+          {/* Desktop 4-Column Table */}
+          <div className="desktop-only" style={{ overflowX: 'auto', marginTop: '36px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 16px rgba(15, 23, 42, 0.03)' }}>
             <table
               style={{
                 width: '100%',
@@ -775,7 +777,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                   <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#435355' }}>
                     SCHOLARS
                   </th>
-                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#4f46e5' }}>
+                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#012A2D' }}>
                     STARTUP MVPS
                   </th>
                 </tr>
@@ -784,7 +786,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                 {[
                   { item: 'Working Physical Hardware', student: '100% Tested Rig / Shield', scholar: 'Experimental Testbed Rig', startup: 'Commercial Multi-layer MVP' },
                   { item: 'Source Code & Firmware', student: 'Commented Arduino/Python', scholar: 'Reproducible Models/MATLAB', startup: 'Production Git Repo (STM32/ESP)' },
-                  { item: 'Documentation Suite', student: '80–120p Thesis + PPT', scholar: 'Scopus/SCI LaTeX Manuscript', startup: 'Investor Technical Dossier' },
+                  { item: 'Documentation Suite', student: '80-120p Thesis + PPT', scholar: 'Scopus/SCI LaTeX Manuscript', startup: 'Investor Technical Dossier' },
                   { item: 'Schematics & PCB Gerbers', student: 'Full Circuit Schematics', scholar: 'High-Res Vector Schematics', startup: 'Manufacturing Gerbers & BOM' },
                   { item: '1-on-1 Defense / Coaching', student: 'Viva Defense Prep & Q&A', scholar: 'Reviewer Rebuttal Strategy', startup: 'Investor Pitch Tech Defense' },
                   { item: 'IP & Source Ownership', student: 'Full Student Ownership', scholar: 'Full Author Ownership', startup: '100% Commercial IP Transfer' }
@@ -800,6 +802,52 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile Stacked Deliverable Summary Cards */}
+          <div className="mobile-only" style={{ marginTop: '24px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              {[
+                {
+                  title: 'Students Capstone Pack',
+                  color: '#012A2D',
+                  items: ['100% Tested Hardware Rig', 'Commented Code & Firmware', '80-120p University Thesis + PPT', 'Full Circuit Schematics', '1-on-1 Viva Defense Coaching']
+                },
+                {
+                  title: 'Scholars & PhD Pack',
+                  color: '#435355',
+                  items: ['Experimental Research Testbed', 'Reproducible Simulation Models', 'Scopus/SCI LaTeX Manuscript', 'High-Res Vector Schematics', 'Reviewer Defense Strategy']
+                },
+                {
+                  title: 'Startup MVP Pack',
+                  color: '#012A2D',
+                  items: ['Commercial Multi-layer Hardware', 'Production Firmware Repo', 'Investor Technical Dossier', 'Manufacturing Gerbers & BOM', '100% IP & Source Ownership']
+                }
+              ].map((pack) => (
+                <div
+                  key={pack.title}
+                  style={{
+                    background: '#ffffff',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '12px',
+                    padding: '18px 16px',
+                    boxShadow: 'var(--shadow-sm)'
+                  }}
+                >
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', fontWeight: 800, color: pack.color, marginBottom: '10px' }}>
+                    {pack.title}
+                  </div>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    {pack.items.map((it) => (
+                      <li key={it} style={{ fontSize: '0.82rem', color: '#475569', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span style={{ color: pack.color, fontWeight: 800 }}>•</span>
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -254,16 +254,6 @@ export default function Navbar({
               );
             })}
           </div>
-
-          <div style={{ paddingTop: '20px', borderTop: '1px solid rgba(226, 232, 240, 0.8)' }}>
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="btn-primary"
-              style={{ width: '100%', justifyContent: 'center', padding: '16px', cursor: 'pointer', fontSize: '0.95rem' }}
-            >
-              Start Project Consultation
-            </button>
-          </div>
         </div>
       )}
     </>

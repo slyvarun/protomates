@@ -290,6 +290,7 @@ export default function Hardware3DCanvas({ introStage = 'ready' }) {
 
   return (
     <div
+      className="desktop-only"
       style={{
         position: 'absolute',
         inset: 0,

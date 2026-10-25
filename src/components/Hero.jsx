@@ -18,7 +18,7 @@ export default function Hero({ onNavigate }) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        padding: isMobile ? '80px 18px 50px' : '120px 48px 80px',
+        padding: isMobile ? '72px 18px 32px' : '120px 48px 80px',
         position: 'relative',
         overflow: 'hidden',
         background: 'transparent',
@@ -56,11 +56,11 @@ export default function Hero({ onNavigate }) {
         <h1
           style={{
             fontFamily: 'var(--font-display)',
-            fontSize: isMobile ? 'clamp(1.9rem, 7.2vw, 2.8rem)' : 'clamp(2.6rem, 5.2vw, 4.4rem)',
+            fontSize: isMobile ? 'clamp(1.85rem, 7vw, 2.6rem)' : 'clamp(2.6rem, 5.2vw, 4.4rem)',
             fontWeight: 900,
             lineHeight: 1.08,
             letterSpacing: '-0.03em',
-            margin: '0 0 16px',
+            margin: '0 0 14px',
             maxWidth: '920px',
             color: 'var(--text-primary)'
           }}
@@ -74,11 +74,11 @@ export default function Hero({ onNavigate }) {
         {/* Crisp Subtitle */}
         <p
           style={{
-            fontSize: isMobile ? '0.94rem' : '1.08rem',
+            fontSize: isMobile ? '0.92rem' : '1.08rem',
             color: 'var(--text-secondary)',
-            lineHeight: 1.65,
+            lineHeight: 1.6,
             maxWidth: '740px',
-            margin: isMobile ? '0 0 24px' : '0 0 32px'
+            margin: isMobile ? '0 0 16px' : '0 0 32px'
           }}
         >
           <span>Physical working prototypes, custom multi-layer PCBs, and research-grade documentation. </span>
@@ -89,10 +89,10 @@ export default function Hero({ onNavigate }) {
         <div
           style={{
             display: 'flex',
-            gap: '12px',
+            gap: '10px',
             alignItems: 'center',
             flexWrap: 'wrap',
-            marginBottom: isMobile ? '32px' : '48px'
+            marginBottom: isMobile ? '20px' : '40px'
           }}
         >
           <button

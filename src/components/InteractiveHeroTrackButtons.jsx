@@ -57,15 +57,14 @@ export default function InteractiveHeroTrackButtons({ onNavigate }) {
               WebkitBackdropFilter: 'blur(16px)',
               border: '1px solid rgba(226, 232, 240, 0.9)',
               borderRadius: '12px',
-              padding: '16px 20px',
+              padding: 'clamp(12px, 2.5vw, 16px) clamp(14px, 3vw, 20px)',
               cursor: 'pointer',
               textAlign: 'left',
               position: 'relative',
               transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-between',
-              minHeight: '105px',
+              justifyContent: 'center',
               boxShadow: '0 2px 8px rgba(15, 23, 42, 0.03)'
             }}
             onMouseEnter={(e) => {
@@ -130,7 +129,7 @@ export default function InteractiveHeroTrackButtons({ onNavigate }) {
               </span>
             </div>
 
-            <div style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.4 }}>
+            <div className="mobile-hide" style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.4 }}>
               {track.subtitle}
             </div>
           </button>

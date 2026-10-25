@@ -101,6 +101,7 @@ export default function ContactCookiePopup({ onNavigate }) {
 
   return (
     <div
+      className="desktop-only"
       style={{
         position: 'fixed',
         bottom: '24px',

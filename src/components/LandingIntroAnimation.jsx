@@ -3,60 +3,24 @@ import { getAssetUrl } from '../utils/assetUrl';
 
 /**
  * LandingIntroAnimation Component
- * Modern landing choreography:
- * 1. Logo emblem pops up in the center.
- * 2. Below it, the company name ("FSK" & "PROTOTYPING SERVICES") reveals.
+ * Runs ONCE on website entrance:
+ * 1. Logo emblem pops up in center.
+ * 2. Below it, company name ("FSK" & "PROTOTYPING SERVICES") reveals.
  * 3. Both smoothly glide and dock directly into their actual navbar positions on the home page.
  */
 export default function LandingIntroAnimation({ onComplete }) {
   // Stages:
-  // 0: Initializing
+  // 0: Initializing (hidden)
   // 1: Logo pops up (spring scale + glow)
   // 2: Company name reveals below the logo
-  // 3: Docking transition (glide to navbar position)
-  // 4: Complete
+  // 3: Docking transition (glide into navbar position)
+  // 4: Complete & unmount
   const [stage, setStage] = useState(0);
-  const [dockDelta, setDockDelta] = useState({ x: 0, y: 0, scale: 0.65 });
+  const [dockDelta, setDockDelta] = useState({ x: 0, y: 0, scale: 0.6 });
   const centerBoxRef = useRef(null);
+  const completedRef = useRef(false);
 
-  useEffect(() => {
-    // Step 1: Logo pop-up at 180ms
-    const t1 = setTimeout(() => {
-      setStage(1);
-    }, 180);
-
-    // Step 2: Company name reveals below logo at 750ms
-    const t2 = setTimeout(() => {
-      setStage(2);
-    }, 750);
-
-    // Step 3: Glide / dock to navbar position at 1700ms
-    const t3 = setTimeout(() => {
-      calculateDockPosition();
-      setStage(3);
-    }, 1700);
-
-    // Step 4: Complete transition at 2450ms
-    const t4 = setTimeout(() => {
-      setStage(4);
-      if (onComplete) onComplete();
-    }, 2450);
-
-    const handleResize = () => {
-      if (stage >= 3) calculateDockPosition();
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
-      clearTimeout(t4);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [onComplete, stage]);
-
-  // Compute pixel-perfect translation vector from center to actual navbar logo
+  // Pixel-perfect translation vector from center to actual navbar logo
   const calculateDockPosition = () => {
     const targetEl = document.getElementById('navbar-brand-logo');
     const centerEl = centerBoxRef.current;
@@ -68,29 +32,73 @@ export default function LandingIntroAnimation({ onComplete }) {
       const deltaX = targetRect.left + targetRect.width / 2 - (centerRect.left + centerRect.width / 2);
       const deltaY = targetRect.top + targetRect.height / 2 - (centerRect.top + centerRect.height / 2);
 
-      // Target scale ratio
       const isMobile = window.innerWidth <= 768;
-      const targetScale = isMobile ? 0.48 : 0.62;
+      const targetScale = isMobile ? 0.46 : 0.6;
 
       setDockDelta({ x: deltaX, y: deltaY, scale: targetScale });
     } else {
-      // Fallback coordinates based on viewport
       const isMobile = window.innerWidth <= 768;
-      const targetX = isMobile ? 20 + 70 - window.innerWidth / 2 : Math.max(48, (window.innerWidth - 1200) / 2 + 48) + 80 - window.innerWidth / 2;
+      const targetX = isMobile ? 20 + 65 - window.innerWidth / 2 : Math.max(48, (window.innerWidth - 1200) / 2 + 48) + 75 - window.innerWidth / 2;
       const targetY = (isMobile ? 14 : 16) + 20 - window.innerHeight / 2;
-      setDockDelta({ x: targetX, y: targetY, scale: isMobile ? 0.48 : 0.62 });
+      setDockDelta({ x: targetX, y: targetY, scale: isMobile ? 0.46 : 0.6 });
     }
   };
 
+  const finishIntro = () => {
+    if (completedRef.current) return;
+    completedRef.current = true;
+    setStage(4);
+    if (onComplete) onComplete();
+  };
+
   const handleSkip = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     calculateDockPosition();
     setStage(3);
     setTimeout(() => {
-      setStage(4);
-      if (onComplete) onComplete();
-    }, 220);
+      finishIntro();
+    }, 200);
   };
+
+  // Run the sequence ONCE on mount with ZERO loop dependencies
+  useEffect(() => {
+    // Step 1: Logo pop-up at 150ms
+    const t1 = setTimeout(() => {
+      setStage(1);
+    }, 150);
+
+    // Step 2: Company name reveals below logo at 700ms
+    const t2 = setTimeout(() => {
+      setStage(2);
+    }, 700);
+
+    // Step 3: Glide / dock to navbar position at 1650ms
+    const t3 = setTimeout(() => {
+      calculateDockPosition();
+      setStage(3);
+    }, 1650);
+
+    // Step 4: Finish and dock permanently at 2400ms
+    const t4 = setTimeout(() => {
+      finishIntro();
+    }, 2400);
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        handleSkip();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Strictly empty dependency array so it NEVER loops!
 
   if (stage === 4) return null;
 
@@ -110,16 +118,16 @@ export default function LandingIntroAnimation({ onComplete }) {
         transition: 'background 0.75s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
     >
-      {/* Background Aura Shockwave */}
+      {/* Background Aura Pulse on Entrance */}
       <div
         style={{
           position: 'absolute',
-          width: '520px',
-          height: '520px',
+          width: '550px',
+          height: '550px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0, 82, 255, 0.35) 0%, rgba(0, 210, 255, 0.18) 45%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0, 82, 255, 0.35) 0%, rgba(0, 229, 255, 0.20) 45%, transparent 70%)',
           filter: 'blur(75px)',
-          transform: stage >= 1 ? 'scale(1.2)' : 'scale(0.3)',
+          transform: stage >= 1 ? 'scale(1.25)' : 'scale(0.3)',
           opacity: stage === 3 ? 0 : stage >= 1 ? 0.9 : 0,
           transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
           pointerEvents: 'none'
@@ -189,7 +197,7 @@ export default function LandingIntroAnimation({ onComplete }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            marginBottom: '20px'
+            marginBottom: '18px'
           }}
         >
           {/* Logo Shockwave Halo */}
@@ -198,10 +206,10 @@ export default function LandingIntroAnimation({ onComplete }) {
               position: 'absolute',
               inset: '-20px',
               borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(0, 82, 255, 0.4) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(0, 82, 255, 0.45) 0%, transparent 70%)',
               filter: 'blur(20px)',
               transform: stage >= 1 ? 'scale(1.4)' : 'scale(0.5)',
-              opacity: stage >= 1 ? 0.7 : 0,
+              opacity: stage >= 1 ? 0.75 : 0,
               transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
             }}
           />
@@ -210,7 +218,7 @@ export default function LandingIntroAnimation({ onComplete }) {
             src={getAssetUrl('fsk_emblem.png')}
             alt="FSK Logo"
             style={{
-              height: '84px',
+              height: '82px',
               width: 'auto',
               display: 'block',
               objectFit: 'contain',
@@ -252,7 +260,7 @@ export default function LandingIntroAnimation({ onComplete }) {
             <span
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: '3.4rem',
+                fontSize: '3.2rem',
                 fontWeight: 900,
                 letterSpacing: '-0.03em',
                 color: '#090d16',
@@ -278,7 +286,7 @@ export default function LandingIntroAnimation({ onComplete }) {
           <div
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.85rem',
+              fontSize: '0.82rem',
               fontWeight: 700,
               color: '#0052ff',
               letterSpacing: stage >= 2 ? '4px' : '1px',
@@ -292,14 +300,14 @@ export default function LandingIntroAnimation({ onComplete }) {
           {/* R&D Telemetry Badge */}
           <div
             style={{
-              marginTop: '16px',
+              marginTop: '14px',
               fontFamily: 'var(--font-mono)',
               fontSize: '0.65rem',
               fontWeight: 700,
               color: '#64748b',
               letterSpacing: '1.5px',
               textTransform: 'uppercase',
-              background: 'rgba(241, 245, 249, 0.8)',
+              background: 'rgba(241, 245, 249, 0.85)',
               padding: '4px 12px',
               borderRadius: '999px',
               border: '1px solid #e2e8f0',

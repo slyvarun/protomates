@@ -26,8 +26,15 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(getPageFromPath);
   const [pageProps, setPageProps] = useState({});
 
-  // Landing Page Intro Animation State
-  const [showIntro, setShowIntro] = useState(true);
+  // Landing Page Intro Animation State - runs once per visit
+  const [showIntro, setShowIntro] = useState(() => {
+    return !sessionStorage.getItem('fsk_intro_completed');
+  });
+
+  const handleIntroComplete = useCallback(() => {
+    sessionStorage.setItem('fsk_intro_completed', 'true');
+    setShowIntro(false);
+  }, []);
 
   // Lenis smooth scroll
   useEffect(() => {
@@ -117,18 +124,18 @@ export default function App() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && showIntro) {
-        setShowIntro(false);
+        handleIntroComplete();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [showIntro]);
+  }, [showIntro, handleIntroComplete]);
 
   return (
     <div className="protomates-app" style={{ position: 'relative', minHeight: '100vh', background: 'transparent' }}>
       {/* 1. CINEMATIC LANDING INTRO ANIMATION ON ENTRANCE */}
       {showIntro && (
-        <LandingIntroAnimation onComplete={() => setShowIntro(false)} />
+        <LandingIntroAnimation onComplete={handleIntroComplete} />
       )}
 
       {/* 2. CHROMATIC BLUR AURA FLOWING OVER THE WHOLE SCREEN */}

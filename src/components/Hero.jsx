@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import InteractiveHeroTrackButtons from './InteractiveHeroTrackButtons';
-import AuraDoodlesInfinity from './AuraDoodlesInfinity';
 
 export default function Hero({ onNavigate }) {
   const [isMobile, setIsMobile] = useState(false);
@@ -26,8 +25,6 @@ export default function Hero({ onNavigate }) {
         minHeight: isMobile ? 'auto' : 'calc(100vh - 90px)'
       }}
     >
-      {/* BACKGROUND: AURA DOODLES INFINITY (Luminous Glow + Floating Infinity Loops) */}
-      <AuraDoodlesInfinity interactive={!isMobile} />
 
       {/* Subtle Precision Grid Overlay */}
       <div

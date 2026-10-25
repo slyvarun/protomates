@@ -200,7 +200,7 @@ export default function ContactUs({ initialAudience = 'students' }) {
                   { title: 'Zero Plagiarism University Guarantee', desc: 'Every thesis and paper is authored from scratch with original diagrams.' }
                 ].map((g, i) => (
                   <div key={i} style={{ display: 'flex', gap: '12px' }}>
-                    <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '0.95rem', lineHeight: 1.4 }}>—</span>
+                    <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '0.95rem', lineHeight: 1.4 }}>•</span>
                     <div>
                       <strong style={{ color: 'var(--text-primary)', fontSize: '0.88rem' }}>{g.title}</strong>
                       <p style={{ margin: '2px 0 0', fontSize: '0.8rem', color: '#64748b' }}>{g.desc}</p>

@@ -91,7 +91,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
           >
             Explore our specialized engineering services tailored for <strong style={{ color: '#012A2D' }}>Students</strong>,{' '}
             <strong style={{ color: '#435355' }}>Professional Scholars</strong>, and{' '}
-            <strong style={{ color: '#012A2D' }}>Startup Founders</strong> — alongside our portfolio of battle-tested hardware prototypes and research documentation.
+            <strong style={{ color: '#012A2D' }}>Startup Founders</strong>, alongside our portfolio of battle-tested hardware prototypes and research documentation.
           </p>
 
           <div style={{ display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -196,7 +196,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                     'Doorstep pan-India physical hardware dispatch'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.92rem', color: '#012A2D' }}>
-                      <span style={{ color: '#012A2D', fontWeight: 800 }}>—</span> {item}
+                      <span style={{ color: '#012A2D', fontWeight: 800 }}>•</span> {item}
                     </div>
                   ))}
                 </div>
@@ -273,7 +273,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                     'Reviewer rebuttal support & empirical validation experiments'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.92rem', color: '#1e293b' }}>
-                      <span style={{ color: '#435355', fontWeight: 800 }}>—</span> {item}
+                      <span style={{ color: '#435355', fontWeight: 800 }}>•</span> {item}
                     </div>
                   ))}
                 </div>
@@ -350,7 +350,7 @@ export default function ServicesWork({ onNavigate, scrollToSection }) {
                     'Bill of Materials (BOM) optimization with component sourcing links'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.92rem', color: '#1e293b' }}>
-                      <span style={{ color: '#4f46e5', fontWeight: 800 }}>—</span> {item}
+                      <span style={{ color: '#4f46e5', fontWeight: 800 }}>•</span> {item}
                     </div>
                   ))}
                 </div>

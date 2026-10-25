@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Marquee from '../components/Marquee';
+import CapabilityStrip from '../components/CapabilityStrip';
 
 export default function AboutUs({ onNavigate }) {
   useEffect(() => {
@@ -109,7 +109,7 @@ export default function AboutUs({ onNavigate }) {
               Meanwhile, hardware startups burn through critical runway trying to hire disparate teams for PCB layout, firmware, 3D CAD casings, and cloud dashboards before they can even pitch to investors.
             </p>
             <p style={{ fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.85, fontWeight: 500 }}>
-              <strong style={{ color: 'var(--accent)' }}>FSK fixes this permanently.</strong> We operate as an integrated R&amp;D prototyping laboratory. We design, fabricate, program, document, and train — delivering turnkey systems that run flawlessly and documentation that passes the most rigorous peer reviews.
+              <strong style={{ color: 'var(--accent)' }}>FSK fixes this permanently.</strong> We operate as an integrated R&amp;D prototyping laboratory. We design, fabricate, program, document, and train, delivering turnkey systems that run flawlessly and documentation that passes the most rigorous peer reviews.
             </p>
           </div>
 
@@ -234,7 +234,7 @@ export default function AboutUs({ onNavigate }) {
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div className="section-label">Tailored For Your Journey</div>
           <h2 className="section-title">
-            WHO WE <span style={{ color: 'var(--accent)' }}>EMPOWER</span>
+            WHO WE <span style={{ color: 'var(--accent)' }}>BUILD FOR</span>
           </h2>
 
           <div
@@ -296,7 +296,7 @@ export default function AboutUs({ onNavigate }) {
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {['100% functional working hardware delivered', '80–120 page University Thesis + PPT slide deck', 'Line-by-line code explanation & viva defense guide', 'Doorstep physical kit dispatch & live video proof'].map((f, i) => (
                     <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem', color: '#475569' }}>
-                      <span style={{ color: 'var(--accent)', fontWeight: 800 }}>—</span> {f}
+                      <span style={{ color: 'var(--accent)', fontWeight: 800 }}>•</span> {f}
                     </li>
                   ))}
                 </ul>
@@ -354,7 +354,7 @@ export default function AboutUs({ onNavigate }) {
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {['MATLAB, Python, Simulink & ANSYS simulations', 'Hardware-in-the-Loop (HIL) testbed verification', 'Publication-grade LaTeX manuscript & BibTeX formatting', 'Comparative evaluation graphs & reviewer rebuttal support'].map((f, i) => (
                     <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem', color: '#475569' }}>
-                      <span style={{ color: '#435355', fontWeight: 800 }}>—</span> {f}
+                      <span style={{ color: '#435355', fontWeight: 800 }}>•</span> {f}
                     </li>
                   ))}
                 </ul>
@@ -412,7 +412,7 @@ export default function AboutUs({ onNavigate }) {
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {['Production-ready multi-layer PCB Gerbers & BOM', 'Custom 3D CAD casing design (Resin / FDM 3D prints)', 'Firmware (STM32/ESP32) + Cloud IoT Telemetry Webapp', '100% intellectual property (IP) and source code transfer'].map((f, i) => (
                     <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem', color: '#475569' }}>
-                      <span style={{ color: '#059669', fontWeight: 800 }}>—</span> {f}
+                      <span style={{ color: '#059669', fontWeight: 800 }}>•</span> {f}
                     </li>
                   ))}
                 </ul>
@@ -498,8 +498,8 @@ export default function AboutUs({ onNavigate }) {
         </div>
       </section>
 
-      {/* Marquee */}
-      <Marquee />
+      {/* Core Capability Summary Strip */}
+      <CapabilityStrip />
 
       {/* Direct Contact Banner */}
       <section style={{ padding: '100px 48px', textAlign: 'center', background: '#ffffff', borderTop: '1px solid #e2e8f0' }}>
@@ -512,7 +512,7 @@ export default function AboutUs({ onNavigate }) {
             <span style={{ color: 'var(--accent)' }}>PROJECT TO LIFE?</span>
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.08rem', lineHeight: 1.8, marginBottom: '36px' }}>
-            Whether you are on a tight college review deadline, preparing an IEEE paper submission, or building your first commercial hardware MVP — our team is ready to execute.
+            Whether you are on a tight college review deadline, preparing an IEEE paper submission, or building your first commercial hardware MVP: our team is ready to execute.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
             <button

@@ -1,4 +1,4 @@
-# robots.txt for FSK — Prototyping Services
+# robots.txt for FSK Prototyping Services
 User-agent: *
 Allow: /
 Disallow: /scratch/

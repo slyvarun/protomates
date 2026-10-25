@@ -15,12 +15,12 @@ const reasons = [
   {
     icon: <GraduationCap size={24} />,
     title: '100% Viva & Mentorship Support',
-    desc: 'We do not just hand over hardware — we teach you the underlying engineering principles, architecture diagrams, and viva defense strategies.'
+    desc: 'We do not just hand over hardware - we teach you the underlying engineering principles, architecture diagrams, and viva defense strategies.'
   },
   {
     icon: <Globe size={24} />,
     title: 'Prototypes Across Every Field',
-    desc: 'Robotics, IoT, Healthcare, Smart Agriculture, Industrial Automation, AI/ML, and Green Tech — we turn any concept into a working system.'
+    desc: 'Robotics, IoT, Healthcare, Smart Agriculture, Industrial Automation, AI/ML, and Green Tech - we turn any concept into a working system.'
   }
 ];
 

@@ -82,7 +82,7 @@ export default function Hero({ onNavigate }) {
           }}
         >
           <span>Physical working prototypes, custom multi-layer PCBs, and research-grade documentation. </span>
-          <span className="mobile-hide">Zero breadboard spaghetti — select your specialized engineering track:</span>
+          <span className="mobile-hide">Zero breadboard spaghetti. Select your specialized engineering track:</span>
         </p>
 
         {/* Action Buttons */}

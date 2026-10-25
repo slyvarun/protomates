@@ -95,7 +95,7 @@ export default function Navbar({
             <FSKLogo compact={isMobile} />
           </div>
 
-          {/* Desktop Navigation Links — Frosted Glass Island */}
+          {/* Desktop Navigation Links - Frosted Glass Island */}
           {!isMobile && (
             <ul
               style={{
@@ -186,6 +186,7 @@ export default function Navbar({
             ) : (
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 style={{
                   background: 'rgba(255, 255, 255, 0.75)',
                   backdropFilter: 'blur(16px)',
@@ -208,7 +209,7 @@ export default function Navbar({
         </div>
       </nav>
 
-      {/* Mobile Drawer Menu — Frosted Glass Screen */}
+      {/* Mobile Drawer Menu - Frosted Glass Screen */}
       {isMobile && mobileMenuOpen && (
         <div
           style={{

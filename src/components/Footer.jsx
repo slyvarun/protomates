@@ -330,7 +330,7 @@ export default function Footer({ onNavigate }) {
             letterSpacing: '0.5px'
           }}
         >
-          <div>© 2026 FSK — PROTOTYPING SERVICES. ALL RIGHTS RESERVED.</div>
+          <div>© 2026 FSK PROTOTYPING SERVICES. ALL RIGHTS RESERVED.</div>
         </div>
       </div>
     </footer>

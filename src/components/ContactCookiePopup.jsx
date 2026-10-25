@@ -136,6 +136,7 @@ export default function ContactCookiePopup({ onNavigate }) {
 
         <button
           onClick={handleDismiss}
+          aria-label="Dismiss consultation popup"
           style={{
             background: 'transparent',
             border: 'none',

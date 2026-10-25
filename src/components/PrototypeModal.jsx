@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
 
 export default function PrototypeModal({ prototype, onClose, onNavigateContact }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && onClose) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   if (!prototype) return null;
 
   const handleInquire = () => {
@@ -16,6 +26,9 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
   return (
     <div
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={prototype.title || 'Prototype Specifications'}
       style={{
         position: 'fixed',
         inset: 0,
@@ -44,6 +57,7 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
       >
         <button
           onClick={onClose}
+          aria-label="Close prototype details"
           style={{
             position: 'absolute',
             top: '20px',

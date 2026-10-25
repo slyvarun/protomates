@@ -68,7 +68,7 @@ export default function About() {
               <strong style={{ fontSize: '0.92rem', color: 'var(--text-primary)' }}>Turnkey Hardware Execution Guarantee</strong>
             </div>
             <p style={{ fontSize: '0.86rem', color: '#64748b', margin: 0, lineHeight: 1.6 }}>
-              Every prototype is assembled with industrial solder joints, custom PCBs, tested firmware, and complete schematics. No breadboard spaghetti — guaranteed to work on first boot.
+              Every prototype is assembled with industrial solder joints, custom PCBs, tested firmware, and complete schematics. No breadboard spaghetti - guaranteed to work on first boot.
             </p>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function About() {
           </p>
           <p style={{ fontSize: '0.98rem', lineHeight: 1.8, color: '#64748b', marginBottom: '20px' }}>
             Whether you require high-density <strong style={{ color: 'var(--text-primary)' }}>multi-layer PCB design</strong>, rapid{' '}
-            <strong style={{ color: 'var(--text-primary)' }}>IoT embedded prototyping</strong> on ESP32/STM32/Raspberry Pi, edge <strong style={{ color: 'var(--text-primary)' }}>AI &amp; computer vision</strong>, or need to complete a high-stakes <strong style={{ color: 'var(--text-primary)' }}>university capstone or PhD research paper</strong> — our laboratory delivers industry-standard results.
+            <strong style={{ color: 'var(--text-primary)' }}>IoT embedded prototyping</strong> on ESP32/STM32/Raspberry Pi, edge <strong style={{ color: 'var(--text-primary)' }}>AI &amp; computer vision</strong>, or need to complete a high-stakes <strong style={{ color: 'var(--text-primary)' }}>university capstone or PhD research paper</strong> - our laboratory delivers industry-standard results.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '28px' }}>

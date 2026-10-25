@@ -69,7 +69,7 @@ export default function AudiencePillars({ onSelectAudience }) {
           </span>
         </h2>
         <p style={{ maxWidth: '780px', margin: '0 auto', fontSize: '1.05rem', color: '#9a9a9a', lineHeight: 1.8 }}>
-          Whether you are an engineering student defending a final capstone, a research scholar targeting high-impact Scopus/SCI journals, or a startup founder building an investor-ready MVP — we build the working physical systems and author every page of the documentation.
+          Whether you are an engineering student defending a final capstone, a research scholar targeting high-impact Scopus/SCI journals, or a startup founder building an investor-ready MVP - we build the working physical systems and author every page of the documentation.
         </p>
       </div>
 

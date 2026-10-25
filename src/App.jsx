@@ -65,19 +65,19 @@ export default function App() {
   useEffect(() => {
     const SEO_CONFIG = {
       home: {
-        title: 'FSK — Prototyping Services | Hardware Prototypes & Scientific Research',
+        title: 'FSK Prototyping Services | Hardware Prototypes & Scientific Research',
         desc: 'FSK builds physical working hardware, custom multi-layer PCBs, and publication-ready documentation for Students, Scholars, and Startup Founders.'
       },
       about: {
-        title: 'About FSK — Prototyping Services | Integrated Engineering R&D Lab',
-        desc: 'Learn about FSK Genesis, our engineering tenets, lab infrastructure, and why we empower Academic Students, Doctoral Scholars, and Hardware Startups.'
+        title: 'About FSK Prototyping Services | Integrated Engineering R&D Lab',
+        desc: 'Learn about FSK Genesis, our engineering tenets, lab infrastructure, and why we support Academic Students, Doctoral Scholars, and Hardware Startups.'
       },
       services: {
-        title: 'Services & Our Proven Work Catalog — FSK | Turnkey Hardware & Documentation',
+        title: 'Services & Our Proven Work Catalog | FSK | Turnkey Hardware & Documentation',
         desc: 'Explore real hardware prototypes across IoT, Edge AI, and custom PCBs alongside specialized service tracks and deliverables comparison.'
       },
       contact: {
-        title: 'Project Intake & Engineering Feasibility Review — FSK (<2 Hours)',
+        title: 'Project Intake & Engineering Feasibility Review | FSK (<2 Hours)',
         desc: 'Submit your base paper title, project topic, or startup MVP requirements. Receive a fixed BOM quote and engineering feasibility review within 2 hours.'
       }
     };

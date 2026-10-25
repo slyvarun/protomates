@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FSK - Prototyping Services</title>
+    <script type="text/javascript">
+      // Single Page Apps redirect for GitHub Pages and static web servers
+      var l = window.location;
+      var isGitHubPages = l.hostname.endsWith('github.io');
+      var pathSegments = l.pathname.replace(/^\/|\/$/g, '').split('/').filter(Boolean);
+      var repo = isGitHubPages ? pathSegments[0] : '';
+      var subPath = isGitHubPages ? pathSegments.slice(1).join('/') : pathSegments.join('/');
+      var base = (isGitHubPages && repo) ? '/' + repo + '/' : '/';
+      var target = l.protocol + '//' + l.host + base + (subPath ? '#' + subPath : '') + l.search;
+      l.replace(target);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

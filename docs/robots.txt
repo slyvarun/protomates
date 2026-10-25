@@ -1,0 +1,8 @@
+# robots.txt for FSK Prototyping Services
+User-agent: *
+Allow: /
+Disallow: /scratch/
+Disallow: /temp/
+
+# Sitemaps
+Sitemap: https://fskps.tech/sitemap.xml

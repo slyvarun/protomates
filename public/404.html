@@ -1,20 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>FSK - Prototyping Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Resource Not Found | FSK Prototyping Services</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <script type="text/javascript">
-      // Single Page Apps redirect for GitHub Pages and static web servers
+      // SPA route handler
       var l = window.location;
-      var isGitHubPages = l.hostname.endsWith('github.io');
-      var pathSegments = l.pathname.replace(/^\/|\/$/g, '').split('/').filter(Boolean);
-      var repo = isGitHubPages ? pathSegments[0] : '';
-      var subPath = isGitHubPages ? pathSegments.slice(1).join('/') : pathSegments.join('/');
-      var base = (isGitHubPages && repo) ? '/' + repo + '/' : '/';
-      var target = l.protocol + '//' + l.host + base + (subPath ? '#' + subPath : '') + l.search;
-      l.replace(target);
+      var path = l.pathname.replace(/^\/|\/$/g, '');
+      var isAsset = /\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|json|glb|woff2?)$/i.test(path);
+      if (!isAsset) {
+        var clean = path.replace(/^(protomates|fsk)\/?/i, '');
+        var target = l.protocol + '//' + l.host + '/' + (clean ? '#' + clean : '') + l.search;
+        l.replace(target);
+      }
     </script>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #f6f8f8;
+        color: #012A2D;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+      .card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 40px 32px;
+        max-width: 480px;
+        box-shadow: 0 10px 25px -5px rgba(1, 42, 45, 0.08);
+      }
+      .code {
+        font-family: monospace;
+        font-weight: 700;
+        color: #012A2D;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+      }
+      h1 { margin: 0 0 12px; font-size: 1.8rem; font-weight: 800; }
+      p { color: #435355; line-height: 1.6; margin: 0 0 24px; font-size: 0.95rem; }
+      a {
+        display: inline-block;
+        background: #012A2D;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+    </style>
   </head>
   <body>
+    <div class="card">
+      <div class="code">404 // NOT FOUND</div>
+      <h1>Resource Not Found</h1>
+      <p>The requested file or page route was not found on this server.</p>
+      <a href="./">Return to Laboratory Home</a>
+    </div>
   </body>
 </html>

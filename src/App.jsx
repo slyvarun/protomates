@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import ServicesWork from './pages/ServicesWork';
 import ContactUs from './pages/ContactUs';
+import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import ContactCookiePopup from './components/ContactCookiePopup';
 import FlowingBlurAura from './components/FlowingBlurAura';
@@ -15,10 +16,11 @@ function getPageFromPath() {
   const path = window.location.pathname.toLowerCase().replace(/^\/|\/$/g, '');
   const cleanPath = path.split('/').filter((p) => p && p !== 'protomates' && p !== 'fsk').join('/');
   const target = hash || cleanPath;
+  if (!target || target === 'home' || target === 'index.html') return 'home';
   if (target.includes('about')) return 'about';
   if (target.includes('services') || target.includes('work') || target.includes('proven')) return 'services';
   if (target.includes('contact')) return 'contact';
-  return 'home';
+  return '404';
 }
 
 export default function App() {
@@ -79,6 +81,10 @@ export default function App() {
       contact: {
         title: 'Project Intake & Engineering Feasibility Review | FSK (<2 Hours)',
         desc: 'Submit your base paper title, project topic, or startup MVP requirements. Receive a fixed BOM quote and engineering feasibility review within 2 hours.'
+      },
+      404: {
+        title: '404 - Page Not Found | FSK Prototyping Services',
+        desc: 'The requested engineering resource or page route was not found.'
       }
     };
 
@@ -134,6 +140,9 @@ export default function App() {
           )}
           {currentPage === 'contact' && (
             <ContactUs initialAudience={pageProps.audience} {...pageProps} />
+          )}
+          {currentPage === '404' && (
+            <NotFound onNavigate={handleNavigate} />
           )}
         </div>
       </main>

@@ -61,10 +61,6 @@ export default function Contact() {
         <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-primary)', fontWeight: 600 }}>
           <Clock size={15} color="var(--accent)" /> Average Review &lt; 2 Hours
         </span>
-        <span>•</span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <ShieldCheck size={15} color="#059669" /> 100% NDA Protected
-        </span>
       </div>
 
       <div style={{ marginTop: '28px' }}>

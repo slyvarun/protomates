@@ -61,8 +61,6 @@ export default function Footer({ onNavigate }) {
             }}
           >
             <span>Average Review: &lt; 2 Hours</span>
-            <span>•</span>
-            <span>100% NDA Protected</span>
           </div>
         </div>
 

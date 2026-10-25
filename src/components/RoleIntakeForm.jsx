@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ChevronDown, Sparkles, Send, ShieldCheck, Clock, Layers, Cpu, FileText } from 'lucide-react';
+import {
+  CheckCircle2,
+  ChevronDown,
+  Send,
+  ShieldCheck,
+  Clock,
+  Video,
+  PhoneCall,
+  Mail,
+  Calendar,
+  FileText,
+  Sparkles,
+  Users
+} from 'lucide-react';
 
 export const STUDENT_PROJECTS = [
   {
@@ -46,66 +59,6 @@ export const STUDENT_PROJECTS = [
   }
 ];
 
-export const SCHOLAR_PROJECTS = [
-  {
-    title: 'Deep Learning & Edge AI Telemetry (Dissertation & Capstone)',
-    domain: 'AI, ML & Edge AI',
-    desc: 'Comprehensive dissertation and applied capstone package: embedded edge computer vision model on ARM/Jetson with complete 120+ page doctoral dissertation documentation, experimental latency benchmarks, IEEE LaTeX manuscript, and viva defense slides.',
-    specs: ['Applied Capstone Working Rig', '120+ Page Dissertation Dossier', 'IEEE LaTeX Manuscript', 'Plagiarism Report <10%', 'Defense Presentation PPT']
-  },
-  {
-    title: 'Renewable Energy Microgrid & Inverter (Thesis Documentation)',
-    domain: 'Power Electronics & Energy',
-    desc: 'High-rigor thesis writing and simulation dossier for solar PV / battery microgrids with bidirectional converters. Includes mathematical formulation, MATLAB Simulink verification, empirical efficiency plots, and university-formatted thesis report.',
-    specs: ["Master's / PhD Thesis Report", 'MATLAB / Simulink Files', 'Mathematical Equations Dossier', 'Reviewer Response Prep', 'Turnkey LaTeX Sources']
-  },
-  {
-    title: 'Autonomous Robotics & SLAM (Applied Capstone & Thesis)',
-    domain: 'Robotics & Automation',
-    desc: 'Applied capstone practical system and master’s thesis documentation: ROS2 multi-sensor mobile robot with 2D LiDAR and IMU telemetry, full source code repository, system architecture diagrams, and 90+ page formatted thesis manuscript.',
-    specs: ['Working Mobile Robotic Rig', 'ROS2 Telemetry Package', '90+ Page Thesis Manuscript', 'Circuit Schematics & BOM', 'Viva Rehearsal Q&A']
-  },
-  {
-    title: 'Non-Invasive Biosignal Denoising (PhD Dissertation & Analysis)',
-    domain: 'Biomedical Signal Processing',
-    desc: 'Doctoral dissertation documentation and data analysis covering analog front-end (AFE) biosignal acquisition, wavelet denoising algorithms, and signal-to-noise ratio benchmarking formatted strictly to institutional guidelines.',
-    specs: ['Dissertation Chapters 1-6', 'MATLAB Signal Processing', 'SNR Benchmark Analysis', 'IEEE Transactions Format', 'Viva Presentation Deck']
-  },
-  {
-    title: 'LoRaWAN Multi-Hop Telemetry Mesh (Capstone & Research Docs)',
-    domain: 'IoT & Wireless Telemetry',
-    desc: 'Applied research capstone and technical documentation: multi-hop sub-GHz LoRa mesh telemetry network with packet delivery ratio evaluations, comprehensive thesis documentation, and experimental testbed data.',
-    specs: ['Functional Hardware Testbed', 'Firmware Codebase', 'Complete Capstone Report', 'Empirical Telemetry Graphs', 'Publication Draft']
-  }
-];
-
-export const STARTUP_PROJECTS = [
-  {
-    title: 'Ultra-Low-Power Asset Tracker with GPS & Cellular NB-IoT',
-    domain: 'Connected Devices & Consumer IoT',
-    desc: 'Commercial battery-powered asset tracker design featuring nRF9160 / SIM7080G cellular NB-IoT/LTE-M modem and Quectel GPS module. Deep sleep power consumption < 15µA with 3-year coin/LiPo battery life. Includes multi-layer PCB Gerber files, antenna impedance matching, 3D IP67 enclosure CAD, and cloud MQTT broker integration.',
-    specs: ['nRF9160 / SIM7080G', 'Sub-15µA Deep Sleep', 'Multi-Layer PCB Gerbers', 'IP67 3D Enclosure CAD', 'Cloud MQTT API']
-  },
-  {
-    title: 'Smart Industrial Vibration & Temperature Telemetry Gateway',
-    domain: 'Industrial IoT & Telemetry',
-    desc: 'Industrial condition monitoring node with high-bandwidth piezoelectric/MEMS vibration sensor, RS485 Modbus RTU interface, and isolated 24V industrial power supply. Transmits machine health telemetry to AWS IoT / Azure over Wi-Fi/Ethernet. Delivered with production BOM, enclosure, and firmware repository.',
-    specs: ['Piezoelectric Sensor', 'RS485 Modbus RTU', '24V Industrial Isolation', 'AWS IoT Core Telemetry', 'Production Sourcing BOM']
-  },
-  {
-    title: 'Battery Management System (BMS) with Active Cell Balancing & CAN Bus',
-    domain: 'Clean Energy & EV Systems',
-    desc: 'Automotive-grade 4S–16S lithium-ion BMS featuring TI/ADI analog front-end, active inductive cell balancing, high-side solid-state disconnect switch, and CAN 2.0B vehicle bus communication. Includes Altium design files, thermal simulation data, and safety certification dossier.',
-    specs: ['4S–16S Active Balancing', 'CAN 2.0B Protocol', 'Solid-State Disconnect', 'Altium 365 CAD Files', 'Thermal Validation Pack']
-  },
-  {
-    title: 'Smart Wearable Vitals Monitor with BLE & Cloud Dashboard',
-    domain: 'Med-Tech & Wearables',
-    desc: 'Miniaturized medical/fitness wearable prototype featuring Nordic nRF52840 BLE SoC, optical photoplethysmography (PPG), skin temperature sensor, and wireless Qi charging coil. Includes iOS/Android Bluetooth LE telemetry demo and biocompatible 3D resin enclosure.',
-    specs: ['Nordic nRF52840 BLE', 'Optical PPG Sensor', 'Qi Wireless Inductive Charging', 'Biocompatible Resin CAD', 'Companion App Demo']
-  }
-];
-
 export default function RoleIntakeForm({
   initialRole = 'students',
   onClose,
@@ -123,23 +76,15 @@ export default function RoleIntakeForm({
     studentCustomDescription: '',
     studentNotes: '',
 
-    // Scholar fields
-    scholarLevel: 'Thesis Writing & Document Preparation',
-    scholarDomain: 'AI, ML & Edge AI',
-    scholarTitleChoice: SCHOLAR_PROJECTS[0].title,
-    scholarCustomTitle: '',
-    scholarCustomDescription: '',
-    scholarDeliverables: 'Comprehensive Thesis / Dissertation (80–150+ Pages)',
-    scholarNotes: '',
+    // Scholar fields (Streamlined 1-on-1 Review)
+    scholarService: 'Thesis Writing & Document Preparation',
+    scholarMeetPreference: '1-on-1 Google Meet / Screen-Share',
+    scholarIdea: '',
 
-    // Startup fields
+    // Startup fields (Streamlined 1-on-1 Founder Meet)
     startupStage: 'Functional Demo Prototype',
-    startupDomain: 'Connected Devices & Consumer IoT',
-    startupTitleChoice: STARTUP_PROJECTS[0].title,
-    startupCustomTitle: '',
-    startupCustomDescription: '',
-    startupDeliverables: 'Turnkey Investor Demo Rig + Documentation',
-    startupNotes: '',
+    startupMeetPreference: '1-on-1 Google Meet / Video Call',
+    startupIdea: '',
 
     // Common Contact Fields
     name: '',
@@ -158,14 +103,8 @@ export default function RoleIntakeForm({
     }
   }, [initialRole]);
 
-  // Find active project details based on selected title
   const currentStudentProject = STUDENT_PROJECTS.find(p => p.title === formData.studentTitleChoice);
-  const currentScholarProject = SCHOLAR_PROJECTS.find(p => p.title === formData.scholarTitleChoice);
-  const currentStartupProject = STARTUP_PROJECTS.find(p => p.title === formData.startupTitleChoice);
-
   const isStudentCustom = formData.studentTitleChoice === 'Custom Title';
-  const isScholarCustom = formData.scholarTitleChoice === 'Custom Title';
-  const isStartupCustom = formData.startupTitleChoice === 'Custom Title';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -173,17 +112,17 @@ export default function RoleIntakeForm({
     setIsSubmitting(true);
 
     let roleLabel = '';
-    let projectTitle = '';
-    let finalDescription = '';
+    let subjectTitle = '';
     let payload = {};
 
     if (role === 'students') {
       roleLabel = 'Student Track (Capstones & Degrees)';
+      let finalDescription = '';
       if (isStudentCustom) {
-        projectTitle = formData.studentCustomTitle || 'Custom Student Project';
+        subjectTitle = formData.studentCustomTitle || 'Custom Student Project';
         finalDescription = formData.studentCustomDescription || 'Custom project topic specified by student.';
       } else {
-        projectTitle = formData.studentTitleChoice;
+        subjectTitle = formData.studentTitleChoice;
         finalDescription = currentStudentProject ? currentStudentProject.desc : '';
         if (formData.studentNotes) {
           finalDescription += `\n\n[Additional Student Notes / Viva Requirements]: ${formData.studentNotes}`;
@@ -194,7 +133,7 @@ export default function RoleIntakeForm({
         Track: roleLabel,
         'Project Classification': formData.studentProjectType,
         'Engineering Domain': formData.studentDomain,
-        'Project Title': projectTitle,
+        'Project Title': subjectTitle,
         'Project Description': finalDescription,
         'Student Name': formData.name,
         'Contact Phone / WhatsApp': formData.phone,
@@ -202,50 +141,28 @@ export default function RoleIntakeForm({
         'College / University': formData.institutionOrCompany || 'Not provided'
       };
     } else if (role === 'scholars') {
-      roleLabel = 'Scholar Track (Thesis, Dissertation & Capstone)';
-      if (isScholarCustom) {
-        projectTitle = formData.scholarCustomTitle || 'Custom Thesis / Dissertation Topic';
-        finalDescription = formData.scholarCustomDescription || 'Custom topic specified by scholar.';
-      } else {
-        projectTitle = formData.scholarTitleChoice;
-        finalDescription = currentScholarProject ? currentScholarProject.desc : '';
-        if (formData.scholarNotes) {
-          finalDescription += `\n\n[Additional Scholar Notes / Guidelines]: ${formData.scholarNotes}`;
-        }
-      }
+      roleLabel = 'Scholar Track (1-on-1 Research & Thesis Consultation)';
+      subjectTitle = `${formData.scholarService} (1-on-1 Meet)`;
 
       payload = {
         Track: roleLabel,
-        'Service Classification': formData.scholarLevel,
-        'Technical Domain': formData.scholarDomain,
-        'Thesis / Capstone Topic': projectTitle,
-        'Required Deliverables': formData.scholarDeliverables,
-        'Thesis & Research Scope': finalDescription,
+        'Service Requested': formData.scholarService,
+        'Preferred 1-on-1 Discussion Mode': formData.scholarMeetPreference,
+        'Research / Thesis Idea Details': formData.scholarIdea,
         'Scholar Name': formData.name,
         'Institution / University': formData.institutionOrCompany || 'Not provided',
         'Contact Phone / WhatsApp': formData.phone,
         'Official Email': formData.email || 'Not provided'
       };
     } else {
-      roleLabel = 'Startup Founder Track (Commercial MVPs)';
-      if (isStartupCustom) {
-        projectTitle = formData.startupCustomTitle || 'Custom Venture Hardware MVP';
-        finalDescription = formData.startupCustomDescription || 'Custom MVP vision specified by founder.';
-      } else {
-        projectTitle = formData.startupTitleChoice;
-        finalDescription = currentStartupProject ? currentStartupProject.desc : '';
-        if (formData.startupNotes) {
-          finalDescription += `\n\n[Additional Founder Notes / BOM Scope]: ${formData.startupNotes}`;
-        }
-      }
+      roleLabel = 'Startup Founder Track (1-on-1 Engineering Feasibility Meet)';
+      subjectTitle = `1-on-1 Founder Meet [${formData.startupStage}]`;
 
       payload = {
         Track: roleLabel,
-        'Prototype Stage': formData.startupStage,
-        'Industry Domain': formData.startupDomain,
-        'MVP Product Title': projectTitle,
-        'Target Deliverables': formData.startupDeliverables,
-        'Specifications & Timeline': finalDescription,
+        'Prototyping Stage': formData.startupStage,
+        'Preferred 1-on-1 Meet Mode': formData.startupMeetPreference,
+        'Hardware Idea & Target Scope': formData.startupIdea,
         'Founder Name': formData.name,
         'Company / Stealth Venture': formData.institutionOrCompany || 'Not provided',
         'Contact Phone / WhatsApp': formData.phone,
@@ -262,7 +179,7 @@ export default function RoleIntakeForm({
         },
         body: JSON.stringify({
           ...payload,
-          _subject: `New FSK Project Intake: [${role.toUpperCase()}] ${projectTitle} - ${formData.name}`,
+          _subject: `New FSK Inquiry: [${role.toUpperCase()}] ${subjectTitle} - ${formData.name}`,
           _template: 'table',
           _captcha: 'false'
         })
@@ -273,22 +190,6 @@ export default function RoleIntakeForm({
       setIsSubmitting(false);
       setSubmitted(true);
     }
-  };
-
-  const getActiveTitle = () => {
-    if (role === 'students') {
-      return isStudentCustom
-        ? formData.studentCustomTitle || 'Custom Student Topic'
-        : formData.studentTitleChoice;
-    }
-    if (role === 'scholars') {
-      return isScholarCustom
-        ? formData.scholarCustomTitle || 'Custom Research Paper'
-        : formData.scholarTitleChoice;
-    }
-    return isStartupCustom
-      ? formData.startupCustomTitle || 'Custom Venture MVP'
-      : formData.startupTitleChoice;
   };
 
   return (
@@ -322,7 +223,7 @@ export default function RoleIntakeForm({
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: '#64748b' }}>
             <Clock size={13} color="var(--accent)" />
-            <span>Feasibility review in &lt; 2 hrs</span>
+            <span>Feasibility &amp; Meet Scheduling &lt; 2 hrs</span>
           </div>
         </div>
 
@@ -339,8 +240,8 @@ export default function RoleIntakeForm({
         >
           {[
             { id: 'students', num: '01', label: 'Students', sub: 'Capstones & Degrees', color: '#0052ff' },
-            { id: 'scholars', num: '02', label: 'Scholars & PhDs', sub: 'Thesis, Dissertation & Capstone', color: '#0284c7' },
-            { id: 'startups', num: '03', label: 'Startup Founders', sub: 'Commercial MVPs', color: '#059669' }
+            { id: 'scholars', num: '02', label: 'Scholars & PhDs', sub: '1-on-1 Research Meet', color: '#0284c7' },
+            { id: 'startups', num: '03', label: 'Startup Founders', sub: '1-on-1 Founder Meet', color: '#059669' }
           ].map((item) => {
             const isActive = role === item.id;
             return (
@@ -405,7 +306,11 @@ export default function RoleIntakeForm({
               margin: '0 0 10px'
             }}
           >
-            PROJECT INTAKE DISPATCHED!
+            {role === 'startups'
+              ? '1-ON-1 FOUNDER MEET REQUESTED!'
+              : role === 'scholars'
+              ? '1-ON-1 SCHOLAR REVIEW REQUESTED!'
+              : 'PROJECT INTAKE DISPATCHED!'}
           </h3>
 
           <p
@@ -417,8 +322,7 @@ export default function RoleIntakeForm({
               margin: '0 auto 20px'
             }}
           >
-            Thank you, <strong style={{ color: 'var(--text-primary)' }}>{formData.name || 'Engineer'}</strong>. Your project specifications for{' '}
-            <strong style={{ color: 'var(--accent)' }}>"{getActiveTitle()}"</strong> have been securely transmitted to{' '}
+            Thank you, <strong style={{ color: 'var(--text-primary)' }}>{formData.name || 'Innovator'}</strong>. Your inquiry has been securely dispatched to{' '}
             <strong>consultant.fsk@gmail.com</strong>.
           </p>
 
@@ -440,17 +344,21 @@ export default function RoleIntakeForm({
               <span style={{ fontWeight: 600, color: '#090d16' }}>Track:</span>
               <span style={{ color: 'var(--accent)', fontWeight: 700, textTransform: 'capitalize' }}>{role}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-              <span style={{ fontWeight: 600, color: '#090d16' }}>Project Title:</span>
-              <span style={{ fontWeight: 600, color: '#090d16' }}>{getActiveTitle()}</span>
-            </div>
+            {role !== 'students' && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                <span style={{ fontWeight: 600, color: '#090d16' }}>Meet Mode:</span>
+                <span style={{ fontWeight: 600, color: 'var(--accent)' }}>
+                  {role === 'scholars' ? formData.scholarMeetPreference : formData.startupMeetPreference}
+                </span>
+              </div>
+            )}
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
               <span style={{ fontWeight: 600, color: '#090d16' }}>Contact:</span>
               <span>{formData.phone || formData.email}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ fontWeight: 600, color: '#090d16' }}>Next Step:</span>
-              <span style={{ color: '#059669', fontWeight: 600 }}>Fixed BOM quote &amp; feasibility review in 2h</span>
+              <span style={{ color: '#059669', fontWeight: 600 }}>Calendar meet link &amp; review in &lt; 2h</span>
             </div>
           </div>
 
@@ -466,18 +374,14 @@ export default function RoleIntakeForm({
                   studentCustomTitle: '',
                   studentCustomDescription: '',
                   studentNotes: '',
-                  scholarCustomTitle: '',
-                  scholarCustomDescription: '',
-                  scholarNotes: '',
-                  startupCustomTitle: '',
-                  startupCustomDescription: '',
-                  startupNotes: ''
+                  scholarIdea: '',
+                  startupIdea: ''
                 });
               }}
               className="btn-primary"
               style={{ cursor: 'pointer', padding: '12px 24px' }}
             >
-              Submit Another Project
+              Submit Another Request
             </button>
             {onClose && (
               <button
@@ -609,7 +513,7 @@ export default function RoleIntakeForm({
                 </div>
               </div>
 
-              {/* Field 3: Project Title (Dropdown from provided list OR Custom Title) */}
+              {/* Field 3: Project Title */}
               <div>
                 <label
                   style={{
@@ -675,13 +579,12 @@ export default function RoleIntakeForm({
                   />
                 </div>
 
-                {/* If Custom Title is selected: show custom title input */}
                 {isStudentCustom && (
                   <div style={{ marginTop: '8px' }}>
                     <input
                       type="text"
                       required
-                      placeholder="Enter your custom project title (e.g. Quadcopter Drone with Thermal Camera)..."
+                      placeholder="Enter your custom project title..."
                       value={formData.studentCustomTitle}
                       onChange={(e) => setFormData({ ...formData, studentCustomTitle: e.target.value })}
                       style={{
@@ -700,7 +603,7 @@ export default function RoleIntakeForm({
                 )}
               </div>
 
-              {/* Field 4: Description — Auto-shows project description for provided titles, or custom description input for Custom Title */}
+              {/* Field 4: Description */}
               <div>
                 {!isStudentCustom && currentStudentProject ? (
                   <div
@@ -730,7 +633,6 @@ export default function RoleIntakeForm({
                       {currentStudentProject.desc}
                     </p>
 
-                    {/* Spec tags */}
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                       {currentStudentProject.specs.map((spec, sIdx) => (
                         <span
@@ -751,7 +653,6 @@ export default function RoleIntakeForm({
                       ))}
                     </div>
 
-                    {/* Additional Notes Textarea */}
                     <div style={{ marginTop: '4px' }}>
                       <label
                         style={{
@@ -828,11 +729,28 @@ export default function RoleIntakeForm({
           )}
 
           {/* ========================================================
-              ROLE 2: SCHOLARS & PHDS
+              ROLE 2: SCHOLARS & PHDS (Streamlined 1-on-1 Review)
              ======================================================== */}
           {role === 'scholars' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-              {/* Service Classification */}
+              <div
+                style={{
+                  background: 'rgba(2, 132, 199, 0.05)',
+                  border: '1px solid rgba(2, 132, 199, 0.2)',
+                  borderRadius: '10px',
+                  padding: '14px 16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px'
+                }}
+              >
+                <Users size={22} color="#0284c7" />
+                <div style={{ fontSize: '0.84rem', color: '#0369a1', lineHeight: 1.4 }}>
+                  <strong>1-on-1 Scholar Engineering Review:</strong> Connect directly with our research project leads for thesis documentation, dissertation structuring, or applied capstone systems.
+                </div>
+              </div>
+
+              {/* Service Needed */}
               <div>
                 <label
                   style={{
@@ -846,7 +764,7 @@ export default function RoleIntakeForm({
                     marginBottom: '8px'
                   }}
                 >
-                  Service / Document Classification *
+                  Service / Document Requirement *
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px' }}>
                   {[
@@ -854,19 +772,19 @@ export default function RoleIntakeForm({
                     'Dissertation Documentation',
                     'Capstone Project (Applied System)',
                     'Research Paper Preparation'
-                  ].map((lvl) => {
-                    const isSelected = formData.scholarLevel === lvl;
+                  ].map((srv) => {
+                    const isSelected = formData.scholarService === srv;
                     return (
                       <button
                         type="button"
-                        key={lvl}
-                        onClick={() => setFormData({ ...formData, scholarLevel: lvl })}
+                        key={srv}
+                        onClick={() => setFormData({ ...formData, scholarService: srv })}
                         style={{
                           background: isSelected ? 'rgba(2, 132, 199, 0.08)' : '#ffffff',
                           border: isSelected ? '1.5px solid #0284c7' : '1px solid #cbd5e1',
                           color: isSelected ? '#0284c7' : 'var(--text-primary)',
                           borderRadius: '8px',
-                          padding: '10px 10px',
+                          padding: '10px 12px',
                           fontFamily: 'var(--font-body)',
                           fontSize: '0.78rem',
                           fontWeight: isSelected ? 700 : 500,
@@ -875,14 +793,14 @@ export default function RoleIntakeForm({
                           transition: 'all 0.18s ease'
                         }}
                       >
-                        {lvl}
+                        {srv}
                       </button>
                     );
                   })}
                 </div>
               </div>
 
-              {/* Technical Domain */}
+              {/* Preferred 1-on-1 Meet Mode */}
               <div>
                 <label
                   style={{
@@ -896,284 +814,21 @@ export default function RoleIntakeForm({
                     marginBottom: '8px'
                   }}
                 >
-                  Technical Domain *
-                </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '8px' }}>
-                  {[
-                    'AI, ML & Edge AI',
-                    'Power Electronics & Energy',
-                    'Robotics & Automation',
-                    'Biomedical Signal Processing',
-                    'IoT & Wireless Telemetry'
-                  ].map((dom) => {
-                    const isSelected = formData.scholarDomain === dom;
-                    return (
-                      <button
-                        type="button"
-                        key={dom}
-                        onClick={() => setFormData({ ...formData, scholarDomain: dom })}
-                        style={{
-                          background: isSelected ? 'rgba(2, 132, 199, 0.08)' : '#ffffff',
-                          border: isSelected ? '1.5px solid #0284c7' : '1px solid #cbd5e1',
-                          color: isSelected ? '#0284c7' : 'var(--text-primary)',
-                          borderRadius: '8px',
-                          padding: '8px 10px',
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '0.75rem',
-                          fontWeight: isSelected ? 700 : 500,
-                          cursor: 'pointer',
-                          transition: 'all 0.18s ease'
-                        }}
-                      >
-                        {dom}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Research / Paper Title */}
-              <div>
-                <label
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    letterSpacing: '1px',
-                    color: '#475569',
-                    textTransform: 'uppercase',
-                    display: 'block',
-                    marginBottom: '8px'
-                  }}
-                >
-                  Paper / Research Topic Title *
-                </label>
-                <div style={{ position: 'relative', marginBottom: isScholarCustom ? '12px' : '0' }}>
-                  <select
-                    value={formData.scholarTitleChoice}
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      const proj = SCHOLAR_PROJECTS.find(p => p.title === val);
-                      setFormData({
-                        ...formData,
-                        scholarTitleChoice: val,
-                        scholarDomain: proj ? proj.domain : formData.scholarDomain
-                      });
-                    }}
-                    style={{
-                      width: '100%',
-                      padding: '12px 14px',
-                      background: '#ffffff',
-                      border: '1px solid #cbd5e1',
-                      borderRadius: '8px',
-                      color: 'var(--text-primary)',
-                      fontSize: '0.86rem',
-                      outline: 'none',
-                      cursor: 'pointer',
-                      appearance: 'none',
-                      WebkitAppearance: 'none'
-                    }}
-                  >
-                    <optgroup label="High-Impact Research Themes">
-                      {SCHOLAR_PROJECTS.map((p, i) => (
-                        <option key={i} value={p.title}>
-                          {p.title}
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="Custom Requirement">
-                      <option value="Custom Title">✎ Custom Research Title / Base Paper DOI</option>
-                    </optgroup>
-                  </select>
-                  <ChevronDown
-                    size={16}
-                    style={{
-                      position: 'absolute',
-                      right: '14px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      pointerEvents: 'none',
-                      color: '#64748b'
-                    }}
-                  />
-                </div>
-
-                {isScholarCustom && (
-                  <div style={{ marginTop: '8px' }}>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Enter base paper DOI or custom research title..."
-                      value={formData.scholarCustomTitle}
-                      onChange={(e) => setFormData({ ...formData, scholarCustomTitle: e.target.value })}
-                      style={{
-                        width: '100%',
-                        padding: '12px 14px',
-                        background: '#ffffff',
-                        border: '1.5px solid #0284c7',
-                        borderRadius: '8px',
-                        color: 'var(--text-primary)',
-                        fontSize: '0.86rem',
-                        outline: 'none',
-                        boxShadow: '0 0 0 3px rgba(2, 132, 199, 0.08)'
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Scholar Description: Auto-shows project description for provided titles, or custom description for Custom */}
-              <div>
-                {!isScholarCustom && currentScholarProject ? (
-                  <div
-                    style={{
-                      background: '#f8fafc',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '10px',
-                      padding: '16px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '12px'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <FileText size={15} color="#0284c7" />
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#0284c7', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                          Research Scope &amp; Methodology
-                        </span>
-                      </div>
-                      <span style={{ fontSize: '0.7rem', color: '#0284c7', fontWeight: 600, background: 'rgba(2, 132, 199, 0.08)', padding: '2px 8px', borderRadius: '4px' }}>
-                        Reproducible Data + LaTeX Manuscript
-                      </span>
-                    </div>
-
-                    <p style={{ fontSize: '0.84rem', color: '#334155', lineHeight: 1.6, margin: 0 }}>
-                      {currentScholarProject.desc}
-                    </p>
-
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                      {currentScholarProject.specs.map((spec, sIdx) => (
-                        <span
-                          key={sIdx}
-                          style={{
-                            fontFamily: 'var(--font-mono)',
-                            fontSize: '0.66rem',
-                            fontWeight: 600,
-                            padding: '3px 8px',
-                            borderRadius: '4px',
-                            background: '#ffffff',
-                            border: '1px solid #cbd5e1',
-                            color: '#475569'
-                          }}
-                        >
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div style={{ marginTop: '4px' }}>
-                      <label
-                        style={{
-                          fontFamily: 'var(--font-mono)',
-                          fontSize: '0.68rem',
-                          fontWeight: 600,
-                          color: '#64748b',
-                          display: 'block',
-                          marginBottom: '4px'
-                        }}
-                      >
-                        Base Paper Equations / Target Journal / Notes (Optional):
-                      </label>
-                      <textarea
-                        rows={2}
-                        placeholder="Paste base paper links, target journal (e.g. IEEE Transactions), or specific equation notes..."
-                        value={formData.scholarNotes}
-                        onChange={(e) => setFormData({ ...formData, scholarNotes: e.target.value })}
-                        style={{
-                          width: '100%',
-                          padding: '10px 12px',
-                          background: '#ffffff',
-                          border: '1px solid #cbd5e1',
-                          borderRadius: '6px',
-                          color: 'var(--text-primary)',
-                          fontSize: '0.82rem',
-                          outline: 'none',
-                          resize: 'vertical',
-                          lineHeight: 1.5
-                        }}
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div>
-                    <label
-                      style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.72rem',
-                        fontWeight: 700,
-                        letterSpacing: '1px',
-                        color: '#0284c7',
-                        textTransform: 'uppercase',
-                        display: 'block',
-                        marginBottom: '8px'
-                      }}
-                    >
-                      Custom Research Description &amp; Equations *
-                    </label>
-                    <textarea
-                      rows={4}
-                      required
-                      placeholder="Describe your research objective, base paper methodology, target equations, and simulation/hardware requirements..."
-                      value={formData.scholarCustomDescription}
-                      onChange={(e) => setFormData({ ...formData, scholarCustomDescription: e.target.value })}
-                      style={{
-                        width: '100%',
-                        padding: '12px 14px',
-                        background: '#ffffff',
-                        border: '1.5px solid #0284c7',
-                        borderRadius: '8px',
-                        color: 'var(--text-primary)',
-                        fontSize: '0.86rem',
-                        outline: 'none',
-                        resize: 'vertical',
-                        lineHeight: 1.5,
-                        boxShadow: '0 0 0 3px rgba(2, 132, 199, 0.08)'
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Deliverables Scope */}
-              <div>
-                <label
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    letterSpacing: '1px',
-                    color: '#475569',
-                    textTransform: 'uppercase',
-                    display: 'block',
-                    marginBottom: '8px'
-                  }}
-                >
-                  Required Deliverables *
+                  Preferred 1-on-1 Discussion Mode *
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px' }}>
                   {[
-                    'Full Thesis / Dissertation Documentation (80–150+ Pages)',
-                    'Applied Capstone Working System + Documentation',
-                    'Turnkey IEEE / Elsevier LaTeX Manuscript',
-                    'Defense PPT, Code Files & Plagiarism Report (<10%)'
-                  ].map((deliv) => {
-                    const isSelected = formData.scholarDeliverables === deliv;
+                    { mode: '1-on-1 Google Meet / Screen-Share', icon: Video },
+                    { mode: 'Direct Phone / WhatsApp Call', icon: PhoneCall },
+                    { mode: 'Email Technical Review & Written Dossier', icon: Mail }
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    const isSelected = formData.scholarMeetPreference === item.mode;
                     return (
                       <button
                         type="button"
-                        key={deliv}
-                        onClick={() => setFormData({ ...formData, scholarDeliverables: deliv })}
+                        key={item.mode}
+                        onClick={() => setFormData({ ...formData, scholarMeetPreference: item.mode })}
                         style={{
                           background: isSelected ? 'rgba(2, 132, 199, 0.08)' : '#ffffff',
                           border: isSelected ? '1.5px solid #0284c7' : '1px solid #cbd5e1',
@@ -1184,24 +839,82 @@ export default function RoleIntakeForm({
                           fontSize: '0.78rem',
                           fontWeight: isSelected ? 700 : 500,
                           cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
                           textAlign: 'left'
                         }}
                       >
-                        {deliv}
+                        <Icon size={15} color={isSelected ? '#0284c7' : '#64748b'} />
+                        <span>{item.mode}</span>
                       </button>
                     );
                   })}
                 </div>
               </div>
+
+              {/* Brief Idea & Thesis Scope Details */}
+              <div>
+                <label
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    letterSpacing: '1px',
+                    color: '#475569',
+                    textTransform: 'uppercase',
+                    display: 'block',
+                    marginBottom: '8px'
+                  }}
+                >
+                  Brief Details of Your Research Idea / Topic *
+                </label>
+                <textarea
+                  rows={4}
+                  required
+                  placeholder="Share your research paper topic, base paper DOI/link, target equations, or university thesis submission deadline..."
+                  value={formData.scholarIdea}
+                  onChange={(e) => setFormData({ ...formData, scholarIdea: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '12px 14px',
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e1',
+                    borderRadius: '8px',
+                    color: 'var(--text-primary)',
+                    fontSize: '0.86rem',
+                    outline: 'none',
+                    resize: 'vertical',
+                    lineHeight: 1.5
+                  }}
+                />
+              </div>
             </div>
           )}
 
           {/* ========================================================
-              ROLE 3: STARTUP FOUNDERS
+              ROLE 3: STARTUP FOUNDERS (Streamlined 1-on-1 Founder Meet)
              ======================================================== */}
           {role === 'startups' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-              {/* Prototype Stage */}
+              <div
+                style={{
+                  background: 'rgba(5, 150, 105, 0.05)',
+                  border: '1px solid rgba(5, 150, 105, 0.2)',
+                  borderRadius: '10px',
+                  padding: '14px 16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px'
+                }}
+              >
+                <Users size={22} color="#059669" />
+                <div style={{ fontSize: '0.84rem', color: '#047857', lineHeight: 1.4 }}>
+                  <strong>1-on-1 Engineering &amp; MVP Feasibility Meet:</strong> Skip bureaucratic menus. Share a few brief details of your idea, and we will schedule a confidential technical review with our senior hardware leads.
+                </div>
+              </div>
+
+              {/* Prototyping Stage */}
               <div>
                 <label
                   style={{
@@ -1219,10 +932,9 @@ export default function RoleIntakeForm({
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px' }}>
                   {[
-                    'Proof of Concept (PoC)',
+                    'Concept / PoC',
                     'Functional Demo Prototype',
-                    'Pre-Production MVP',
-                    'Pilot Run (10-500 units)'
+                    'Production-Ready MVP'
                   ].map((stg) => {
                     const isSelected = formData.startupStage === stg;
                     return (
@@ -1235,9 +947,9 @@ export default function RoleIntakeForm({
                           border: isSelected ? '1.5px solid #059669' : '1px solid #cbd5e1',
                           color: isSelected ? '#059669' : 'var(--text-primary)',
                           borderRadius: '8px',
-                          padding: '10px 8px',
+                          padding: '10px 10px',
                           fontFamily: 'var(--font-body)',
-                          fontSize: '0.78rem',
+                          fontSize: '0.8rem',
                           fontWeight: isSelected ? 700 : 500,
                           cursor: 'pointer',
                           transition: 'all 0.18s ease'
@@ -1250,7 +962,7 @@ export default function RoleIntakeForm({
                 </div>
               </div>
 
-              {/* Industry Domain */}
+              {/* Preferred 1-on-1 Discussion Mode */}
               <div>
                 <label
                   style={{
@@ -1264,284 +976,21 @@ export default function RoleIntakeForm({
                     marginBottom: '8px'
                   }}
                 >
-                  Industry Domain *
-                </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '8px' }}>
-                  {[
-                    'Connected Devices & Consumer IoT',
-                    'Industrial IoT & Telemetry',
-                    'Agri-Tech & Field Robotics',
-                    'Med-Tech & Wearables',
-                    'Clean Energy & EV Systems'
-                  ].map((dom) => {
-                    const isSelected = formData.startupDomain === dom;
-                    return (
-                      <button
-                        type="button"
-                        key={dom}
-                        onClick={() => setFormData({ ...formData, startupDomain: dom })}
-                        style={{
-                          background: isSelected ? 'rgba(5, 150, 105, 0.08)' : '#ffffff',
-                          border: isSelected ? '1.5px solid #059669' : '1px solid #cbd5e1',
-                          color: isSelected ? '#059669' : 'var(--text-primary)',
-                          borderRadius: '8px',
-                          padding: '8px 10px',
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '0.75rem',
-                          fontWeight: isSelected ? 700 : 500,
-                          cursor: 'pointer',
-                          transition: 'all 0.18s ease'
-                        }}
-                      >
-                        {dom}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* MVP Product Title */}
-              <div>
-                <label
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    letterSpacing: '1px',
-                    color: '#475569',
-                    textTransform: 'uppercase',
-                    display: 'block',
-                    marginBottom: '8px'
-                  }}
-                >
-                  Product / MVP Name *
-                </label>
-                <div style={{ position: 'relative', marginBottom: isStartupCustom ? '12px' : '0' }}>
-                  <select
-                    value={formData.startupTitleChoice}
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      const proj = STARTUP_PROJECTS.find(p => p.title === val);
-                      setFormData({
-                        ...formData,
-                        startupTitleChoice: val,
-                        startupDomain: proj ? proj.domain : formData.startupDomain
-                      });
-                    }}
-                    style={{
-                      width: '100%',
-                      padding: '12px 14px',
-                      background: '#ffffff',
-                      border: '1px solid #cbd5e1',
-                      borderRadius: '8px',
-                      color: 'var(--text-primary)',
-                      fontSize: '0.86rem',
-                      outline: 'none',
-                      cursor: 'pointer',
-                      appearance: 'none',
-                      WebkitAppearance: 'none'
-                    }}
-                  >
-                    <optgroup label="Turnkey Commercial MVP Archetypes">
-                      {STARTUP_PROJECTS.map((p, i) => (
-                        <option key={i} value={p.title}>
-                          {p.title}
-                        </option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="Custom Requirement">
-                      <option value="Custom Title">✎ Custom Hardware MVP (Type your product name)</option>
-                    </optgroup>
-                  </select>
-                  <ChevronDown
-                    size={16}
-                    style={{
-                      position: 'absolute',
-                      right: '14px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      pointerEvents: 'none',
-                      color: '#64748b'
-                    }}
-                  />
-                </div>
-
-                {isStartupCustom && (
-                  <div style={{ marginTop: '8px' }}>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Enter your product name or hardware vision..."
-                      value={formData.startupCustomTitle}
-                      onChange={(e) => setFormData({ ...formData, startupCustomTitle: e.target.value })}
-                      style={{
-                        width: '100%',
-                        padding: '12px 14px',
-                        background: '#ffffff',
-                        border: '1.5px solid #059669',
-                        borderRadius: '8px',
-                        color: 'var(--text-primary)',
-                        fontSize: '0.86rem',
-                        outline: 'none',
-                        boxShadow: '0 0 0 3px rgba(5, 150, 105, 0.08)'
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Startup Description: Auto-shows project description for provided titles, or custom description for Custom */}
-              <div>
-                {!isStartupCustom && currentStartupProject ? (
-                  <div
-                    style={{
-                      background: '#f8fafc',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '10px',
-                      padding: '16px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '12px'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <FileText size={15} color="#059669" />
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#059669', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                          MVP Architecture &amp; Production Scope
-                        </span>
-                      </div>
-                      <span style={{ fontSize: '0.7rem', color: '#059669', fontWeight: 600, background: 'rgba(5, 150, 105, 0.08)', padding: '2px 8px', borderRadius: '4px' }}>
-                        100% IP Transfer &amp; NDA
-                      </span>
-                    </div>
-
-                    <p style={{ fontSize: '0.84rem', color: '#334155', lineHeight: 1.6, margin: 0 }}>
-                      {currentStartupProject.desc}
-                    </p>
-
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                      {currentStartupProject.specs.map((spec, sIdx) => (
-                        <span
-                          key={sIdx}
-                          style={{
-                            fontFamily: 'var(--font-mono)',
-                            fontSize: '0.66rem',
-                            fontWeight: 600,
-                            padding: '3px 8px',
-                            borderRadius: '4px',
-                            background: '#ffffff',
-                            border: '1px solid #cbd5e1',
-                            color: '#475569'
-                          }}
-                        >
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div style={{ marginTop: '4px' }}>
-                      <label
-                        style={{
-                          fontFamily: 'var(--font-mono)',
-                          fontSize: '0.68rem',
-                          fontWeight: 600,
-                          color: '#64748b',
-                          display: 'block',
-                          marginBottom: '4px'
-                        }}
-                      >
-                        Specific Target Specs / BOM Budget / Timeline Notes (Optional):
-                      </label>
-                      <textarea
-                        rows={2}
-                        placeholder="Add target unit BOM, battery life targets, investor demo date, or NDA notes..."
-                        value={formData.startupNotes}
-                        onChange={(e) => setFormData({ ...formData, startupNotes: e.target.value })}
-                        style={{
-                          width: '100%',
-                          padding: '10px 12px',
-                          background: '#ffffff',
-                          border: '1px solid #cbd5e1',
-                          borderRadius: '6px',
-                          color: 'var(--text-primary)',
-                          fontSize: '0.82rem',
-                          outline: 'none',
-                          resize: 'vertical',
-                          lineHeight: 1.5
-                        }}
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div>
-                    <label
-                      style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '0.72rem',
-                        fontWeight: 700,
-                        letterSpacing: '1px',
-                        color: '#059669',
-                        textTransform: 'uppercase',
-                        display: 'block',
-                        marginBottom: '8px'
-                      }}
-                    >
-                      Custom MVP Description &amp; Technical Vision *
-                    </label>
-                    <textarea
-                      rows={4}
-                      required
-                      placeholder="Describe your hardware product concept, target unit cost, sensors/connectivity, enclosure requirements, and demo timeline..."
-                      value={formData.startupCustomDescription}
-                      onChange={(e) => setFormData({ ...formData, startupCustomDescription: e.target.value })}
-                      style={{
-                        width: '100%',
-                        padding: '12px 14px',
-                        background: '#ffffff',
-                        border: '1.5px solid #059669',
-                        borderRadius: '8px',
-                        color: 'var(--text-primary)',
-                        fontSize: '0.86rem',
-                        outline: 'none',
-                        resize: 'vertical',
-                        lineHeight: 1.5,
-                        boxShadow: '0 0 0 3px rgba(5, 150, 105, 0.08)'
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Target Deliverables */}
-              <div>
-                <label
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    letterSpacing: '1px',
-                    color: '#475569',
-                    textTransform: 'uppercase',
-                    display: 'block',
-                    marginBottom: '8px'
-                  }}
-                >
-                  Deliverables Required *
+                  Preferred 1-on-1 Discussion Mode *
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px' }}>
                   {[
-                    'Turnkey Investor Demo Rig + Documentation',
-                    'Custom Multi-Layer PCB (Schematic + Gerber)',
-                    '3D Enclosure CAD & Resin/FDM 3D Prints',
-                    'Embedded Firmware (FreeRTOS) + Cloud API'
-                  ].map((deliv) => {
-                    const isSelected = formData.startupDeliverables === deliv;
+                    { mode: '1-on-1 Google Meet / Video Call', icon: Video },
+                    { mode: 'Direct Phone / WhatsApp Call', icon: PhoneCall },
+                    { mode: 'Written Feasibility & BOM Review', icon: Mail }
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    const isSelected = formData.startupMeetPreference === item.mode;
                     return (
                       <button
                         type="button"
-                        key={deliv}
-                        onClick={() => setFormData({ ...formData, startupDeliverables: deliv })}
+                        key={item.mode}
+                        onClick={() => setFormData({ ...formData, startupMeetPreference: item.mode })}
                         style={{
                           background: isSelected ? 'rgba(5, 150, 105, 0.08)' : '#ffffff',
                           border: isSelected ? '1.5px solid #059669' : '1px solid #cbd5e1',
@@ -1552,14 +1001,55 @@ export default function RoleIntakeForm({
                           fontSize: '0.78rem',
                           fontWeight: isSelected ? 700 : 500,
                           cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px',
                           textAlign: 'left'
                         }}
                       >
-                        {deliv}
+                        <Icon size={15} color={isSelected ? '#059669' : '#64748b'} />
+                        <span>{item.mode}</span>
                       </button>
                     );
                   })}
                 </div>
+              </div>
+
+              {/* Brief Details of Hardware Idea */}
+              <div>
+                <label
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    letterSpacing: '1px',
+                    color: '#475569',
+                    textTransform: 'uppercase',
+                    display: 'block',
+                    marginBottom: '8px'
+                  }}
+                >
+                  Brief Details of Your Hardware Idea / Vision *
+                </label>
+                <textarea
+                  rows={4}
+                  required
+                  placeholder="Tell us briefly about your hardware concept, key target deliverables (e.g. PCB, 3D enclosure, firmware), or investor demo timeline..."
+                  value={formData.startupIdea}
+                  onChange={(e) => setFormData({ ...formData, startupIdea: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '12px 14px',
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e1',
+                    borderRadius: '8px',
+                    color: 'var(--text-primary)',
+                    fontSize: '0.86rem',
+                    outline: 'none',
+                    resize: 'vertical',
+                    lineHeight: 1.5
+                  }}
+                />
               </div>
             </div>
           )}
@@ -1651,11 +1141,11 @@ export default function RoleIntakeForm({
 
               <div>
                 <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>
-                  {role === 'students' ? 'College / University' : role === 'scholars' ? 'Institution / Lab' : 'Company / Venture Name'}
+                  {role === 'students' ? 'College / University' : role === 'scholars' ? 'Institution / Lab' : 'Company / Project Name'}
                 </label>
                 <input
                   type="text"
-                  placeholder={role === 'students' ? 'e.g. Anna University' : role === 'scholars' ? 'e.g. IIT Madras' : 'e.g. Protomates Tech'}
+                  placeholder={role === 'students' ? 'e.g. Anna University' : role === 'scholars' ? 'e.g. IIT Madras' : 'e.g. Stealth Venture'}
                   value={formData.institutionOrCompany}
                   onChange={(e) => setFormData({ ...formData, institutionOrCompany: e.target.value })}
                   style={{
@@ -1691,12 +1181,16 @@ export default function RoleIntakeForm({
               }}
             >
               {isSubmitting ? (
-                <>Transmitting Specs to consultant.fsk@gmail.com...</>
+                <>Transmitting Request to consultant.fsk@gmail.com...</>
               ) : (
                 <>
                   <Send size={16} />
                   <span>
-                    Submit {role === 'students' ? 'Student Project' : role === 'scholars' ? 'Research Intake' : 'Startup MVP'} Specs
+                    {role === 'students'
+                      ? 'Submit Student Project Specs'
+                      : role === 'scholars'
+                      ? 'Schedule 1-on-1 Scholar Review'
+                      : 'Schedule 1-on-1 Founder Consultation (Under NDA)'}
                   </span>
                 </>
               )}
@@ -1708,7 +1202,7 @@ export default function RoleIntakeForm({
                 <span>NDA &amp; 100% IP Ownership Guaranteed</span>
               </div>
               <span>•</span>
-              <div>Direct Lab Dispatch via consultant.fsk@gmail.com</div>
+              <div>Direct Dispatch to consultant.fsk@gmail.com</div>
             </div>
           </div>
         </form>

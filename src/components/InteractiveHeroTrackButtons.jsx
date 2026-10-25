@@ -13,16 +13,16 @@ const TRACKS = [
     id: 'scholars',
     trackNum: '02',
     role: 'Scholars & PhDs',
-    badge: 'Thesis, Dissertation & Capstones',
-    subtitle: 'Thesis writing, dissertation docs & capstone projects',
+    badge: '1-on-1 Research Meet',
+    subtitle: 'Thesis writing, dissertation docs & capstone consultation',
     accent: '#0284c7'
   },
   {
     id: 'startups',
     trackNum: '03',
     role: 'Startup Founders',
-    badge: 'Commercial MVPs',
-    subtitle: 'Turnkey PCBs & investor demos',
+    badge: '1-on-1 Founder Meet',
+    subtitle: 'Confidential MVP feasibility & investor demo consultation',
     accent: '#059669'
   }
 ];

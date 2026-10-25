@@ -2,14 +2,27 @@ import React, { useState, useEffect } from 'react';
 import { ALL_PROTOTYPES, CORE_OFFERINGS } from '../data/projectData';
 import PrototypeModal from '../components/PrototypeModal';
 
-export default function ServicesWork({ onNavigate }) {
+export default function ServicesWork({ onNavigate, scrollToSection }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedPrototype, setSelectedPrototype] = useState(null);
   const [selectedTrack, setSelectedTrack] = useState('students');
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
+    if (
+      scrollToSection ||
+      window.location.hash.includes('work') ||
+      window.location.hash.includes('proven')
+    ) {
+      setTimeout(() => {
+        const el = document.getElementById('work-gallery');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [scrollToSection]);
 
   const filteredPrototypes = ALL_PROTOTYPES.filter((proto) => {
     if (activeFilter === 'all') return true;

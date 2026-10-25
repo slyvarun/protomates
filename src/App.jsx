@@ -16,7 +16,7 @@ function getPageFromPath() {
   const cleanPath = path.split('/').filter((p) => p && p !== 'protomates' && p !== 'fsk').join('/');
   const target = hash || cleanPath;
   if (target.includes('about')) return 'about';
-  if (target.includes('services') || target.includes('work')) return 'services';
+  if (target.includes('services') || target.includes('work') || target.includes('proven')) return 'services';
   if (target.includes('contact')) return 'contact';
   return 'home';
 }
@@ -73,8 +73,8 @@ export default function App() {
         desc: 'Learn about FSK Genesis, our engineering tenets, lab infrastructure, and why we empower Academic Students, Doctoral Scholars, and Hardware Startups.'
       },
       services: {
-        title: 'Services & 40+ Prototypes Catalog — FSK | Turnkey Hardware & Documentation',
-        desc: 'Explore 40+ hardware prototypes across IoT, Edge AI, and custom PCBs alongside specialized service tracks and deliverables comparison.'
+        title: 'Services & Our Proven Work Catalog — FSK | Turnkey Hardware & Documentation',
+        desc: 'Explore real hardware prototypes across IoT, Edge AI, and custom PCBs alongside specialized service tracks and deliverables comparison.'
       },
       contact: {
         title: 'Project Intake & Engineering Feasibility Review — FSK (<2 Hours)',
@@ -129,7 +129,9 @@ export default function App() {
             />
           )}
           {currentPage === 'about' && <AboutUs onNavigate={handleNavigate} />}
-          {currentPage === 'services' && <ServicesWork onNavigate={handleNavigate} />}
+          {currentPage === 'services' && (
+            <ServicesWork onNavigate={handleNavigate} {...pageProps} />
+          )}
           {currentPage === 'contact' && (
             <ContactUs initialAudience={pageProps.audience} {...pageProps} />
           )}

@@ -108,7 +108,11 @@ export default function Hero({ onNavigate }) {
             Initiate Project Intake
           </button>
           <button
-            onClick={() => (onNavigate ? onNavigate('services') : (window.location.hash = '#services'))}
+            onClick={() =>
+              onNavigate
+                ? onNavigate('services', { scrollToSection: 'work-gallery' })
+                : (window.location.hash = '#work-gallery')
+            }
             className="btn-ghost"
             style={{
               cursor: 'pointer',
@@ -119,7 +123,7 @@ export default function Hero({ onNavigate }) {
               fontWeight: 600
             }}
           >
-            Browse 40+ Prototypes
+            Explore Our Proven Work
           </button>
         </div>
 

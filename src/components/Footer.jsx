@@ -153,7 +153,7 @@ export default function Footer({ onNavigate }) {
                   e.currentTarget.style.background = '#ffffff';
                 }}
               >
-                <LinkedInIcon size={14} color="#0a66c2" />
+                <LinkedInIcon size={20} />
                 <span>FSK Prototyping Services</span>
               </a>
             </div>
@@ -303,8 +303,8 @@ export default function Footer({ onNavigate }) {
                   e.currentTarget.style.color = '#090d16';
                 }}
               >
-                <LinkedInIcon size={16} color="#0a66c2" />
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.86rem', fontWeight: 700, color: '#090d16' }}>
+                <LinkedInIcon size={24} />
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', fontWeight: 700, color: '#090d16' }}>
                   FSK Prototyping Services
                 </span>
               </a>

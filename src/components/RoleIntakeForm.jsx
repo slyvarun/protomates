@@ -48,34 +48,34 @@ export const STUDENT_PROJECTS = [
 
 export const SCHOLAR_PROJECTS = [
   {
-    title: 'Edge AI Vision Testbed for Industrial Defect Detection using TinyML',
-    domain: 'Embedded & Edge AI',
-    desc: 'Real-time embedded computer vision testbed deploying quantized MobileNetV2 / YOLO-Tiny on ARM Cortex-M / Raspberry Pi 5. Benchmarks inference latency, precision-recall curves, and hardware power consumption against synthetic defect datasets. Includes hardware testbed, benchmark notebooks, LaTeX manuscript, and peer-review rebuttal data.',
-    specs: ['Quantized MobileNetV2', 'Raspberry Pi 5 / Coral TPU', 'Latency & Energy Benchmarking', 'LaTeX Manuscript (IEEE)', 'Raw CSV Dataset']
+    title: 'Deep Learning & Edge AI Telemetry (Dissertation & Capstone)',
+    domain: 'AI, ML & Edge AI',
+    desc: 'Comprehensive dissertation and applied capstone package: embedded edge computer vision model on ARM/Jetson with complete 120+ page doctoral dissertation documentation, experimental latency benchmarks, IEEE LaTeX manuscript, and viva defense slides.',
+    specs: ['Applied Capstone Working Rig', '120+ Page Dissertation Dossier', 'IEEE LaTeX Manuscript', 'Plagiarism Report <10%', 'Defense Presentation PPT']
   },
   {
-    title: 'Bidirectional DC-DC Converter with MPPT for Dual-Source EV Storage',
+    title: 'Renewable Energy Microgrid & Inverter (Thesis Documentation)',
     domain: 'Power Electronics & Energy',
-    desc: 'High-frequency bidirectional buck-boost converter topology integrating solar PV and battery/supercapacitor hybrid energy storage. Features perturb-and-observe MPPT algorithm, closed-loop PI current control, and MATLAB Simulink validation alongside physical prototype.',
-    specs: ['MATLAB / Simulink Model', 'Bidirectional Inverter', 'MPPT Control Loop', 'Efficiency Curve Plots', 'IEEE Transaction LaTeX']
+    desc: 'High-rigor thesis writing and simulation dossier for solar PV / battery microgrids with bidirectional converters. Includes mathematical formulation, MATLAB Simulink verification, empirical efficiency plots, and university-formatted thesis report.',
+    specs: ["Master's / PhD Thesis Report", 'MATLAB / Simulink Files', 'Mathematical Equations Dossier', 'Reviewer Response Prep', 'Turnkey LaTeX Sources']
   },
   {
-    title: 'Multi-Sensor Fusion (IMU + LiDAR) for GPS-Denied Autonomous Navigation',
-    domain: 'Robotics & ROS2',
-    desc: 'Extended Kalman Filter (EKF) sensor fusion architecture combining 9-DOF IMU telemetry with 2D LiDAR scan matching. Validates localization drift reduction in subterranean/GPS-denied robotics environments with ROS2 telemetry nodes and empirical comparative tables.',
-    specs: ['ROS2 Node Pipeline', 'Extended Kalman Filter', '2D LiDAR + 9-DOF IMU', 'Trajectory Drift Graphs', 'Camera-Ready Paper']
+    title: 'Autonomous Robotics & SLAM (Applied Capstone & Thesis)',
+    domain: 'Robotics & Automation',
+    desc: 'Applied capstone practical system and master’s thesis documentation: ROS2 multi-sensor mobile robot with 2D LiDAR and IMU telemetry, full source code repository, system architecture diagrams, and 90+ page formatted thesis manuscript.',
+    specs: ['Working Mobile Robotic Rig', 'ROS2 Telemetry Package', '90+ Page Thesis Manuscript', 'Circuit Schematics & BOM', 'Viva Rehearsal Q&A']
   },
   {
-    title: 'Non-Invasive Biosignal Monitoring Front-End with Wavelet Denoising',
+    title: 'Non-Invasive Biosignal Denoising (PhD Dissertation & Analysis)',
     domain: 'Biomedical Signal Processing',
-    desc: 'High-CMRR analog front-end (AFE) circuit featuring instrumentation amplifier (INA128), driven-right-leg (DRL) circuitry, and discrete wavelet transform (DWT) baseline wander suppression. Includes experimental signal-to-noise ratio (SNR) validation and camera-ready IEEE Transactions LaTeX files.',
-    specs: ['Custom AFE Schematic', 'INA128 High CMRR', 'Discrete Wavelet Denoising', 'SNR Comparative Analysis', 'Journal LaTeX Dossier']
+    desc: 'Doctoral dissertation documentation and data analysis covering analog front-end (AFE) biosignal acquisition, wavelet denoising algorithms, and signal-to-noise ratio benchmarking formatted strictly to institutional guidelines.',
+    specs: ['Dissertation Chapters 1-6', 'MATLAB Signal Processing', 'SNR Benchmark Analysis', 'IEEE Transactions Format', 'Viva Presentation Deck']
   },
   {
-    title: 'LoRaWAN Multi-Hop Mesh Network for Precision Environmental Telemetry',
-    domain: 'VLSI & Wireless Telemetry',
-    desc: 'Sub-GHz 868/915MHz multi-hop ad-hoc routing protocol with adaptive spreading factor (ADR) optimization for long-range sensor telemetry. Validates packet delivery ratio (PDR) and power consumption across sparse sensor deployments.',
-    specs: ['SX1276 LoRa Radios', 'Multi-Hop Mesh Protocol', 'PDR vs Range Metrics', 'Energy Consumption Models', 'Publication Ready Graphs']
+    title: 'LoRaWAN Multi-Hop Telemetry Mesh (Capstone & Research Docs)',
+    domain: 'IoT & Wireless Telemetry',
+    desc: 'Applied research capstone and technical documentation: multi-hop sub-GHz LoRa mesh telemetry network with packet delivery ratio evaluations, comprehensive thesis documentation, and experimental testbed data.',
+    specs: ['Functional Hardware Testbed', 'Firmware Codebase', 'Complete Capstone Report', 'Empirical Telemetry Graphs', 'Publication Draft']
   }
 ];
 
@@ -124,12 +124,12 @@ export default function RoleIntakeForm({
     studentNotes: '',
 
     // Scholar fields
-    scholarLevel: 'PhD Dissertation',
-    scholarDomain: 'Embedded & Edge AI',
+    scholarLevel: 'Thesis Writing & Document Preparation',
+    scholarDomain: 'AI, ML & Edge AI',
     scholarTitleChoice: SCHOLAR_PROJECTS[0].title,
     scholarCustomTitle: '',
     scholarCustomDescription: '',
-    scholarDeliverables: 'Turnkey Hardware Rig + IEEE LaTeX Manuscript',
+    scholarDeliverables: 'Comprehensive Thesis / Dissertation (80–150+ Pages)',
     scholarNotes: '',
 
     // Startup fields
@@ -202,25 +202,25 @@ export default function RoleIntakeForm({
         'College / University': formData.institutionOrCompany || 'Not provided'
       };
     } else if (role === 'scholars') {
-      roleLabel = 'Scholar Track (SCI / Scopus Papers)';
+      roleLabel = 'Scholar Track (Thesis, Dissertation & Capstone)';
       if (isScholarCustom) {
-        projectTitle = formData.scholarCustomTitle || 'Custom Research Paper / Base Paper';
-        finalDescription = formData.scholarCustomDescription || 'Custom research topic specified by scholar.';
+        projectTitle = formData.scholarCustomTitle || 'Custom Thesis / Dissertation Topic';
+        finalDescription = formData.scholarCustomDescription || 'Custom topic specified by scholar.';
       } else {
         projectTitle = formData.scholarTitleChoice;
         finalDescription = currentScholarProject ? currentScholarProject.desc : '';
         if (formData.scholarNotes) {
-          finalDescription += `\n\n[Additional Scholar Notes / Base Paper DOIs]: ${formData.scholarNotes}`;
+          finalDescription += `\n\n[Additional Scholar Notes / Guidelines]: ${formData.scholarNotes}`;
         }
       }
 
       payload = {
         Track: roleLabel,
-        'Research Level': formData.scholarLevel,
+        'Service Classification': formData.scholarLevel,
         'Technical Domain': formData.scholarDomain,
-        'Paper Topic / Base Paper DOI': projectTitle,
+        'Thesis / Capstone Topic': projectTitle,
         'Required Deliverables': formData.scholarDeliverables,
-        'Research Scope & Equations': finalDescription,
+        'Thesis & Research Scope': finalDescription,
         'Scholar Name': formData.name,
         'Institution / University': formData.institutionOrCompany || 'Not provided',
         'Contact Phone / WhatsApp': formData.phone,
@@ -339,7 +339,7 @@ export default function RoleIntakeForm({
         >
           {[
             { id: 'students', num: '01', label: 'Students', sub: 'Capstones & Degrees', color: '#0052ff' },
-            { id: 'scholars', num: '02', label: 'Scholars & PhDs', sub: 'SCI / Scopus Papers', color: '#0284c7' },
+            { id: 'scholars', num: '02', label: 'Scholars & PhDs', sub: 'Thesis, Dissertation & Capstone', color: '#0284c7' },
             { id: 'startups', num: '03', label: 'Startup Founders', sub: 'Commercial MVPs', color: '#059669' }
           ].map((item) => {
             const isActive = role === item.id;
@@ -832,7 +832,7 @@ export default function RoleIntakeForm({
              ======================================================== */}
           {role === 'scholars' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-              {/* Research Level */}
+              {/* Service Classification */}
               <div>
                 <label
                   style={{
@@ -846,10 +846,15 @@ export default function RoleIntakeForm({
                     marginBottom: '8px'
                   }}
                 >
-                  Research Level *
+                  Service / Document Classification *
                 </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px' }}>
-                  {['PhD Dissertation', "Master's Thesis", 'SCI/Scopus Journal', 'IEEE Conference'].map((lvl) => {
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px' }}>
+                  {[
+                    'Thesis Writing & Document Preparation',
+                    'Dissertation Documentation',
+                    'Capstone Project (Applied System)',
+                    'Research Paper Preparation'
+                  ].map((lvl) => {
                     const isSelected = formData.scholarLevel === lvl;
                     return (
                       <button
@@ -861,11 +866,12 @@ export default function RoleIntakeForm({
                           border: isSelected ? '1.5px solid #0284c7' : '1px solid #cbd5e1',
                           color: isSelected ? '#0284c7' : 'var(--text-primary)',
                           borderRadius: '8px',
-                          padding: '10px 8px',
+                          padding: '10px 10px',
                           fontFamily: 'var(--font-body)',
                           fontSize: '0.78rem',
                           fontWeight: isSelected ? 700 : 500,
                           cursor: 'pointer',
+                          textAlign: 'left',
                           transition: 'all 0.18s ease'
                         }}
                       >
@@ -894,11 +900,11 @@ export default function RoleIntakeForm({
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '8px' }}>
                   {[
-                    'Embedded & Edge AI',
+                    'AI, ML & Edge AI',
                     'Power Electronics & Energy',
-                    'Robotics & ROS2',
+                    'Robotics & Automation',
                     'Biomedical Signal Processing',
-                    'VLSI & Wireless Telemetry'
+                    'IoT & Wireless Telemetry'
                   ].map((dom) => {
                     const isSelected = formData.scholarDomain === dom;
                     return (
@@ -1157,10 +1163,10 @@ export default function RoleIntakeForm({
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px' }}>
                   {[
-                    'Turnkey Hardware Rig + IEEE LaTeX Manuscript',
-                    'Physical Validation Hardware Only',
-                    'Simulation Model + LaTeX Manuscript',
-                    'Benchmark Dataset & Graphs'
+                    'Full Thesis / Dissertation Documentation (80–150+ Pages)',
+                    'Applied Capstone Working System + Documentation',
+                    'Turnkey IEEE / Elsevier LaTeX Manuscript',
+                    'Defense PPT, Code Files & Plagiarism Report (<10%)'
                   ].map((deliv) => {
                     const isSelected = formData.scholarDeliverables === deliv;
                     return (

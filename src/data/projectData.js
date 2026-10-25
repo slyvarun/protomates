@@ -34,32 +34,32 @@ export const AUDIENCE_PILLARS = [
   },
   {
     id: 'scholars',
-    role: 'Professional Scholars',
-    badge: 'Research Fellows & PhD Candidates',
-    tagline: 'High-Rigor Scientific Simulations, Testbeds & Journal Manuscripts',
+    role: 'Scholars & PhDs',
+    badge: 'Thesis, Dissertation & Capstones',
+    tagline: 'Thesis Writing, Dissertation Documentation & Applied Capstone Projects',
     icon: 'Microscope',
     accentColor: '#00e5ff',
     description:
-      'We collaborate with PhD researchers, professors, and scientific scholars to translate theoretical mathematical formulations and novel algorithms into verifiable testbeds and camera-ready journal manuscripts.',
+      'We provide specialized thesis writing document preparation, doctoral dissertation documentation, and applied capstone practical systems with camera-ready LaTeX formatting, IEEE compliance, and university-standard rigor.',
     whatWeBuild: [
-      'MATLAB, Simulink & ANSYS multiphysics simulations',
-      'PyTorch / TensorFlow novel architecture implementations',
-      'Hardware-in-the-Loop (HIL) experimental validation rigs',
-      'ROS2 autonomous robotics navigation algorithms',
-      'Custom sensor calibration & high-speed data acquisition pipelines'
+      'Applied Capstone practical working systems and functional rigs',
+      'Mathematical modeling & algorithmic simulations (MATLAB, Python)',
+      'Clean firmware & software repositories with setup manuals',
+      'Reproducible benchmark data and comparative experimental graphs',
+      'Plagiarism-free code with line-by-line documentation'
     ],
     whatWeDocument: [
-      'SCI, Scopus & IEEE Transaction-ready research papers',
-      'Camera-ready LaTeX manuscripts with formatted bibtex',
-      'High-resolution vector schematics & algorithmic flowcharts',
-      'Empirical benchmark datasets & comparative metric plots',
-      'Peer-review response dossiers & reviewer rebuttal experiments'
+      "Comprehensive Master's & PhD Thesis documentation (80–150+ pages)",
+      'Doctoral Dissertation documentation formatted to institutional standards',
+      'Applied Capstone system architecture reports and engineering dossiers',
+      'SCI, Scopus & IEEE Conference/Journal research paper manuscripts',
+      'Viva defense presentation decks (PPT) & examiner Q&A cheat sheets'
     ],
-    deliverablesBadge: 'Scopus / SCI Quality • Reproducible Code & LaTeX',
+    deliverablesBadge: 'Thesis & Dissertation Docs • Applied Capstones • <10% Plagiarism',
     sampleProjects: [
-      'TinyML Wearable Health Telemetry with ECG Anomaly Detection',
-      'Photovoltaic MPPT Algorithm with Hardware Simulation Rig',
-      'Deep Reinforcement Learning Drone Trajectory Tracking'
+      'Deep Learning Edge AI Telemetry (Dissertation & Capstone)',
+      'Renewable Energy Microgrid & Inverter (Thesis Documentation)',
+      'Autonomous Robotics & SLAM (Applied Capstone & Thesis)'
     ]
   },
   {

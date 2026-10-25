@@ -13,8 +13,8 @@ const TRACKS = [
     id: 'scholars',
     trackNum: '02',
     role: 'Scholars & PhDs',
-    badge: 'SCI / Scopus Papers',
-    subtitle: 'Empirical hardware & simulations',
+    badge: 'Thesis, Dissertation & Capstones',
+    subtitle: 'Thesis writing, dissertation docs & capstone projects',
     accent: '#0284c7'
   },
   {

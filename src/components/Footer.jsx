@@ -3,37 +3,12 @@ import FSKLogo from './FSKLogo';
 import { Mail, Clock, Shield, Lock, Send, CheckCircle2 } from 'lucide-react';
 
 export default function Footer({ onNavigate }) {
-  const [quickTopic, setQuickTopic] = useState('');
-  const [quickContact, setQuickContact] = useState('');
-  const [quickSent, setQuickSent] = useState(false);
-
   const handleNav = (pageId) => {
     if (onNavigate) {
       onNavigate(pageId);
     } else {
       window.location.hash = pageId === 'home' ? '' : `#${pageId}`;
     }
-  };
-
-  const handleQuickSubmit = (e) => {
-    e.preventDefault();
-    if (!quickContact) return;
-    setQuickSent(true);
-
-    fetch('https://formsubmit.co/ajax/consultant.fsk@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        topic: quickTopic,
-        contact: quickContact,
-        _subject: `New FSK Quick Inquiry from ${quickContact}`,
-        _template: 'table',
-        _captcha: 'false'
-      })
-    }).catch((err) => console.error('FormSubmit Error:', err));
   };
 
   return (
@@ -185,7 +160,7 @@ export default function Footer({ onNavigate }) {
             </div>
           </div>
 
-          {/* Column 3: Quick Feasibility Callback Widget */}
+          {/* Column 3: Connect With Us */}
           <div>
             <div
               style={{
@@ -198,78 +173,69 @@ export default function Footer({ onNavigate }) {
                 marginBottom: '14px'
               }}
             >
-              Fast Feasibility Review
+              Connect With Us
             </div>
 
-            {quickSent ? (
-              <div
+            <p style={{ color: '#64748b', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '18px' }}>
+              Have an academic topic, thesis requirement, or prototype statement? Connect with our engineering lab for a rapid feasibility review.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <button
+                onClick={() => handleNav('contact')}
+                className="btn-primary"
                 style={{
-                  background: '#ffffff',
-                  border: '1px solid #059669',
-                  padding: '16px',
-                  borderRadius: '8px',
-                  fontSize: '0.85rem',
-                  color: '#059669',
-                  display: 'flex',
+                  padding: '11px 18px',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '8px'
+                  justifyContent: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 14px rgba(0, 82, 255, 0.25)'
                 }}
               >
-                Inquiry dispatched! Our engineers will review within 2 hours.
-              </div>
-            ) : (
-              <form onSubmit={handleQuickSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <input
-                  type="text"
-                  required
-                  placeholder="Project Topic or Base Paper Title..."
-                  value={quickTopic}
-                  onChange={(e) => setQuickTopic(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '10px 14px',
-                    background: '#ffffff',
-                    border: '1px solid #e2e8f0',
-                    borderRadius: '6px',
-                    color: 'var(--text-primary)',
-                    fontSize: '0.84rem',
-                    outline: 'none'
-                  }}
-                />
-                <input
-                  type="text"
-                  required
-                  placeholder="Your Email or WhatsApp..."
-                  value={quickContact}
-                  onChange={(e) => setQuickContact(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '10px 14px',
-                    background: '#ffffff',
-                    border: '1px solid #e2e8f0',
-                    borderRadius: '6px',
-                    color: 'var(--text-primary)',
-                    fontSize: '0.84rem',
-                    outline: 'none'
-                  }}
-                />
-                <button
-                  type="submit"
-                  className="btn-primary"
-                  style={{
-                    padding: '11px 16px',
-                    fontSize: '0.78rem',
-                    justifyContent: 'center',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Request Feasibility Review
-                </button>
-              </form>
-            )}
+                <span>Start Project Intake &amp; 1-on-1 Meet</span>
+                <Send size={14} />
+              </button>
 
-            <div style={{ marginTop: '12px', fontSize: '0.75rem', color: '#94a3b8', lineHeight: 1.5 }}>
-              Strict confidentiality. Zero spam. 100% Non-Disclosure guarantee.
+              <a
+                href="mailto:consultant.fsk@gmail.com"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '10px 14px',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '8px',
+                  color: '#090d16',
+                  textDecoration: 'none',
+                  fontSize: '0.84rem',
+                  fontWeight: 600,
+                  transition: 'all 0.2s',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.03)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--accent)';
+                  e.currentTarget.style.color = 'var(--accent)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#e2e8f0';
+                  e.currentTarget.style.color = '#090d16';
+                }}
+              >
+                <Mail size={16} color="var(--accent)" />
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem' }}>
+                  consultant.fsk@gmail.com
+                </span>
+              </a>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '14px', fontSize: '0.75rem', color: '#64748b' }}>
+              <Clock size={13} color="var(--accent)" />
+              <span>Response time: Under 2 hours • 100% Confidential</span>
             </div>
           </div>
         </div>

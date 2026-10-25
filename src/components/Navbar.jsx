@@ -73,11 +73,33 @@ export default function Navbar({
             alignItems: 'center'
           }}
         >
-          {/* FSK Bespoke Logo Design */}
+          {/* FSK Bespoke Logo Design — Frosted Glass Island */}
           <div
             id="navbar-brand-logo"
             onClick={() => handleNavClick('home')}
-            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+            style={{
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: isMobile ? '6px 14px' : '7px 20px',
+              background: 'rgba(255, 255, 255, 0.65)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              border: '1px solid rgba(255, 255, 255, 0.85)',
+              borderRadius: '999px',
+              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 4px 16px rgba(0, 82, 255, 0.05)',
+              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.borderColor = 'rgba(0, 82, 255, 0.25)';
+              e.currentTarget.style.boxShadow = 'inset 0 1px 1px rgba(255, 255, 255, 1), 0 6px 20px rgba(0, 82, 255, 0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.85)';
+              e.currentTarget.style.boxShadow = 'inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 4px 16px rgba(0, 82, 255, 0.05)';
+            }}
           >
             <FSKLogo compact={isMobile} />
           </div>

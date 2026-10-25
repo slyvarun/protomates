@@ -10,7 +10,7 @@ import {
   Lock
 } from 'lucide-react';
 
-const COOKIE_STORAGE_KEY = 'protomates_contact_popup_status';
+const COOKIE_STORAGE_KEY = 'fsk_contact_popup_status';
 const TEN_MINUTES_MS = 10 * 60 * 1000; // 10 minutes (600,000 ms)
 
 export default function ContactCookiePopup({ onNavigate }) {
@@ -74,8 +74,8 @@ export default function ContactCookiePopup({ onNavigate }) {
         ? 'Professional Scholar'
         : 'Startup MVP';
 
-    // Send email dispatch to info.protomates@gmail.com
-    fetch('https://formsubmit.co/ajax/info.protomates@gmail.com', {
+    // Send email dispatch to consultant.fsk@gmail.com
+    fetch('https://formsubmit.co/ajax/consultant.fsk@gmail.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export default function ContactCookiePopup({ onNavigate }) {
         contact: contact,
         track: roleLabel,
         topic: topic || 'General Inquiry',
-        _subject: `New Protomates 10-Min Intake from ${name || contact} [${roleLabel}]`,
+        _subject: `New FSK 10-Min Intake from ${name || contact} [${roleLabel}]`,
         _template: 'table',
         _captcha: 'false'
       })
@@ -108,38 +108,29 @@ export default function ContactCookiePopup({ onNavigate }) {
         zIndex: 99999,
         maxWidth: '420px',
         width: 'calc(100vw - 48px)',
-        background: 'linear-gradient(145deg, rgba(16, 16, 24, 0.98), rgba(9, 9, 14, 0.99))',
-        border: '1.5px solid var(--accent)',
-        borderRadius: '12px',
+        background: '#ffffff',
+        border: '1.5px solid #0052ff',
+        borderRadius: '16px',
         padding: '24px 26px',
-        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(200, 255, 0, 0.25)',
+        boxShadow: '0 25px 60px rgba(15, 23, 42, 0.18), 0 0 25px rgba(0, 82, 255, 0.1)',
         backdropFilter: 'blur(20px)',
         animation: 'popUpSpring 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards'
       }}
     >
-      {/* Top Beacon & Close */}
+      {/* Top Header & Close */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span
-            style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: 'var(--accent)',
-              boxShadow: '0 0 8px var(--accent)',
-              animation: 'pulse 1.8s infinite'
-            }}
-          />
+        <div>
           <span
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: '0.68rem',
-              color: 'var(--accent)',
-              letterSpacing: '1.5px',
+              color: '#0052ff',
+              letterSpacing: '1px',
+              fontWeight: 700,
               textTransform: 'uppercase'
             }}
           >
-            Engineering Desk // 10-Min Priority Notice
+            Engineering Desk // Consultation
           </span>
         </div>
 
@@ -148,7 +139,7 @@ export default function ContactCookiePopup({ onNavigate }) {
           style={{
             background: 'transparent',
             border: 'none',
-            color: '#888',
+            color: '#94a3b8',
             cursor: 'pointer',
             padding: '2px',
             display: 'flex',
@@ -156,8 +147,8 @@ export default function ContactCookiePopup({ onNavigate }) {
             justifyContent: 'center',
             transition: 'color 0.2s'
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--white)')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = '#888')}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#090d16')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#94a3b8')}
         >
           <X size={16} />
         </button>
@@ -166,34 +157,36 @@ export default function ContactCookiePopup({ onNavigate }) {
       <h4
         style={{
           fontFamily: 'var(--font-display)',
-          fontSize: '1.75rem',
-          letterSpacing: '1px',
-          color: 'var(--white)',
-          lineHeight: 1.1,
+          fontSize: '1.4rem',
+          fontWeight: 800,
+          letterSpacing: '-0.3px',
+          color: '#090d16',
+          lineHeight: 1.2,
           marginBottom: '6px'
         }}
       >
-        NEED HELP PLANNING YOUR PROJECT?
+        Need Help Planning Your Prototype?
       </h4>
 
-      <p style={{ color: '#aaa', fontSize: '0.84rem', lineHeight: 1.5, marginBottom: '16px' }}>
-        Our lead engineers are online. Drop your requirement below for a complimentary technical roadmap and feasibility assessment (&lt; 15 mins).
+      <p style={{ color: '#475569', fontSize: '0.86rem', lineHeight: 1.5, marginBottom: '16px' }}>
+        Our lead engineers are online. Drop your requirement below for a complimentary technical roadmap &amp; feasibility assessment.
       </p>
 
       {submitted ? (
         <div
           style={{
-            background: 'rgba(200, 255, 0, 0.08)',
-            border: '1px solid rgba(200, 255, 0, 0.3)',
-            borderRadius: '6px',
+            background: '#eff6ff',
+            border: '1px solid #bfdbfe',
+            borderRadius: '10px',
             padding: '16px',
             textAlign: 'center',
-            color: 'var(--accent)',
-            fontSize: '0.86rem'
+            color: '#0052ff',
+            fontSize: '0.88rem',
+            fontWeight: 600
           }}
         >
           <CheckCircle2 size={24} style={{ margin: '0 auto 6px' }} />
-          Inquiry dispatched to info.protomates@gmail.com! Our team will reply promptly.
+          Inquiry dispatched to engineering desk! We will reply promptly.
         </div>
       ) : (
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -209,15 +202,16 @@ export default function ContactCookiePopup({ onNavigate }) {
                 key={p.id}
                 onClick={() => setRole(p.id)}
                 style={{
-                  background: role === p.id ? 'var(--accent)' : 'rgba(255, 255, 255, 0.04)',
-                  color: role === p.id ? 'var(--black)' : '#bbb',
-                  border: role === p.id ? '1px solid var(--accent)' : '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '4px',
-                  padding: '5px 4px',
+                  background: role === p.id ? '#0052ff' : '#f8fafc',
+                  color: role === p.id ? '#ffffff' : '#475569',
+                  border: role === p.id ? '1px solid #0052ff' : '1px solid #e2e8f0',
+                  borderRadius: '6px',
+                  padding: '6px 4px',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.68rem',
-                  fontWeight: role === p.id ? 700 : 400,
-                  cursor: 'pointer'
+                  fontSize: '0.72rem',
+                  fontWeight: role === p.id ? 700 : 500,
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease'
                 }}
               >
                 {p.label}
@@ -232,12 +226,12 @@ export default function ContactCookiePopup({ onNavigate }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             style={{
-              padding: '8px 12px',
-              background: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              borderRadius: '4px',
-              color: 'var(--white)',
-              fontSize: '0.82rem',
+              padding: '10px 14px',
+              background: '#ffffff',
+              border: '1px solid #cbd5e1',
+              borderRadius: '8px',
+              color: '#090d16',
+              fontSize: '0.84rem',
               outline: 'none'
             }}
           />
@@ -245,16 +239,16 @@ export default function ContactCookiePopup({ onNavigate }) {
           <input
             type="text"
             required
-            placeholder="Your Email or Contact..."
+            placeholder="Your Email or Phone..."
             value={contact}
             onChange={(e) => setContact(e.target.value)}
             style={{
-              padding: '8px 12px',
-              background: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              borderRadius: '4px',
-              color: 'var(--white)',
-              fontSize: '0.82rem',
+              padding: '10px 14px',
+              background: '#ffffff',
+              border: '1px solid #cbd5e1',
+              borderRadius: '8px',
+              color: '#090d16',
+              fontSize: '0.84rem',
               outline: 'none'
             }}
           />
@@ -265,12 +259,12 @@ export default function ContactCookiePopup({ onNavigate }) {
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             style={{
-              padding: '8px 12px',
-              background: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              borderRadius: '4px',
-              color: 'var(--white)',
-              fontSize: '0.82rem',
+              padding: '10px 14px',
+              background: '#ffffff',
+              border: '1px solid #cbd5e1',
+              borderRadius: '8px',
+              color: '#090d16',
+              fontSize: '0.84rem',
               outline: 'none'
             }}
           />
@@ -281,13 +275,13 @@ export default function ContactCookiePopup({ onNavigate }) {
             style={{
               width: '100%',
               justifyContent: 'center',
-              padding: '10px',
-              fontSize: '0.76rem',
+              padding: '12px',
+              fontSize: '0.82rem',
               cursor: 'pointer',
               marginTop: '4px'
             }}
           >
-            Connect With Engineer <Send size={13} />
+            Connect With Engineer <Send size={14} />
           </button>
         </form>
       )}
@@ -300,11 +294,11 @@ export default function ContactCookiePopup({ onNavigate }) {
           alignItems: 'center',
           gap: '6px',
           fontFamily: 'var(--font-mono)',
-          fontSize: '0.62rem',
-          color: '#777'
+          fontSize: '0.66rem',
+          color: '#64748b'
         }}
       >
-        <Lock size={11} color="var(--accent)" /> 100% Confidential • Instant response
+        <Lock size={12} color="#0052ff" /> 100% Confidential • Fast Engineering Response
       </div>
     </div>
   );

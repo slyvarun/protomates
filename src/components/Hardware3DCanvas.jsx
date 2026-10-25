@@ -1,102 +1,8 @@
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Sparkles } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import { getAssetUrl } from '../utils/assetUrl';
-
-// Master Concentric Hologram Pedestal on the Floor
-function HologramTrioRings({ position = [0, -1.8, 0] }) {
-  const ringRef1 = useRef();
-  const ringRef2 = useRef();
-  const ringRef3 = useRef();
-
-  useFrame((state, delta) => {
-    if (ringRef1.current) ringRef1.current.rotation.z += delta * 0.12;
-    if (ringRef2.current) ringRef2.current.rotation.z -= delta * 0.18;
-    if (ringRef3.current) ringRef3.current.rotation.z += delta * 0.28;
-  });
-
-  return (
-    <group position={position} rotation={[-Math.PI / 2, 0, 0]}>
-      {/* Outer Telemetry Ring */}
-      <mesh ref={ringRef1}>
-        <ringGeometry args={[2.9, 2.94, 64]} />
-        <meshBasicMaterial
-          color="#ffffff"
-          transparent
-          opacity={0.22}
-          side={THREE.DoubleSide}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-
-      {/* Middle Concentric Ring */}
-      <mesh ref={ringRef2}>
-        <ringGeometry args={[2.08, 2.12, 64]} />
-        <meshBasicMaterial
-          color="#94a3b8"
-          transparent
-          opacity={0.25}
-          side={THREE.DoubleSide}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-
-      {/* Inner Fast Accent Ring */}
-      <mesh ref={ringRef3}>
-        <ringGeometry args={[1.28, 1.31, 48]} />
-        <meshBasicMaterial
-          color="#cbd5e1"
-          transparent
-          opacity={0.2}
-          side={THREE.DoubleSide}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-
-      {/* Deep Ground Shadow Core */}
-      <mesh position={[0, 0, -0.05]}>
-        <circleGeometry args={[3.3, 64]} />
-        <meshBasicMaterial
-          color="#06080d"
-          transparent
-          opacity={0.9}
-        />
-      </mesh>
-    </group>
-  );
-}
-
-// Orbiting Individual Telemetry Energy Ring around each component
-function OrbitingEnergyHalo({
-  radius = 1.3,
-  color = '#00e5ff',
-  speed = 0.8,
-  tilt = [0.4, 0, 0],
-  tube = 0.012
-}) {
-  const haloRef = useRef();
-
-  useFrame((state, delta) => {
-    if (haloRef.current) {
-      haloRef.current.rotation.z += delta * speed;
-    }
-  });
-
-  return (
-    <group rotation={tilt}>
-      <mesh ref={haloRef}>
-        <torusGeometry args={[radius, tube, 16, 64]} />
-        <meshBasicMaterial
-          color={color}
-          transparent
-          opacity={0.4}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-    </group>
-  );
-}
 
 // Model normalization helper
 function useNormalizedModel(path, targetDim) {
@@ -121,8 +27,8 @@ function useNormalizedModel(path, targetDim) {
       if (child.isMesh && child.material) {
         child.castShadow = true;
         child.receiveShadow = true;
-        child.material.metalness = Math.min(child.material.metalness || 0.45, 0.85);
-        child.material.roughness = Math.max(child.material.roughness || 0.3, 0.22);
+        child.material.metalness = Math.min(child.material.metalness || 0.3, 0.7);
+        child.material.roughness = Math.max(child.material.roughness || 0.35, 0.28);
       }
     });
 
@@ -130,254 +36,251 @@ function useNormalizedModel(path, targetDim) {
   }, [scene, targetDim]);
 }
 
-// -------------------------------------------------------------
-// COMPONENT 1: ARDUINO UNO (Left Upper Flank)
-// Kinematics: Lissajous Figure-8 Orbital Sweep + Mechanical Turntable Pitch
-// -------------------------------------------------------------
-function ArduinoUnoBoard({ targetDim, basePosition, mouseRef, isFocused }) {
-  const model = useNormalizedModel(getAssetUrl('arduino_uno.glb'), targetDim);
-  const groupRef = useRef();
+// Gentle Camera Parallax Rig: Smoothly shifts camera position with user's mouse
+function CameraParallaxRig({ mouseRef, focalPoint = [1.8, 0.1, 0] }) {
+  useFrame(({ camera }, delta) => {
+    // Smooth dampening of mouse parallax shift
+    const targetX = mouseRef.current.x * 0.7;
+    const targetY = mouseRef.current.y * 0.45;
 
-  useFrame((state, delta) => {
-    if (!groupRef.current) return;
-    const t = state.clock.getElapsedTime();
+    camera.position.x = THREE.MathUtils.damp(camera.position.x, targetX, 2.2, delta);
+    camera.position.y = THREE.MathUtils.damp(camera.position.y, targetY, 2.2, delta);
 
-    // Lissajous Figure-8 harmonic float
-    const lissajousX = Math.sin(t * 0.9) * 0.12;
-    const lissajousY = Math.sin(t * 1.8) * 0.13;
-    const lissajousZ = Math.cos(t * 0.9) * 0.08;
-
-    const mx = mouseRef.current.x;
-    const my = mouseRef.current.y;
-
-    const targetX = basePosition[0] + (isFocused ? 0.3 : 0) + lissajousX + mx * 0.22;
-    const targetY = basePosition[1] + (isFocused ? 0.25 : 0) + lissajousY - my * 0.22;
-    const targetZ = basePosition[2] + (isFocused ? 0.6 : 0) + lissajousZ;
-
-    groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, targetX, 3.5, delta);
-    groupRef.current.position.y = THREE.MathUtils.damp(groupRef.current.position.y, targetY, 3.5, delta);
-    groupRef.current.position.z = THREE.MathUtils.damp(groupRef.current.position.z, targetZ, 3.5, delta);
-
-    // Continuous turntable rotation with periodic chip-inspection tilt
-    groupRef.current.rotation.y += delta * (isFocused ? 0.45 : 0.26);
-
-    const pitchTilt = Math.sin(t * 1.1) * 0.12;
-    const rollTilt = Math.cos(t * 0.8) * 0.09;
-
-    groupRef.current.rotation.x = THREE.MathUtils.damp(
-      groupRef.current.rotation.x,
-      0.5 + pitchTilt - my * 0.2,
-      3.5,
-      delta
-    );
-    groupRef.current.rotation.z = THREE.MathUtils.damp(
-      groupRef.current.rotation.z,
-      0.05 + rollTilt + mx * 0.15,
-      3.5,
-      delta
-    );
-
-    const targetScale = isFocused ? 1.12 : 1.0;
-    groupRef.current.scale.setScalar(
-      THREE.MathUtils.damp(groupRef.current.scale.x, targetScale, 4, delta)
-    );
+    // Camera continuously aims toward focal center of the 3D hardware cluster
+    camera.lookAt(focalPoint[0], focalPoint[1], focalPoint[2]);
   });
 
-  return (
-    <group ref={groupRef} position={basePosition}>
-      <primitive object={model} />
-      <OrbitingEnergyHalo radius={1.2} color="#c8ff00" speed={0.9} tilt={[0.55, 0.2, 0]} />
-    </group>
-  );
+  return null;
 }
 
-// -------------------------------------------------------------
-// COMPONENT 2: ESP32 WROOM (Center Front Anchor)
-// Kinematics: Quantum Levitation Wave + Gyroscopic Precession + Pulsing Beacon
-// -------------------------------------------------------------
-function Esp32Board({ targetDim, basePosition, mouseRef, isFocused }) {
-  const model = useNormalizedModel(getAssetUrl('esp32_wroom_32_-_low_poly_photorealistic.glb'), targetDim);
-  const groupRef = useRef();
-  const beaconLightRef = useRef();
+// Elegant Micro-Orbit Precision Halo
+function PrecisionOrbitHalo({
+  radius = 1.3,
+  color = '#0052ff',
+  speed = 0.4,
+  tilt = [0.45, 0.1, 0],
+  tube = 0.007
+}) {
+  const haloRef = useRef();
 
   useFrame((state, delta) => {
-    if (!groupRef.current) return;
-    const t = state.clock.getElapsedTime();
-
-    // Compound magnetic levitation wave
-    const waveY = Math.sin(t * 1.4) * 0.12 + Math.cos(t * 0.7) * 0.04;
-    const waveX = Math.cos(t * 1.1) * 0.07;
-    const waveZ = Math.sin(t * 0.9) * 0.05;
-
-    const mx = mouseRef.current.x;
-    const my = mouseRef.current.y;
-
-    const targetX = basePosition[0] + waveX + mx * 0.3;
-    const targetY = basePosition[1] + (isFocused ? 0.35 : 0) + waveY - my * 0.3;
-    const targetZ = basePosition[2] + (isFocused ? 0.8 : 0) + waveZ;
-
-    groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, targetX, 3.8, delta);
-    groupRef.current.position.y = THREE.MathUtils.damp(groupRef.current.position.y, targetY, 3.8, delta);
-    groupRef.current.position.z = THREE.MathUtils.damp(groupRef.current.position.z, targetZ, 3.8, delta);
-
-    // Continuous high-tech spin with gyroscopic precession wobble
-    groupRef.current.rotation.y += delta * (isFocused ? 0.5 : 0.32);
-
-    const gyroPitch = Math.sin(t * 1.2) * 0.14;
-    const gyroRoll = Math.cos(t * 1.5) * 0.1;
-
-    groupRef.current.rotation.x = THREE.MathUtils.damp(
-      groupRef.current.rotation.x,
-      0.55 + gyroPitch - my * 0.22,
-      3.8,
-      delta
-    );
-    groupRef.current.rotation.z = THREE.MathUtils.damp(
-      groupRef.current.rotation.z,
-      0.15 + gyroRoll + mx * 0.18,
-      3.8,
-      delta
-    );
-
-    if (beaconLightRef.current) {
-      beaconLightRef.current.intensity = 2.5 + Math.sin(t * 3.5) * 1.8 + (isFocused ? 2.5 : 0);
+    if (haloRef.current) {
+      haloRef.current.rotation.z += delta * speed;
     }
-
-    const targetScale = isFocused ? 1.15 : 1.0;
-    groupRef.current.scale.setScalar(
-      THREE.MathUtils.damp(groupRef.current.scale.x, targetScale, 4, delta)
-    );
   });
 
   return (
-    <group ref={groupRef} position={basePosition}>
-      <primitive object={model} />
-      <OrbitingEnergyHalo radius={1.35} color="#00e5ff" speed={-1.1} tilt={[0.6, -0.3, 0.2]} />
-      <pointLight ref={beaconLightRef} position={[0, -0.2, 0.2]} color="#00e5ff" distance={6} />
+    <group rotation={tilt}>
+      <mesh ref={haloRef}>
+        <torusGeometry args={[radius, tube, 16, 64]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={0.28}
+        />
+      </mesh>
     </group>
   );
 }
 
-// -------------------------------------------------------------
-// COMPONENT 3: RASPBERRY PI (Right Upper Flank)
-// Kinematics: Aerodynamic Banking Glide Physics
-// -------------------------------------------------------------
-function RaspberryPiBoard({ targetDim, basePosition, mouseRef, isFocused }) {
-  const model = useNormalizedModel(getAssetUrl('raspberry_pi.glb'), targetDim);
+// Reusable Anti-Gravity Floating Hardware Board
+function AntiGravityBoard({
+  modelPath,
+  targetDim,
+  basePosition,
+  baseRotation = [0.45, 0, 0],
+  floatSpeed = 0.55,
+  floatAmplitude = 0.14,
+  rotSpeed = 0.18,
+  phaseOffset = 0,
+  haloColor = '#0052ff',
+  haloRadius = 1.3,
+  haloTilt = [0.5, 0.2, 0]
+}) {
+  const model = useNormalizedModel(modelPath, targetDim);
   const groupRef = useRef();
 
   useFrame((state, delta) => {
     if (!groupRef.current) return;
-    const t = state.clock.getElapsedTime();
+    const t = state.clock.getElapsedTime() + phaseOffset;
 
-    // Undulating flight glide
-    const flightX = Math.cos(t * 0.95) * 0.14;
-    const flightY = Math.sin(t * 1.3) * 0.13;
-    const flightZ = Math.sin(t * 0.7) * 0.1;
+    // Slow, weightless multi-harmonic anti-gravity vertical levitation
+    const levitateY =
+      Math.sin(t * floatSpeed) * floatAmplitude +
+      Math.cos(t * floatSpeed * 0.47) * (floatAmplitude * 0.35);
 
-    const mx = mouseRef.current.x;
-    const my = mouseRef.current.y;
+    // Subtle planar drifting
+    const driftX = Math.cos(t * floatSpeed * 0.65) * (floatAmplitude * 0.25);
+    const driftZ = Math.sin(t * floatSpeed * 0.52) * (floatAmplitude * 0.2);
 
-    const targetX = basePosition[0] - (isFocused ? 0.3 : 0) + flightX + mx * 0.25;
-    const targetY = basePosition[1] + (isFocused ? 0.25 : 0) + flightY - my * 0.25;
-    const targetZ = basePosition[2] + (isFocused ? 0.6 : 0) + flightZ;
+    const targetPosX = basePosition[0] + driftX;
+    const targetPosY = basePosition[1] + levitateY;
+    const targetPosZ = basePosition[2] + driftZ;
 
-    groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, targetX, 3.6, delta);
-    groupRef.current.position.y = THREE.MathUtils.damp(groupRef.current.position.y, targetY, 3.6, delta);
-    groupRef.current.position.z = THREE.MathUtils.damp(groupRef.current.position.z, targetZ, 3.6, delta);
+    groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, targetPosX, 3.0, delta);
+    groupRef.current.position.y = THREE.MathUtils.damp(groupRef.current.position.y, targetPosY, 3.0, delta);
+    groupRef.current.position.z = THREE.MathUtils.damp(groupRef.current.position.z, targetPosZ, 3.0, delta);
 
-    // Banking physics
-    const bankAngle = -Math.sin(t * 0.95) * 0.24;
-    const pitchWobble = Math.cos(t * 1.1) * 0.11;
+    // Continuous tranquil rotation
+    groupRef.current.rotation.y += delta * rotSpeed;
 
-    groupRef.current.rotation.y += delta * (isFocused ? 0.42 : 0.28);
+    // Gentle anti-gravity pitch & roll sway
+    const pitchSway = Math.sin(t * floatSpeed * 0.8) * 0.08;
+    const rollSway = Math.cos(t * floatSpeed * 0.6) * 0.06;
+
     groupRef.current.rotation.x = THREE.MathUtils.damp(
       groupRef.current.rotation.x,
-      0.45 + pitchWobble - my * 0.2,
-      3.6,
+      baseRotation[0] + pitchSway,
+      3.0,
       delta
     );
     groupRef.current.rotation.z = THREE.MathUtils.damp(
       groupRef.current.rotation.z,
-      0.12 + bankAngle + mx * 0.16,
-      3.6,
+      baseRotation[2] + rollSway,
+      3.0,
       delta
-    );
-
-    const targetScale = isFocused ? 1.12 : 1.0;
-    groupRef.current.scale.setScalar(
-      THREE.MathUtils.damp(groupRef.current.scale.x, targetScale, 4, delta)
     );
   });
 
   return (
-    <group ref={groupRef} position={basePosition}>
+    <group ref={groupRef} position={basePosition} rotation={baseRotation}>
       <primitive object={model} />
-      <OrbitingEnergyHalo radius={1.28} color="#ff3cac" speed={0.75} tilt={[0.45, 0.4, -0.1]} />
+      {haloColor && (
+        <PrecisionOrbitHalo
+          radius={haloRadius}
+          color={haloColor}
+          speed={rotSpeed * 2.2}
+          tilt={haloTilt}
+        />
+      )}
     </group>
   );
 }
 
-// Master Stage aggregating the Trio anchored on the right background
-function TrioHardwareStage({ mouseRef, activeTrackId }) {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 960;
-  const masterPosition = isMobile ? [0, 0.2, 0] : [2.2, 0.0, 0];
+// Precision CAD Blueprint Datum Rings on Studio Floor
+function StudioBlueprintDatum({ position = [1.8, -2.1, 0] }) {
+  const ringRef1 = useRef();
+  const ringRef2 = useRef();
+
+  useFrame((state, delta) => {
+    if (ringRef1.current) ringRef1.current.rotation.z += delta * 0.05;
+    if (ringRef2.current) ringRef2.current.rotation.z -= delta * 0.08;
+  });
 
   return (
-    <group position={masterPosition}>
-      {/* Studio Lighting Matrix */}
-      <ambientLight intensity={1.5} />
-      <directionalLight position={[6, 8, 7]} intensity={3.0} />
-      <directionalLight position={[-6, 4, -4]} intensity={2.2} color="#00e5ff" />
+    <group position={position} rotation={[-Math.PI / 2, 0, 0]}>
+      {/* Outer Precision Ring */}
+      <mesh ref={ringRef1}>
+        <ringGeometry args={[3.2, 3.22, 64]} />
+        <meshBasicMaterial color="#0052ff" transparent opacity={0.18} side={THREE.DoubleSide} />
+      </mesh>
 
-      {/* Tri-Color Specular Neon Accents */}
-      <pointLight position={[-1.6, 0.6, 2.5]} color="#c8ff00" intensity={4.2} distance={10} />
-      <pointLight position={[0, -1, 3]} color="#00e5ff" intensity={4.5} distance={12} />
-      <pointLight position={[1.6, 0.6, 2.5]} color="#ff3cac" intensity={4.2} distance={10} />
+      {/* Middle Reference Ring */}
+      <mesh ref={ringRef2}>
+        <ringGeometry args={[2.2, 2.22, 64]} />
+        <meshBasicMaterial color="#94a3b8" transparent opacity={0.22} side={THREE.DoubleSide} />
+      </mesh>
 
-      {/* Floating Micro-Sparks with Tri-Color Cyber Shimmer */}
-      <Sparkles count={40} scale={10} size={2.4} color="#c8ff00" opacity={0.65} speed={0.4} />
-      <Sparkles count={40} scale={10} size={2.2} color="#00e5ff" opacity={0.6} speed={0.4} />
-      <Sparkles count={30} scale={9} size={2.0} color="#ff3cac" opacity={0.5} speed={0.35} />
-
-      {/* 1. ESP32 WROOM (Center Front Anchor) */}
-      <Esp32Board
-        targetDim={isMobile ? 2.3 : 2.7}
-        basePosition={[0, -0.65, 0.7]}
-        mouseRef={mouseRef}
-        isFocused={activeTrackId === 'scholars'}
-      />
-
-      {/* 2. Arduino Uno (Left Upper Flank) */}
-      <ArduinoUnoBoard
-        targetDim={isMobile ? 2.0 : 2.4}
-        basePosition={[-1.4, 0.75, -0.2]}
-        mouseRef={mouseRef}
-        isFocused={activeTrackId === 'students'}
-      />
-
-      {/* 3. Raspberry Pi (Right Upper Flank) */}
-      <RaspberryPiBoard
-        targetDim={isMobile ? 2.1 : 2.5}
-        basePosition={[1.4, 0.7, -0.2]}
-        mouseRef={mouseRef}
-        isFocused={activeTrackId === 'startups'}
-      />
-
-      {/* Holographic Pedestal on the Floor */}
-      <HologramTrioRings
-        position={[0, isMobile ? -1.6 : -1.8, 0]}
-      />
+      {/* Soft Luminous Contact Shadow for Anti-Gravity Levitation Grounding */}
+      <mesh position={[0, 0, -0.02]}>
+        <circleGeometry args={[3.4, 64]} />
+        <meshBasicMaterial color="#090d16" transparent opacity={0.05} />
+      </mesh>
+      <mesh position={[0, 0, -0.01]}>
+        <circleGeometry args={[2.0, 48]} />
+        <meshBasicMaterial color="#0052ff" transparent opacity={0.03} />
+      </mesh>
     </group>
   );
 }
 
-export default function Hardware3DCanvas({ introStage = 'ready', activeTrackId = null }) {
+// Master Hardware Cluster with Anti-Gravity Float
+function AntiGravityHardwareScene({ mouseRef }) {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth <= 960 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 960);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Desktop focal placement: Cleanly grouped on right side, layered with natural depth
+  // Mobile: Centered composition
+  const clusterOffset = isMobile ? [-0.2, 0.1, 0] : [0, 0, 0];
+
+  return (
+    <>
+      {/* Dynamic Camera Parallax controller tracking user cursor */}
+      <CameraParallaxRig mouseRef={mouseRef} focalPoint={isMobile ? [0, 0, 0] : [1.8, 0.1, 0]} />
+
+      {/* Studio Daylight Lighting Matrix */}
+      <ambientLight intensity={1.65} color="#ffffff" />
+      <directionalLight position={[6, 12, 8]} intensity={2.6} color="#ffffff" />
+      <directionalLight position={[-6, 7, 5]} intensity={1.3} color="#f0f9ff" />
+      <directionalLight position={[2, -4, -6]} intensity={1.2} color="#0052ff" />
+
+      <group position={clusterOffset}>
+        {/* 1. ESP32 WROOM (Center Foreground Primary Anchor) */}
+        <AntiGravityBoard
+          modelPath={getAssetUrl('esp32_wroom_32_-_low_poly_photorealistic.glb')}
+          targetDim={isMobile ? 2.2 : 2.75}
+          basePosition={isMobile ? [0, -0.4, 0.4] : [1.8, -0.45, 0.7]}
+          baseRotation={[0.5, 0.2, 0.08]}
+          floatSpeed={0.52}
+          floatAmplitude={0.16}
+          rotSpeed={0.16}
+          phaseOffset={0}
+          haloColor="#0284c7"
+          haloRadius={1.42}
+          haloTilt={[0.55, -0.25, 0.15]}
+        />
+
+        {/* 2. Arduino Uno (Upper Left Flank - Depth Layer) */}
+        <AntiGravityBoard
+          modelPath={getAssetUrl('arduino_uno.glb')}
+          targetDim={isMobile ? 1.8 : 2.25}
+          basePosition={isMobile ? [-1.2, 0.8, -0.2] : [0.45, 0.95, -0.15]}
+          baseRotation={[0.42, -0.3, -0.05]}
+          floatSpeed={0.46}
+          floatAmplitude={0.14}
+          rotSpeed={0.14}
+          phaseOffset={2.4}
+          haloColor="#0052ff"
+          haloRadius={1.25}
+          haloTilt={[0.48, 0.35, -0.1]}
+        />
+
+        {/* 3. Raspberry Pi (Upper Right Flank - Depth Layer) */}
+        <AntiGravityBoard
+          modelPath={getAssetUrl('raspberry_pi.glb')}
+          targetDim={isMobile ? 1.9 : 2.35}
+          basePosition={isMobile ? [1.2, 0.75, -0.2] : [3.15, 0.85, -0.1]}
+          baseRotation={[0.44, 0.25, 0.1]}
+          floatSpeed={0.49}
+          floatAmplitude={0.15}
+          rotSpeed={0.15}
+          phaseOffset={4.8}
+          haloColor="#0052ff"
+          haloRadius={1.3}
+          haloTilt={[0.45, -0.3, 0.2]}
+        />
+
+        {/* Precision Blueprint Datum Floor */}
+        <StudioBlueprintDatum position={isMobile ? [0, -1.9, 0] : [1.8, -2.1, 0]} />
+      </group>
+    </>
+  );
+}
+
+export default function Hardware3DCanvas({ introStage = 'ready' }) {
   const mouseRef = useRef({ x: 0, y: 0 });
   const isRevealed = introStage === 'docking' || introStage === 'ready';
 
   useEffect(() => {
     const handleMouseMove = (e) => {
+      // Normalize mouse coordinates from -1 to +1
       mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouseRef.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
@@ -398,7 +301,7 @@ export default function Hardware3DCanvas({ introStage = 'ready', activeTrackId =
       }}
     >
       <Canvas
-        camera={{ position: [0, 0, 7.8], fov: 44 }}
+        camera={{ position: [0, 0, 7.8], fov: 42 }}
         gl={{
           antialias: true,
           alpha: true,
@@ -406,10 +309,7 @@ export default function Hardware3DCanvas({ introStage = 'ready', activeTrackId =
         }}
         style={{ pointerEvents: 'none' }}
       >
-        <TrioHardwareStage
-          mouseRef={mouseRef}
-          activeTrackId={activeTrackId}
-        />
+        <AntiGravityHardwareScene mouseRef={mouseRef} />
       </Canvas>
     </div>
   );

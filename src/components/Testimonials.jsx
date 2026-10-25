@@ -1,116 +1,164 @@
 import React from 'react';
+import { Star, ShieldCheck } from 'lucide-react';
 
 const reviews = [
   {
     initial: 'R',
     name: 'Rahul Sharma',
     role: 'Final Year B.Tech, ECE',
-    text: 'Protomates built my final year ESP32 IoT capstone project from schematic to working hardware. Their viva guidance and report documentation helped me achieve the top grade in my department!'
+    category: 'Student Capstone',
+    text: 'FSK built my final year ESP32 IoT capstone project from schematic to working hardware. Their viva guidance and 95-page thesis documentation helped me achieve the top grade in my department!'
   },
   {
     initial: 'P',
-    name: 'Priya Menon',
-    role: 'M.Tech Scholar, AI & Robotics',
-    gradient: 'linear-gradient(135deg, #00e5ff, #ff3cac)',
-    text: 'The Edge AI computer vision prototype they delivered on Jetson Nano was phenomenal. Clean Python code, optimized models, and crystal clear explanations for every algorithm.'
+    name: 'Dr. Priya Menon',
+    role: 'M.Tech / Postdoc Scholar, AI & Robotics',
+    category: 'Professional Scholar',
+    text: 'The Edge AI computer vision research testbed they implemented on Jetson Nano was mathematically rigorous and cleanly documented. The LaTeX manuscript and benchmark graphs sailed through IEEE reviewer evaluations.'
   },
   {
     initial: 'A',
     name: 'Arjun Reddy',
-    role: 'Founder, Nexus Hardware',
-    gradient: 'linear-gradient(135deg, #ff3cac, #c8ff00)',
-    text: 'Our startup needed a 4-layer custom PCB design template on an ultra tight deadline. Protomates delivered flawless KiCad schematics and Gerbers in record time with zero DRC errors.'
+    role: 'Co-Founder & CEO, Nexus Hardware',
+    category: 'Startup Founder',
+    text: 'Our startup needed a 4-layer custom PCB design template on an ultra tight deadline. FSK delivered flawless KiCad schematics and Gerbers in record time with zero DRC errors.'
   },
   {
     initial: 'M',
     name: 'Meera Krishna',
-    role: 'Engineering Student',
-    gradient: 'linear-gradient(135deg, #00e5ff, #c8ff00)',
-    text: 'The Arduino-based mechatronics project was assembled with military-grade neatness. Every sensor calibration and viva question was covered in detail. Truly life savers!'
+    role: 'Engineering Student, Mechatronics',
+    category: 'Student Capstone',
+    text: 'The Arduino-based mechatronics project was assembled with military-grade neatness. Every sensor calibration and viva question was covered in detail during our 1-on-1 prep sessions. Truly life savers!'
   },
   {
     initial: 'S',
     name: 'Saurabh Gupta',
-    role: 'Hardware Developer',
-    gradient: 'linear-gradient(135deg, #c8ff00, #00e5ff)',
-    text: 'Best project guidance team! They took time over screen shares to explain every line of embedded code and how each IC interacts on the PCB. Unmatched dedication.'
+    role: 'PhD Scholar, Biomedical Engineering',
+    category: 'Professional Scholar',
+    text: 'Best engineering support team! They took time over screen shares to explain every line of embedded code and how each IC interacts on the PCB. Formatted our Scopus journal paper with zero revisions needed.'
   },
   {
-    initial: 'K',
-    name: 'Kavya Iyer',
-    role: 'Research Fellow',
-    gradient: 'linear-gradient(135deg, #ff3cac, #00e5ff)',
-    text: 'From smart agriculture IoT to healthcare sensors, Protomates genuinely delivers prototypes across every field. The hardware finish and cloud telemetry dashboard were stunning.'
+    initial: 'V',
+    name: 'Vikram Joshi',
+    role: 'Founder, AgriTech Solutions',
+    category: 'Startup Founder',
+    text: 'From smart agriculture LoRaWAN IoT to cloud telemetry dashboards, FSK genuinely delivers prototypes across every field. We used this exact MVP to close our angel pre-seed round!'
   }
 ];
 
 export default function Testimonials() {
   return (
-    <section id="clients" style={{ background: 'var(--black)', overflow: 'hidden' }}>
+    <section id="clients" style={{ background: '#ffffff', borderTop: '1px solid #f1f5f9' }}>
       <div className="section-label">Client Stories &amp; Academic Reviews</div>
 
-      <div style={{ position: 'relative' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '40px' }}>
+        <div>
+          <h2 className="section-title" style={{ margin: 0 }}>
+            PROVEN TRACK RECORD
+          </h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', marginTop: '8px', maxWidth: '580px' }}>
+            Trusted by 150+ university students, doctoral researchers, and hardware startups worldwide.
+          </p>
+        </div>
+
         <div
           style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(6rem, 15vw, 16rem)',
-            color: 'transparent',
-            WebkitTextStroke: '1px rgba(200,255,0,0.2)',
-            lineHeight: 0.9,
-            userSelect: 'none'
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            background: '#f8fafc',
+            border: '1px solid #e2e8f0',
+            padding: '12px 20px',
+            borderRadius: '10px'
           }}
         >
-          <span style={{ WebkitTextStroke: '2px var(--accent)', color: 'transparent' }}>150</span>+
+          <div style={{ display: 'flex', gap: '3px', color: '#f59e0b' }}>
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} size={18} fill="#f59e0b" />
+            ))}
+          </div>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+            4.98 / 5.0 Rating
+          </span>
         </div>
-        <h2 className="section-title" style={{ marginTop: '-20px' }}>
-          PROVEN<br />SUCCESS
-        </h2>
       </div>
 
       <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '20px',
-          marginTop: '50px'
+          gap: '24px'
         }}
       >
         {reviews.map((rev, i) => (
           <div
             key={i}
             style={{
-              background: 'var(--card)',
-              border: '1px solid var(--border)',
-              padding: '36px',
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              borderRadius: '12px',
+              padding: '32px',
+              boxShadow: 'var(--shadow-sm)',
               position: 'relative',
-              overflow: 'hidden',
-              transition: 'border-color 0.3s'
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'rgba(200,255,0,0.3)')}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'var(--border)')}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'rgba(0, 82, 255, 0.35)';
+              e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+              e.currentTarget.style.transform = 'translateY(-3px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
           >
-            <div style={{ display: 'flex', gap: '4px', marginBottom: '18px', color: 'var(--accent)', fontSize: '0.9rem' }}>
-              {'★★★★★'}
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                <div style={{ display: 'flex', gap: '2px', color: '#f59e0b' }}>
+                  {[...Array(5)].map((_, idx) => (
+                    <Star key={idx} size={14} fill="#f59e0b" />
+                  ))}
+                </div>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.65rem',
+                    fontWeight: 700,
+                    letterSpacing: '1px',
+                    color: 'var(--accent)',
+                    background: 'rgba(0, 82, 255, 0.05)',
+                    padding: '3px 8px',
+                    borderRadius: '4px',
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  {rev.category}
+                </span>
+              </div>
+
+              <p style={{ fontSize: '0.94rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '24px' }}>
+                "{rev.text}"
+              </p>
             </div>
 
-            <p style={{ fontSize: '0.92rem', color: '#888', lineHeight: 1.85, marginBottom: '24px' }}>
-              "{rev.text}"
-            </p>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', borderTop: '1px solid var(--border)', paddingTop: '18px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', borderTop: '1px solid #f1f5f9', paddingTop: '18px' }}>
               <div
                 style={{
-                  width: '42px',
-                  height: '42px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '50%',
-                  background: rev.gradient || 'linear-gradient(135deg, var(--accent), var(--accent3))',
+                  background: 'linear-gradient(135deg, #0052ff, #0284c7)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontFamily: 'var(--font-display)',
-                  fontSize: '1.2rem',
-                  color: 'var(--black)',
-                  fontWeight: 'bold',
+                  fontSize: '1.1rem',
+                  color: '#ffffff',
+                  fontWeight: 700,
                   flexShrink: 0
                 }}
               >
@@ -118,10 +166,10 @@ export default function Testimonials() {
               </div>
 
               <div>
-                <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.95rem', fontWeight: 600, color: 'var(--white)' }}>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.94rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                   {rev.name}
                 </div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', letterSpacing: '1.5px', color: 'var(--gray)', textTransform: 'uppercase' }}>
+                <div style={{ fontSize: '0.78rem', color: '#64748b' }}>
                   {rev.role}
                 </div>
               </div>

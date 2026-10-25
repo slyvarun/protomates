@@ -1,4 +1,4 @@
-// Comprehensive project data and catalog for Protomates Lab
+// Comprehensive project data and catalog for FSK Prototyping Services
 import { getAssetUrl } from '../utils/assetUrl';
 
 export const AUDIENCE_PILLARS = [
@@ -104,7 +104,6 @@ export const ALL_PROTOTYPES = [
     category: 'PCB Designing & EDA CAD',
     badge: 'EDA / PCB',
     watermark: 'PCB',
-    img: getAssetUrl('pcb_design_template.jpg'),
     specs: 'Multi-layer routing • Impedance matching • SMD layout • Production Gerbers',
     desc: 'Professional multi-layer high-speed PCB template featuring impedance-controlled routing, FPGA/SoC integration, gold surface plating, and production Gerber files.',
     chips: ['Altium Designer', 'Multi-Layer Stackup', 'Impedance Matched', 'Production Gerbers', 'BOM Optimization'],
@@ -120,7 +119,6 @@ export const ALL_PROTOTYPES = [
     category: 'IoT Prototyping & Wireless',
     badge: 'ESP32 IoT',
     watermark: 'ESP32',
-    img: getAssetUrl('esp32_iot.jpg'),
     specs: 'Live OLED display • Dual-core Wi-Fi/BLE • Sensor bus • Real-time cloud sync',
     desc: 'Complete ESP32 IoT development prototype equipped with dual-core processing, OLED dashboard, I2C sensor fusion, Wi-Fi telemetry, and MQTT cloud sync.',
     chips: ['ESP32 WROOM', 'OLED Display', 'I2C Sensors', 'Wi-Fi & BLE', 'MQTT Cloud Sync', 'AWS IoT Core'],
@@ -136,7 +134,6 @@ export const ALL_PROTOTYPES = [
     category: 'Microcontroller Prototyping',
     badge: 'ARDUINO',
     watermark: 'ARDUINO',
-    img: getAssetUrl('arduino_prototype.jpg'),
     specs: 'Sensor shield • Servo control • 16x2 Telemetry LCD • Modular breadboard',
     desc: 'Precision Arduino Uno robotics and automation workbench featuring servo motors, digital sensor shields, telemetry LCD display, and real-time I/O control.',
     chips: ['Arduino Uno', 'Robotics Shield', 'Servo Actuator', 'Character LCD', 'Real-Time I/O'],
@@ -152,7 +149,6 @@ export const ALL_PROTOTYPES = [
     category: 'AI/ML Hardware Systems',
     badge: 'AI / ML',
     watermark: 'AI / ML',
-    img: getAssetUrl('aiml_hardware.jpg'),
     specs: 'On-device neural inference • Smart camera • Bounding box detection • ARM NPU',
     desc: 'Real-time edge artificial intelligence prototype running deep neural network inference with integrated camera module, Jetson/ARM processor, and live video analysis.',
     chips: ['Jetson Nano / ARM', 'Camera Module', 'Neural Network', 'Edge AI Inference', 'OpenCV', 'PyTorch'],
@@ -168,7 +164,6 @@ export const ALL_PROTOTYPES = [
     category: 'Academic Final Year Project',
     badge: 'ACADEMIC',
     watermark: 'CAPSTONE',
-    img: getAssetUrl('academic_prototype.jpg'),
     specs: 'Autonomous chassis • Custom PCB layout • Full project documentation • Viva prep',
     desc: 'IEEE-standard autonomous mobile robotics system complete with obstacle navigation, custom circuit shield, telemetry dashboard, full thesis report, and viva guide.',
     chips: ['IEEE Publication Standard', 'Custom PCB Shield', 'Telemetry Screen', 'Full Thesis & Viva', 'Ultrasonic Lidar'],
@@ -184,7 +179,6 @@ export const ALL_PROTOTYPES = [
     category: 'Multi-Domain Engineering',
     badge: 'ALL FIELDS',
     watermark: 'SYSTEM',
-    img: getAssetUrl('multifield_prototype.jpg'),
     specs: 'Multi-sensor array • Rugged IP65 enclosure • Solar battery management • LoRaWAN mesh',
     desc: 'End-to-end industrial IoT solution for environmental monitoring across agriculture, manufacturing plants, and smart cities with long-range telemetry.',
     chips: ['LoRaWAN / 4G', 'BME680 Environmental', 'Solar PMIC', 'Cloud Platform', 'IP65 Enclosure'],
@@ -200,7 +194,6 @@ export const ALL_PROTOTYPES = [
     category: 'Biomedical & Edge AI Research',
     badge: 'HEALTH AI',
     watermark: 'RESEARCH',
-    img: getAssetUrl('aiml_hardware.jpg'),
     specs: 'Low-power ECG/PPG sensors • On-device TinyML anomaly classification • Bluetooth Low Energy',
     desc: 'Advanced wearable research prototype for real-time arrhythmia detection using quantized edge neural networks. Backed by reproducible data and peer-review ready IEEE paper.',
     chips: ['STM32 TinyML', 'MAX30102 Biosensor', 'TensorFlow Lite Micro', 'BLE 5.2', 'LaTeX Paper'],
@@ -216,7 +209,6 @@ export const ALL_PROTOTYPES = [
     category: 'Academic Capstone Project',
     badge: 'AGRI IOT',
     watermark: 'ACADEMIC',
-    img: getAssetUrl('esp32_iot.jpg'),
     specs: 'NPK Soil sensors • LoRa long range • Deep sleep solar power • Mobile alert dashboard',
     desc: 'Turnkey final year agricultural automation project integrating NPK nutrient sensing, irrigation valve relay control, and cloud-synced Blynk/ThingsBoard telemetry.',
     chips: ['LoRa SX1278', 'Soil Moisture & NPK', 'ESP32 Low Power', 'Solar MPPT', 'Full Capstone Thesis'],
@@ -282,7 +274,7 @@ export const CLIENT_TESTIMONIALS = [
     name: 'Rahul Sharma',
     role: 'Final Year B.Tech, ECE',
     category: 'Student',
-    text: 'Protomates built my final year ESP32 IoT capstone project from schematic to working hardware. Their viva guidance and 95-page thesis documentation helped me achieve the top grade in my college department!'
+    text: 'FSK built my final year ESP32 IoT capstone project from schematic to working hardware. Their viva guidance and 95-page thesis documentation helped me achieve the top grade in my college department!'
   },
   {
     initial: 'D',
@@ -296,7 +288,7 @@ export const CLIENT_TESTIMONIALS = [
     name: 'Arjun Reddy',
     role: 'Co-Founder & CEO, Nexus Hardware',
     category: 'Startup Founder',
-    text: 'Our startup needed a 4-layer custom PCB design and functional IoT MVP on an ultra tight deadline. Protomates delivered flawless KiCad schematics, Gerbers, and investor documentation in just 3 weeks!'
+    text: 'Our startup needed a 4-layer custom PCB design and functional IoT MVP on an ultra tight deadline. FSK delivered flawless KiCad schematics, Gerbers, and investor documentation in just 3 weeks!'
   },
   {
     initial: 'M',
@@ -310,7 +302,7 @@ export const CLIENT_TESTIMONIALS = [
     name: 'Vikram Joshi',
     role: 'Founder, AgriTech Solutions',
     category: 'Startup Founder',
-    text: 'Protomates engineered our smart agricultural LoRaWAN field node prototype, enclosure 3D model, and cloud telemetry dashboard. We used this exact MVP to close our angel pre-seed round!'
+    text: 'FSK engineered our smart agricultural LoRaWAN field node prototype, enclosure 3D model, and cloud telemetry dashboard. We used this exact MVP to close our angel pre-seed round!'
   },
   {
     initial: 'S',

@@ -1,18 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Send,
-  MessageSquare,
-  Mail,
-  Phone,
-  Shield,
-  Clock,
-  CheckCircle2,
-  ChevronDown,
-  Sparkles,
-  ArrowRight,
-  FileText,
-  Lock
-} from 'lucide-react';
+import { CheckCircle2, ChevronDown } from 'lucide-react';
 
 const FAQS = [
   {
@@ -48,26 +35,28 @@ export default function ContactUs({ initialAudience = 'students' }) {
     phone: '',
     topic: ''
   });
-  const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-    if (initialAudience) {
-      setRole(initialAudience);
-    }
-  }, [initialAudience]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.name && !formData.phone) return;
     setIsSubmitting(true);
 
     const roleLabel =
-      role === 'students' ? 'Student (Academic Project)' : role === 'scholars' ? 'Professional Scholar' : 'Startup MVP';
+      role === 'students'
+        ? 'Students (Academic Project)'
+        : role === 'scholars'
+        ? 'Professional Scholars'
+        : 'Startup MVP';
 
     try {
-      await fetch('https://formsubmit.co/ajax/info.protomates@gmail.com', {
+      await fetch('https://formsubmit.co/ajax/consultant.fsk@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +67,7 @@ export default function ContactUs({ initialAudience = 'students' }) {
           phone: formData.phone,
           track: roleLabel,
           topic: formData.topic,
-          _subject: `New Protomates Project Inquiry from ${formData.name || 'Visitor'} [${roleLabel}]`,
+          _subject: `New FSK Project Inquiry from ${formData.name || 'Visitor'} [${roleLabel}]`,
           _template: 'table',
           _captcha: 'false'
         })
@@ -91,70 +80,70 @@ export default function ContactUs({ initialAudience = 'students' }) {
     }
   };
 
-
   return (
-    <div style={{ paddingTop: '100px', background: 'var(--black)', minHeight: '100vh', color: 'var(--white)' }}>
-      {/* Header */}
-      <section style={{ padding: '80px 48px 50px', position: 'relative', overflow: 'hidden' }}>
-        <div
-          style={{
-            position: 'absolute',
-            top: '-60px',
-            right: '-60px',
-            width: '600px',
-            height: '600px',
-            background: 'radial-gradient(circle, rgba(200, 255, 0, 0.08), transparent 70%)',
-            filter: 'blur(120px)',
-            pointerEvents: 'none'
-          }}
-        />
+    <div style={{ background: 'transparent', minHeight: '100vh', color: 'var(--text-primary)' }}>
+      {/* Hero Header */}
+      <section style={{ padding: '120px 48px 40px', background: 'transparent', position: 'relative' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', textAlign: 'left' }}>
+          <div className="section-label">Engineering Project Intake</div>
 
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div className="section-label">Initiate Engineering Consultation</div>
           <h1
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(3.5rem, 8vw, 8.5rem)',
-              lineHeight: 0.88,
-              letterSpacing: '2px',
-              marginBottom: '28px'
+              fontSize: 'clamp(2.6rem, 5.2vw, 4.4rem)',
+              fontWeight: 900,
+              lineHeight: 1.08,
+              letterSpacing: '-0.03em',
+              margin: '0 0 18px',
+              maxWidth: '920px',
+              color: 'var(--text-primary)'
             }}
           >
-            LET'S BUILD YOUR <br />
-            <span style={{ color: 'var(--accent)' }}>PROJECT &amp; PAPER</span>
+            <span>DISPATCH YOUR SPECIFICATIONS. </span>
+            <br />
+            <span style={{ color: 'var(--accent)' }}>WE DELIVER WORKING HARDWARE.</span>
           </h1>
 
-          <p style={{ fontSize: '1.12rem', color: '#aaa', lineHeight: 1.85, maxWidth: '800px', margin: 0 }}>
-            Share your project title, base paper abstract, or hardware MVP requirements. Our engineering leads will review your scope, provide a technical roadmap, and schedule a 1-on-1 discovery call within 2 hours.
+          <p
+            style={{
+              fontSize: '1.08rem',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.7,
+              maxWidth: '740px',
+              margin: '0 0 32px'
+            }}
+          >
+            Fill in your project topic, academic base paper, or custom MVP requirements. Our engineering team provides feasibility reviews and fixed BOM quotes within 2 hours.
           </p>
         </div>
       </section>
 
       {/* Main Content Area */}
-      <section style={{ padding: '40px 48px 90px', background: 'var(--dark)', borderTop: '1px solid var(--border)' }}>
+      <section style={{ padding: '40px 48px 90px', background: '#f8fafc', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
         <div
           style={{
             maxWidth: '1200px',
             margin: '0 auto',
+            width: '100%',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-            gap: '50px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+            gap: '32px',
             alignItems: 'start'
           }}
         >
           {/* Left Column: Interactive Project Inquiry Form */}
           <div
+            className="mobile-card-compact"
             style={{
-              background: '#0d0d12',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '12px',
-              padding: '40px',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8)'
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              borderRadius: '16px',
+              padding: 'clamp(20px, 4vw, 36px)',
+              boxShadow: 'var(--shadow-md)'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-              <Sparkles size={16} color="var(--accent)" />
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent)', letterSpacing: '1px', textTransform: 'uppercase' }}>
                 Engineering Intake Wizard
               </span>
             </div>
@@ -166,22 +155,22 @@ export default function ContactUs({ initialAudience = 'students' }) {
                     width: '64px',
                     height: '64px',
                     borderRadius: '50%',
-                    background: 'rgba(200, 255, 0, 0.1)',
-                    border: '1px solid var(--accent)',
-                    color: 'var(--accent)',
+                    background: 'rgba(5, 150, 105, 0.1)',
+                    border: '1px solid #059669',
+                    color: '#059669',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     margin: '0 auto 20px'
                   }}
                 >
-                  <CheckCircle2 size={36} />
+                  <CheckCircle2 size={34} />
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.4rem', color: 'var(--white)', marginBottom: '12px' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '12px' }}>
                   INTAKE RECEIVED!
                 </h3>
-                <p style={{ color: '#aaa', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '28px' }}>
-                  Thank you, <strong style={{ color: 'var(--white)' }}>{formData.name || 'Innovator'}</strong>. Your project specifications have been dispatched to <strong style={{ color: 'var(--accent)' }}>info.protomates@gmail.com</strong>. Our engineering leads will review your scope and follow up promptly.
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '28px' }}>
+                  Thank you, <strong style={{ color: 'var(--text-primary)' }}>{formData.name || 'Innovator'}</strong>. Your project specifications have been dispatched to our engineering leads. We will review your scope and follow up promptly.
                 </p>
 
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -205,7 +194,8 @@ export default function ContactUs({ initialAudience = 'students' }) {
                     style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: '0.7rem',
-                      letterSpacing: '1.5px',
+                      fontWeight: 700,
+                      letterSpacing: '1px',
                       color: 'var(--accent)',
                       textTransform: 'uppercase',
                       display: 'block',
@@ -225,30 +215,30 @@ export default function ContactUs({ initialAudience = 'students' }) {
                         key={p.id}
                         onClick={() => setRole(p.id)}
                         style={{
-                          background: role === p.id ? 'var(--accent)' : 'rgba(255, 255, 255, 0.03)',
-                          color: role === p.id ? 'var(--black)' : '#bbb',
-                          border: role === p.id ? '1px solid var(--accent)' : '1px solid var(--border)',
+                          background: role === p.id ? 'var(--accent)' : '#f8fafc',
+                          color: role === p.id ? '#ffffff' : 'var(--text-secondary)',
+                          border: role === p.id ? '1px solid var(--accent)' : '1px solid #e2e8f0',
                           padding: '10px 8px',
-                          borderRadius: '4px',
-                          fontFamily: 'var(--font-mono)',
-                          fontSize: '0.74rem',
-                          fontWeight: role === p.id ? '700' : '400',
+                          borderRadius: '8px',
+                          fontFamily: 'var(--font-body)',
+                          fontSize: '0.78rem',
+                          fontWeight: role === p.id ? '700' : '500',
                           cursor: 'pointer',
                           transition: 'all 0.2s',
                           textAlign: 'center'
                         }}
                       >
                         <div>{p.label}</div>
-                        <div style={{ fontSize: '0.62rem', opacity: 0.8 }}>{p.sub}</div>
+                        <div style={{ fontSize: '0.62rem', opacity: 0.85 }}>{p.sub}</div>
                       </button>
                     ))}
                   </div>
                 </div>
 
                 {/* 2. Name & Phone */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '14px' }}>
                   <div>
-                    <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', letterSpacing: '1px', color: '#999', display: 'block', marginBottom: '6px' }}>
+                    <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>
                       Your Name
                     </label>
                     <input
@@ -260,10 +250,10 @@ export default function ContactUs({ initialAudience = 'students' }) {
                       style={{
                         width: '100%',
                         padding: '12px 14px',
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        border: '1px solid rgba(255, 255, 255, 0.12)',
-                        borderRadius: '4px',
-                        color: 'var(--white)',
+                        background: '#ffffff',
+                        border: '1px solid #cbd5e1',
+                        borderRadius: '8px',
+                        color: 'var(--text-primary)',
                         fontSize: '0.88rem',
                         outline: 'none'
                       }}
@@ -271,22 +261,22 @@ export default function ContactUs({ initialAudience = 'students' }) {
                   </div>
 
                   <div>
-                    <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', letterSpacing: '1px', color: '#999', display: 'block', marginBottom: '6px' }}>
+                    <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>
                       Contact Email / Phone
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Your email or contact..."
+                      placeholder="Your email or phone..."
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       style={{
                         width: '100%',
                         padding: '12px 14px',
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        border: '1px solid rgba(255, 255, 255, 0.12)',
-                        borderRadius: '4px',
-                        color: 'var(--white)',
+                        background: '#ffffff',
+                        border: '1px solid #cbd5e1',
+                        borderRadius: '8px',
+                        color: 'var(--text-primary)',
                         fontSize: '0.88rem',
                         outline: 'none'
                       }}
@@ -296,7 +286,7 @@ export default function ContactUs({ initialAudience = 'students' }) {
 
                 {/* 3. Project Topic or Scope */}
                 <div>
-                  <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', letterSpacing: '1px', color: '#999', display: 'block', marginBottom: '6px' }}>
+                  <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>
                     Project Topic / Paper Details
                   </label>
                   <textarea
@@ -308,10 +298,10 @@ export default function ContactUs({ initialAudience = 'students' }) {
                     style={{
                       width: '100%',
                       padding: '12px 14px',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.12)',
-                      borderRadius: '4px',
-                      color: 'var(--white)',
+                      background: '#ffffff',
+                      border: '1px solid #cbd5e1',
+                      borderRadius: '8px',
+                      color: 'var(--text-primary)',
                       fontSize: '0.88rem',
                       outline: 'none',
                       resize: 'vertical',
@@ -329,90 +319,87 @@ export default function ContactUs({ initialAudience = 'students' }) {
                     width: '100%',
                     justifyContent: 'center',
                     padding: '14px',
-                    fontSize: '0.82rem',
+                    fontSize: '0.85rem',
                     cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                    marginTop: '6px',
                     opacity: isSubmitting ? 0.7 : 1
                   }}
                 >
                   {isSubmitting ? (
-                    <>Sending to info.protomates@gmail.com...</>
+                    <>Sending to consultant.fsk@gmail.com...</>
                   ) : (
-                    <>Submit Inquiry To Engineering Team <Send size={15} /></>
+                    <>Submit Inquiry To Engineering Team</>
                   )}
                 </button>
               </form>
             )}
           </div>
 
-          {/* Right Column: Fast-Track Channels, Guarantee Badges & Contact Cards */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+          {/* Right Column: Direct Channels & Guarantees */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {/* Direct Instant Channels Card */}
             <div
               style={{
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '10px',
-                padding: '36px'
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                borderRadius: '16px',
+                padding: '32px',
+                boxShadow: 'var(--shadow-sm)'
               }}
             >
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--white)', marginBottom: '16px' }}>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '12px' }}>
                 DIRECT FAST CHANNELS
               </h3>
-              <p style={{ color: '#888', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '24px' }}>
+              <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '20px' }}>
                 Need immediate answers regarding base paper viability, hardware parts availability, or an urgent viva timeline? Reach out directly.
               </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <a
-                  href="mailto:info.protomates@gmail.com"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '14px',
-                    padding: '16px 20px',
-                    background: 'rgba(0, 229, 255, 0.05)',
-                    border: '1px solid rgba(0, 229, 255, 0.2)',
-                    borderRadius: '6px',
-                    color: 'var(--white)',
-                    textDecoration: 'none',
-                    transition: 'all 0.2s'
-                  }}
-                >
-                  <Mail size={24} color="#00e5ff" />
-                  <div>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: '#00e5ff', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                      Formal Scope Documents &amp; Papers
-                    </div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: '600' }}>info.protomates@gmail.com</div>
+              <a
+                href="mailto:consultant.fsk@gmail.com"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '14px',
+                  padding: '16px 20px',
+                  background: 'rgba(0, 82, 255, 0.05)',
+                  border: '1px solid rgba(0, 82, 255, 0.2)',
+                  borderRadius: '10px',
+                  color: 'var(--text-primary)',
+                  textDecoration: 'none'
+                }}
+              >
+                <div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--accent)', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                    Formal Scope Documents &amp; Papers
                   </div>
-                </a>
-              </div>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 600 }}>consultant.fsk@gmail.com</div>
+                </div>
+              </a>
             </div>
 
             {/* Lab Guarantees Card */}
             <div
               style={{
-                background: 'linear-gradient(145deg, #111116, #0a0a0e)',
-                border: '1px solid rgba(200, 255, 0, 0.2)',
-                borderRadius: '10px',
-                padding: '30px'
+                background: '#ffffff',
+                border: '1px solid #e2e8f0',
+                borderRadius: '16px',
+                padding: '32px',
+                boxShadow: 'var(--shadow-sm)'
               }}
             >
-              <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>
-                Protomates Client Protections
+              <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--accent)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '18px', fontWeight: 700 }}>
+                FSK Client Protections
               </h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 {[
                   { title: '100% Non-Disclosure Agreement (NDA)', desc: 'Your project ideas, proprietary datasets, and patents are legally protected.' },
                   { title: 'Physical Hardware Video Verification', desc: 'Watch your assembled device function live before final doorstep dispatch.' },
                   { title: 'Zero Plagiarism University Guarantee', desc: 'Every thesis and paper is authored from scratch with original diagrams.' }
                 ].map((g, i) => (
-                  <div key={i} style={{ display: 'flex', gap: '10px' }}>
-                    <Shield size={18} color="var(--accent)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <div key={i} style={{ display: 'flex', gap: '12px' }}>
+                    <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '0.95rem', lineHeight: 1.4 }}>—</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.85rem' }}>{g.title}</strong>
-                      <p style={{ margin: '2px 0 0', fontSize: '0.78rem', color: '#888' }}>{g.desc}</p>
+                      <strong style={{ color: 'var(--text-primary)', fontSize: '0.88rem' }}>{g.title}</strong>
+                      <p style={{ margin: '2px 0 0', fontSize: '0.8rem', color: '#64748b' }}>{g.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -423,27 +410,26 @@ export default function ContactUs({ initialAudience = 'students' }) {
       </section>
 
       {/* FAQ Accordion Section */}
-      <section style={{ padding: '80px 48px', background: 'var(--black)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <div className="section-label" style={{ justifyContent: 'center' }}>
-            Frequently Answered Questions
-          </div>
-          <h2 className="section-title" style={{ textAlign: 'center' }}>
+      <section style={{ padding: '80px 48px', background: '#ffffff' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+          <div className="section-label">Frequently Answered Questions</div>
+          <h2 className="section-title">
             EVERYTHING YOU NEED <br />
             <span style={{ color: 'var(--accent)' }}>TO KNOW</span>
           </h2>
 
-          <div style={{ marginTop: '48px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ maxWidth: '960px', marginTop: '36px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {FAQS.map((faq, idx) => {
               const isOpen = activeFaq === idx;
               return (
                 <div
                   key={idx}
                   style={{
-                    background: 'rgba(255, 255, 255, 0.02)',
-                    border: isOpen ? '1px solid rgba(200, 255, 0, 0.4)' : '1px solid rgba(255, 255, 255, 0.07)',
-                    borderRadius: '8px',
+                    background: '#ffffff',
+                    border: isOpen ? '1px solid var(--accent)' : '1px solid #e2e8f0',
+                    borderRadius: '10px',
                     overflow: 'hidden',
+                    boxShadow: 'var(--shadow-sm)',
                     transition: 'border-color 0.2s'
                   }}
                 >
@@ -451,10 +437,10 @@ export default function ContactUs({ initialAudience = 'students' }) {
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
                     style={{
                       width: '100%',
-                      padding: '22px 28px',
+                      padding: '20px 24px',
                       background: 'transparent',
                       border: 'none',
-                      color: 'var(--white)',
+                      color: 'var(--text-primary)',
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
@@ -463,9 +449,9 @@ export default function ContactUs({ initialAudience = 'students' }) {
                       gap: '16px'
                     }}
                   >
-                    <span style={{ fontSize: '1rem', fontWeight: '600' }}>{faq.q}</span>
+                    <span style={{ fontSize: '0.98rem', fontWeight: 600 }}>{faq.q}</span>
                     <ChevronDown
-                      size={20}
+                      size={18}
                       color="var(--accent)"
                       style={{
                         transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -476,7 +462,7 @@ export default function ContactUs({ initialAudience = 'students' }) {
                   </button>
 
                   {isOpen && (
-                    <div style={{ padding: '0 28px 24px', color: '#aaa', fontSize: '0.92rem', lineHeight: 1.8 }}>
+                    <div style={{ padding: '0 24px 20px', color: '#64748b', fontSize: '0.92rem', lineHeight: 1.7 }}>
                       {faq.a}
                     </div>
                   )}

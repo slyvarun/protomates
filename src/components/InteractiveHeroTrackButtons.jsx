@@ -1,21 +1,29 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 
 const TRACKS = [
   {
     id: 'students',
+    trackNum: '01',
     role: 'Students',
-    subtitle: 'Academic Capstones & Degrees'
+    badge: 'Capstones & Degrees',
+    subtitle: 'Flawless hardware + viva defense',
+    accent: '#0052ff'
   },
   {
     id: 'scholars',
-    role: 'Professional Scholars',
-    subtitle: 'Research Simulations & Papers'
+    trackNum: '02',
+    role: 'Scholars & PhDs',
+    badge: 'SCI / Scopus Papers',
+    subtitle: 'Empirical hardware & simulations',
+    accent: '#0284c7'
   },
   {
     id: 'startups',
+    trackNum: '03',
     role: 'Startup Founders',
-    subtitle: 'Commercial Turnkey MVPs'
+    badge: 'Commercial MVPs',
+    subtitle: 'Turnkey PCBs & investor demos',
+    accent: '#059669'
   }
 ];
 
@@ -30,11 +38,11 @@ export default function InteractiveHeroTrackButtons({ onNavigate }) {
 
   return (
     <div style={{ width: '100%', position: 'relative' }}>
-      {/* Three Direct Track Selector Buttons */}
+      {/* Three Direct Track Selector Cards - Pure Typography, No Icons */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
           gap: '14px'
         }}
       >
@@ -44,81 +52,83 @@ export default function InteractiveHeroTrackButtons({ onNavigate }) {
             key={track.id}
             onClick={() => handleTrackAction(track.id)}
             style={{
-              background: 'rgba(14, 14, 20, 0.75)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '8px',
-              padding: '20px 22px',
+              background: '#ffffff',
+              border: '1px solid #e2e8f0',
+              borderRadius: '10px',
+              padding: '16px 20px',
               cursor: 'pointer',
-              backdropFilter: 'blur(20px)',
               textAlign: 'left',
               position: 'relative',
-              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+              transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              minHeight: '110px'
+              minHeight: '105px',
+              boxShadow: '0 2px 8px rgba(15, 23, 42, 0.03)'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.35)';
-              e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.05)';
-              e.currentTarget.style.background = 'rgba(22, 22, 30, 0.9)';
+              e.currentTarget.style.borderColor = track.accent;
+              e.currentTarget.style.boxShadow = `0 10px 24px -4px rgba(0, 82, 255, 0.14), 0 0 0 1px ${track.accent}`;
               e.currentTarget.style.transform = 'translateY(-2px)';
-              const arrow = e.currentTarget.querySelector('.track-arrow');
-              if (arrow) {
-                arrow.style.transform = 'translateX(4px)';
-                arrow.style.color = '#ffffff';
-              }
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-              e.currentTarget.style.boxShadow = 'none';
-              e.currentTarget.style.background = 'rgba(14, 14, 20, 0.75)';
+              e.currentTarget.style.borderColor = '#e2e8f0';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(15, 23, 42, 0.03)';
               e.currentTarget.style.transform = 'translateY(0)';
-              const arrow = e.currentTarget.querySelector('.track-arrow');
-              if (arrow) {
-                arrow.style.transform = 'translateX(0)';
-                arrow.style.color = '#777777';
-              }
             }}
           >
             <div
               style={{
                 display: 'flex',
-                alignItems: 'flex-start',
+                alignItems: 'center',
                 justifyContent: 'space-between',
-                gap: '12px',
                 width: '100%',
-                marginBottom: '10px'
+                marginBottom: '8px'
               }}
             >
-              <div
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    color: track.accent,
+                    letterSpacing: '1px'
+                  }}
+                >
+                  {track.trackNum} //
+                </span>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '1.05rem',
+                    fontWeight: 800,
+                    color: '#090d16',
+                    letterSpacing: '-0.01em'
+                  }}
+                >
+                  {track.role}
+                </span>
+              </div>
+
+              <span
                 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '1.65rem',
-                  letterSpacing: '1px',
-                  color: 'var(--white)',
-                  lineHeight: 1.1
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.62rem',
+                  fontWeight: 600,
+                  padding: '3px 8px',
+                  borderRadius: '4px',
+                  background: '#f8fafc',
+                  color: track.accent,
+                  border: '1px solid #e2e8f0',
+                  whiteSpace: 'nowrap'
                 }}
               >
-                {track.role}
-              </div>
-              <ArrowRight
-                size={16}
-                color="#777777"
-                className="track-arrow"
-                style={{ transition: 'all 0.2s ease', flexShrink: 0, marginTop: '4px' }}
-              />
+                {track.badge}
+              </span>
             </div>
 
-            <div
-              style={{
-                fontSize: '0.78rem',
-                color: '#94a3b8',
-                fontFamily: 'var(--font-mono)',
-                letterSpacing: '0.5px',
-                lineHeight: 1.4
-              }}
-            >
+            <div style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.4 }}>
               {track.subtitle}
             </div>
           </button>

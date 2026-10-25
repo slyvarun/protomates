@@ -1,4 +1,5 @@
 import React from 'react';
+import { Mail, ArrowRight, ShieldCheck, Clock, CheckCircle } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -8,15 +9,16 @@ export default function Contact() {
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',
-        padding: '140px 48px',
-        background: 'var(--black)'
+        padding: '120px 48px',
+        background: '#f8fafc',
+        borderTop: '1px solid #e2e8f0'
       }}
     >
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'radial-gradient(ellipse at center, rgba(200,255,0,0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(0, 82, 255, 0.05) 0%, transparent 70%)',
           pointerEvents: 'none'
         }}
       />
@@ -26,41 +28,64 @@ export default function Contact() {
       </div>
 
       <h2 className="section-title">
-        LET'S BUILD SOMETHING <span style={{ color: 'var(--accent)' }}>CUTTING-EDGE</span>
+        LET'S ENGINEER YOUR <span style={{ color: 'var(--accent)' }}>NEXT PROTOTYPE</span>
       </h2>
 
-      <p style={{ fontSize: '1.05rem', color: '#888', margin: '24px auto 40px', maxWidth: '600px', lineHeight: 1.8 }}>
-        Have an upcoming academic project, custom PCB design, IoT device, or AI/ML system requirement? Connect with Protomates today and transform your concept into a high-performance prototype.
+      <p style={{ fontSize: '1.08rem', color: 'var(--text-secondary)', margin: '16px auto 36px', maxWidth: '640px', lineHeight: 1.8 }}>
+        Have an upcoming academic capstone, custom PCB design, IoT node, or SCI/Scopus research simulation? Connect with FSK engineers today and turn your concept into physical working hardware.
       </p>
 
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
-        <a href="mailto:info.protomates@gmail.com" className="btn-primary">
-          Email Your Requirement <span>✉</span>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', position: 'relative', zIndex: 1, marginBottom: '36px' }}>
+        <a href="mailto:consultant.fsk@gmail.com" className="btn-primary">
+          <Mail size={16} /> Email Your Requirement
         </a>
         <a href="#services" className="btn-ghost">
-          <span className="arrow" /> Review Offerings
+          Review Offerings <ArrowRight size={16} />
         </a>
       </div>
 
-      <a
-        href="mailto:info.protomates@gmail.com"
+      <div
         style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.6rem, 3.8vw, 3.2rem)',
-          color: 'var(--white)',
-          textDecoration: 'none',
-          letterSpacing: '4px',
-          display: 'inline-block',
-          marginTop: '36px',
-          transition: 'color 0.3s',
-          position: 'relative',
-          zIndex: 1
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '24px',
+          background: '#ffffff',
+          border: '1px solid #e2e8f0',
+          padding: '12px 28px',
+          borderRadius: '999px',
+          boxShadow: 'var(--shadow-sm)',
+          fontSize: '0.84rem',
+          color: '#64748b'
         }}
-        onMouseEnter={(e) => (e.target.style.color = 'var(--accent)')}
-        onMouseLeave={(e) => (e.target.style.color = 'var(--white)')}
       >
-        info.protomates@gmail.com
-      </a>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-primary)', fontWeight: 600 }}>
+          <Clock size={15} color="var(--accent)" /> Average Review &lt; 2 Hours
+        </span>
+        <span>•</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <ShieldCheck size={15} color="#059669" /> 100% NDA Protected
+        </span>
+      </div>
+
+      <div style={{ marginTop: '28px' }}>
+        <a
+          href="mailto:consultant.fsk@gmail.com"
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '1.25rem',
+            color: 'var(--accent)',
+            textDecoration: 'none',
+            fontWeight: 700,
+            letterSpacing: '1px',
+            display: 'inline-block',
+            transition: 'opacity 0.2s'
+          }}
+          onMouseEnter={(e) => (e.target.style.opacity = '0.8')}
+          onMouseLeave={(e) => (e.target.style.opacity = '1')}
+        >
+          consultant.fsk@gmail.com
+        </a>
+      </div>
     </section>
   );
 }

@@ -1,117 +1,130 @@
-import React from 'react';
-import Hardware3DCanvas from './Hardware3DCanvas';
+import React, { useState, useEffect } from 'react';
 import InteractiveHeroTrackButtons from './InteractiveHeroTrackButtons';
+import AuraDoodlesInfinity from './AuraDoodlesInfinity';
 
-export default function Hero({ introStage = 'ready', onReplayIntro, onNavigate }) {
-  const isRevealed = introStage === 'docking' || introStage === 'ready';
+export default function Hero({ onNavigate }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <section
       id="home"
       style={{
-        height: '100vh',
-        maxHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        padding: '0 54px',
+        justifyContent: 'flex-start',
+        padding: isMobile ? '80px 18px 50px' : '120px 48px 80px',
         position: 'relative',
         overflow: 'hidden',
-        background: 'radial-gradient(ellipse 90% 80% at 20% 50%, rgba(12, 14, 22, 0.95) 0%, #030305 100%)'
+        background: 'transparent',
+        minHeight: isMobile ? 'auto' : 'calc(100vh - 90px)'
       }}
     >
-      {/* Studio 3D Hardware Canvas Stage */}
-      <Hardware3DCanvas introStage={introStage} />
+      {/* BACKGROUND: AURA DOODLES INFINITY (Luminous Glow + Floating Infinity Loops) */}
+      <AuraDoodlesInfinity interactive={!isMobile} />
 
-      {/* Atmospheric Subtle Studio Glows */}
+      {/* Subtle Precision Grid Overlay */}
       <div
         style={{
           position: 'absolute',
-          top: '-10%',
-          right: '15%',
-          width: '550px',
-          height: '550px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0, 229, 255, 0.08), transparent 70%)',
-          filter: 'blur(120px)',
+          inset: 0,
+          backgroundImage:
+            'radial-gradient(circle at 1px 1px, rgba(0, 82, 255, 0.04) 1px, transparent 0)',
+          backgroundSize: '32px 32px',
           pointerEvents: 'none',
-          zIndex: 0,
-          opacity: isRevealed ? 1 : 0,
-          transition: 'opacity 0.8s ease'
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '10%',
-          left: '5%',
-          width: '450px',
-          height: '450px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(200, 255, 0, 0.07), transparent 70%)',
-          filter: 'blur(120px)',
-          pointerEvents: 'none',
-          zIndex: 0,
-          opacity: isRevealed ? 1 : 0,
-          transition: 'opacity 0.8s ease'
+          zIndex: 0
         }}
       />
 
-      {/* 
-        Hero Content:
-        Revealed gracefully when intro completes.
-        Balanced typography with the 3D hardware stage on the right.
-      */}
+      {/* Unified 1200px Master Entrance Container */}
       <div
         style={{
           position: 'relative',
           zIndex: 2,
-          maxWidth: '750px',
+          maxWidth: '1200px',
           width: '100%',
-          opacity: isRevealed ? 1 : 0,
-          transform: isRevealed ? 'translateY(0)' : 'translateY(24px)',
-          visibility: isRevealed ? 'visible' : 'hidden',
-          pointerEvents: isRevealed ? 'auto' : 'none',
-          transition:
-            'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.15s'
+          margin: '0 auto',
+          textAlign: 'left'
         }}
       >
+        <div className="section-label">Engineering Prototyping Laboratory</div>
 
         {/* Master Heading */}
         <h1
           style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.4rem, 5.2vw, 5.2rem)',
-            lineHeight: 0.92,
-            letterSpacing: '2px',
-            margin: '0 0 12px'
+            fontSize: isMobile ? 'clamp(1.9rem, 7.2vw, 2.8rem)' : 'clamp(2.6rem, 5.2vw, 4.4rem)',
+            fontWeight: 900,
+            lineHeight: 1.08,
+            letterSpacing: '-0.03em',
+            margin: '0 0 16px',
+            maxWidth: '920px',
+            color: 'var(--text-primary)'
           }}
         >
-          <span style={{ display: 'block', color: 'var(--white)' }}>WE BUILD HARDWARE.</span>
-          <span
-            style={{
-              display: 'block',
-              WebkitTextStroke: '1px rgba(255,255,255,0.7)',
-              color: 'transparent'
-            }}
-          >
-            WE WRITE PAPERS.
-          </span>
-          <span style={{ display: 'block', color: 'var(--accent)' }}>FOR THREE INNOVATORS.</span>
+          <span>WE BUILD HARDWARE. </span>
+          <span style={{ color: '#475569' }}>WE AUTHOR PAPERS. </span>
+          <br />
+          <span style={{ color: 'var(--accent)' }}>FOR THREE INNOVATORS.</span>
         </h1>
 
         {/* Crisp Subtitle */}
         <p
           style={{
-            fontSize: '0.92rem',
-            color: '#aaa',
-            lineHeight: 1.6,
-            maxWidth: '560px',
-            margin: '0 0 16px'
+            fontSize: isMobile ? '0.94rem' : '1.08rem',
+            color: 'var(--text-secondary)',
+            lineHeight: 1.65,
+            maxWidth: '740px',
+            margin: isMobile ? '0 0 24px' : '0 0 32px'
           }}
         >
-          Physical working prototypes, custom PCBs, and university/research-grade documentation. Select your technical track below:
+          <span>Physical working prototypes, custom multi-layer PCBs, and research-grade documentation. </span>
+          <span className="mobile-hide">Zero breadboard spaghetti — select your specialized engineering track:</span>
         </p>
+
+        {/* Action Buttons */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '12px',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            marginBottom: isMobile ? '32px' : '48px'
+          }}
+        >
+          <button
+            onClick={() => (onNavigate ? onNavigate('contact') : (window.location.hash = '#contact'))}
+            className="btn-primary"
+            style={{
+              cursor: 'pointer',
+              padding: isMobile ? '12px 22px' : '14px 28px',
+              fontSize: isMobile ? '0.85rem' : '0.92rem',
+              fontWeight: 700
+            }}
+          >
+            Initiate Project Intake
+          </button>
+          <button
+            onClick={() => (onNavigate ? onNavigate('services') : (window.location.hash = '#services'))}
+            className="btn-ghost"
+            style={{
+              cursor: 'pointer',
+              border: '1px solid #cbd5e1',
+              color: '#090d16',
+              padding: isMobile ? '12px 20px' : '14px 24px',
+              fontSize: isMobile ? '0.85rem' : '0.92rem',
+              fontWeight: 600
+            }}
+          >
+            Browse 40+ Prototypes
+          </button>
+        </div>
 
         {/* Three Direct Track Selector Modules */}
         <InteractiveHeroTrackButtons onNavigate={onNavigate} />

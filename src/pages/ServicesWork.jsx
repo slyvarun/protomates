@@ -1,24 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ALL_PROTOTYPES, CORE_OFFERINGS, AUDIENCE_PILLARS } from '../data/projectData';
+import { ALL_PROTOTYPES, CORE_OFFERINGS } from '../data/projectData';
 import PrototypeModal from '../components/PrototypeModal';
-import {
-  Cpu,
-  Wifi,
-  GraduationCap,
-  Brain,
-  Compass,
-  Layers,
-  Rocket,
-  Microscope,
-  CheckCircle2,
-  FileText,
-  Package,
-  ArrowRight,
-  Sparkles,
-  Search,
-  Filter,
-  Eye
-} from 'lucide-react';
 
 export default function ServicesWork({ onNavigate }) {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -40,25 +22,6 @@ export default function ServicesWork({ onNavigate }) {
     return true;
   });
 
-  const getCoreIcon = (name) => {
-    switch (name) {
-      case 'Cpu':
-        return <Cpu size={26} />;
-      case 'Wifi':
-        return <Wifi size={26} />;
-      case 'GraduationCap':
-        return <GraduationCap size={26} />;
-      case 'Brain':
-        return <Brain size={26} />;
-      case 'Compass':
-        return <Compass size={26} />;
-      case 'Rocket':
-        return <Rocket size={26} />;
-      default:
-        return <Layers size={26} />;
-    }
-  };
-
   const handleInquireFromModal = (audienceId) => {
     setSelectedPrototype(null);
     if (onNavigate) {
@@ -69,48 +32,75 @@ export default function ServicesWork({ onNavigate }) {
   };
 
   return (
-    <div style={{ paddingTop: '100px', background: 'var(--black)', minHeight: '100vh', color: 'var(--white)' }}>
+    <div style={{ background: 'transparent', minHeight: '100vh', color: '#090d16' }}>
       {/* Page Header */}
-      <section style={{ padding: '80px 48px 60px', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '120px 48px 60px', position: 'relative', overflow: 'hidden' }}>
         <div
           style={{
             position: 'absolute',
-            top: '-60px',
-            left: '-60px',
+            top: '-100px',
+            right: '-60px',
             width: '600px',
             height: '600px',
-            background: 'radial-gradient(circle, rgba(0, 229, 255, 0.08), transparent 70%)',
-            filter: 'blur(110px)',
+            background: 'radial-gradient(circle, rgba(0, 82, 255, 0.05), transparent 70%)',
+            filter: 'blur(90px)',
             pointerEvents: 'none'
           }}
         />
 
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1, textAlign: 'left' }}>
           <div className="section-label">Engineering Services &amp; Prototype Catalog</div>
           <h1
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(3.5rem, 8vw, 8.5rem)',
-              lineHeight: 0.88,
-              letterSpacing: '2px',
-              marginBottom: '32px'
+              fontSize: 'clamp(2.6rem, 5.2vw, 4.4rem)',
+              fontWeight: 900,
+              lineHeight: 1.08,
+              letterSpacing: '-0.03em',
+              margin: '0 0 18px',
+              maxWidth: '920px',
+              color: 'var(--text-primary)'
             }}
           >
-            OUR SERVICES &amp; <br />
-            <span style={{ color: 'var(--accent)' }}>WORK SHOWCASE</span>
+            <span>ENGINEERING SERVICES &amp; </span>
+            <br />
+            <span style={{ color: 'var(--accent)' }}>PROTOTYPE SHOWCASE.</span>
           </h1>
 
-          <p style={{ fontSize: '1.12rem', color: '#aaa', lineHeight: 1.85, maxWidth: '820px', marginBottom: '36px' }}>
-            Explore our specialized engineering services tailored for <strong style={{ color: 'var(--accent)' }}>Students</strong>,{' '}
-            <strong style={{ color: '#00e5ff' }}>Professional Scholars</strong>, and{' '}
-            <strong style={{ color: 'var(--accent2)' }}>Startup MVPs</strong> — alongside our portfolio of battle-tested hardware prototypes and research documentation.
+          <p
+            style={{
+              fontSize: '1.08rem',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.7,
+              maxWidth: '740px',
+              margin: '0 0 32px'
+            }}
+          >
+            Explore our specialized engineering services tailored for <strong style={{ color: '#0052ff' }}>Students</strong>,{' '}
+            <strong style={{ color: '#0284c7' }}>Professional Scholars</strong>, and{' '}
+            <strong style={{ color: '#090d16' }}>Startup Founders</strong> — alongside our portfolio of battle-tested hardware prototypes and research documentation.
           </p>
 
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-            <a href="#work-gallery" className="btn-primary">
-              Jump To Our Work Gallery <ArrowRight size={16} />
+          <div style={{ display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <a
+              href="#work-gallery"
+              className="btn-primary"
+              style={{ cursor: 'pointer', padding: '12px 26px', fontSize: '0.92rem', fontWeight: 700 }}
+            >
+              Jump To Work Gallery
             </a>
-            <a href="#services-matrix" className="btn-ghost" style={{ border: '1px solid var(--border)' }}>
+            <a
+              href="#services-matrix"
+              className="btn-ghost"
+              style={{
+                cursor: 'pointer',
+                border: '1px solid #cbd5e1',
+                color: '#090d16',
+                padding: '12px 24px',
+                fontSize: '0.92rem',
+                fontWeight: 600
+              }}
+            >
               View Deliverables Matrix
             </a>
           </div>
@@ -118,37 +108,38 @@ export default function ServicesWork({ onNavigate }) {
       </section>
 
       {/* Part 1: Specialized Service Tracks for the 3 Innovators */}
-      <section style={{ padding: '80px 48px', background: 'var(--dark)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section style={{ padding: '80px 48px', background: '#f8fafc', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div className="section-label">Tailored Service Tracks</div>
           <h2 className="section-title">
-            SERVICES BY <span style={{ color: 'var(--accent)' }}>AUDIENCE</span>
+            SERVICES BY <span style={{ color: '#0052ff' }}>AUDIENCE</span>
           </h2>
-          <p style={{ color: '#999', fontSize: '1rem', lineHeight: 1.8, maxWidth: '750px', marginBottom: '40px' }}>
+          <p style={{ color: '#64748b', fontSize: '1.02rem', lineHeight: 1.7, maxWidth: '750px', marginBottom: '40px' }}>
             Each track is designed with distinct engineering standards, documentation formats, and coaching protocols to match your exact milestone goals.
           </p>
 
           {/* Track Switcher */}
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '36px' }}>
             {[
-              { id: 'students', label: '🎓 For Students (Academic Projects)', color: '#c8ff00' },
-              { id: 'scholars', label: '🔬 For Professional Scholars (Research Papers)', color: '#00e5ff' },
-              { id: 'startups', label: '🚀 For Startups (Commercial MVPs)', color: '#ff3cac' }
+              { id: 'students', label: 'For Students (Academic Projects)', activeBg: '#0052ff', activeColor: '#ffffff' },
+              { id: 'scholars', label: 'For Professional Scholars (Research Papers)', activeBg: '#0284c7', activeColor: '#ffffff' },
+              { id: 'startups', label: 'For Startups (Commercial MVPs)', activeBg: '#4f46e5', activeColor: '#ffffff' }
             ].map((track) => (
               <button
                 key={track.id}
                 onClick={() => setSelectedTrack(track.id)}
                 style={{
-                  background: selectedTrack === track.id ? track.color : 'rgba(255, 255, 255, 0.03)',
-                  color: selectedTrack === track.id ? '#030303' : '#bbb',
-                  border: selectedTrack === track.id ? `1px solid ${track.color}` : '1px solid var(--border)',
+                  background: selectedTrack === track.id ? track.activeBg : '#ffffff',
+                  color: selectedTrack === track.id ? track.activeColor : '#334155',
+                  border: selectedTrack === track.id ? `1px solid ${track.activeBg}` : '1px solid #e2e8f0',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.78rem',
-                  letterSpacing: '1px',
-                  padding: '12px 20px',
-                  borderRadius: '6px',
+                  fontSize: '0.8rem',
+                  letterSpacing: '0.5px',
+                  padding: '12px 22px',
+                  borderRadius: '8px',
                   cursor: 'pointer',
-                  fontWeight: selectedTrack === track.id ? '700' : '400',
+                  fontWeight: selectedTrack === track.id ? '700' : '500',
+                  boxShadow: selectedTrack === track.id ? '0 4px 14px rgba(0, 82, 255, 0.2)' : '0 1px 3px rgba(0,0,0,0.03)',
                   transition: 'all 0.2s'
                 }}
               >
@@ -160,24 +151,26 @@ export default function ServicesWork({ onNavigate }) {
           {/* Track Detail Grid */}
           {selectedTrack === 'students' && (
             <div
+              className="mobile-card-compact"
               style={{
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(200, 255, 0, 0.3)',
-                borderRadius: '10px',
-                padding: '40px',
+                background: '#ffffff',
+                border: '1.5px solid #0052ff',
+                borderRadius: '16px',
+                padding: 'clamp(20px, 4vw, 44px)',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '36px'
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+                gap: '32px',
+                boxShadow: '0 10px 30px rgba(0, 82, 255, 0.06)'
               }}
             >
               <div>
-                <div style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>
+                <div style={{ color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>
                   Student Track • B.Tech / M.Tech / Diploma Capstones
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.4rem', color: 'var(--white)', marginBottom: '16px' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 800, color: '#090d16', marginBottom: '16px', lineHeight: 1.2 }}>
                   Full Academic Project Undertakings &amp; Documentation
                 </h3>
-                <p style={{ color: '#aaa', fontSize: '0.94rem', lineHeight: 1.8, marginBottom: '24px' }}>
+                <p style={{ color: '#475569', fontSize: '0.96rem', lineHeight: 1.8, marginBottom: '24px' }}>
                   We handle the complete project lifecycle from base paper selection to final viva defense. We build 100% working hardware and author an extensive university-compliant thesis so you achieve the highest grades without stress.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -189,41 +182,41 @@ export default function ServicesWork({ onNavigate }) {
                     '1-on-1 Viva Defense mock rehearsals & code walkthroughs',
                     'Doorstep pan-India physical hardware dispatch'
                   ].map((item, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#ddd' }}>
-                      <CheckCircle2 size={16} color="var(--accent)" /> {item}
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.92rem', color: '#1e293b' }}>
+                      <span style={{ color: '#0052ff', fontWeight: 800 }}>—</span> {item}
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div style={{ background: '#0a0a0e', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '8px', padding: '30px' }}>
-                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
+              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '32px' }}>
+                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#0052ff', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
                   Standard Deliverables Included:
                 </h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    <Package size={20} color="var(--accent)" style={{ flexShrink: 0 }} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(0, 82, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>01</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.9rem' }}>Working Hardware Unit:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#888' }}>
+                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Working Hardware Unit:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
                         Fully assembled, wired, and tested physical device with sensor calibration and labeled pins.
                       </p>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    <FileText size={20} color="var(--accent)" style={{ flexShrink: 0 }} />
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(0, 82, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>02</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.9rem' }}>Complete University Documentation:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#888' }}>
+                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Complete University Documentation:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
                         Formatted thesis, synopsis, circuit schematics, block diagrams, flowchart, and seminar PPT.
                       </p>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    <Compass size={20} color="var(--accent)" style={{ flexShrink: 0 }} />
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(0, 82, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>03</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.9rem' }}>Personalized Viva Preparation:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#888' }}>
+                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Personalized Viva Preparation:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
                         1-on-1 screen share explaining every line of code, circuit component, and examiner FAQs.
                       </p>
                     </div>
@@ -235,24 +228,26 @@ export default function ServicesWork({ onNavigate }) {
 
           {selectedTrack === 'scholars' && (
             <div
+              className="mobile-card-compact"
               style={{
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(0, 229, 255, 0.3)',
-                borderRadius: '10px',
-                padding: '40px',
+                background: '#ffffff',
+                border: '1.5px solid #0284c7',
+                borderRadius: '16px',
+                padding: 'clamp(20px, 4vw, 44px)',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '36px'
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+                gap: '32px',
+                boxShadow: '0 10px 30px rgba(2, 132, 199, 0.06)'
               }}
             >
               <div>
-                <div style={{ color: '#00e5ff', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>
+                <div style={{ color: '#0284c7', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>
                   Scholar Track • PhD Candidates &amp; Scientific Researchers
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.4rem', color: 'var(--white)', marginBottom: '16px' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 800, color: '#090d16', marginBottom: '16px', lineHeight: 1.2 }}>
                   High-Rigor Scientific Simulations &amp; Scopus/SCI Papers
                 </h3>
-                <p style={{ color: '#aaa', fontSize: '0.94rem', lineHeight: 1.8, marginBottom: '24px' }}>
+                <p style={{ color: '#475569', fontSize: '0.96rem', lineHeight: 1.8, marginBottom: '24px' }}>
                   We collaborate with doctoral fellows and academic researchers to develop physical testbeds, numerical simulations (MATLAB, Simulink, ANSYS, ROS2), and camera-ready LaTeX manuscripts suitable for top-tier journal submission.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -264,41 +259,41 @@ export default function ServicesWork({ onNavigate }) {
                     'High-resolution vector schematics, architecture diagrams & metric plots',
                     'Reviewer rebuttal support & empirical validation experiments'
                   ].map((item, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#ddd' }}>
-                      <CheckCircle2 size={16} color="#00e5ff" /> {item}
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.92rem', color: '#1e293b' }}>
+                      <span style={{ color: '#0284c7', fontWeight: 800 }}>—</span> {item}
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div style={{ background: '#0a0a0e', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '8px', padding: '30px' }}>
-                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: '#00e5ff', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
+              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '32px' }}>
+                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#0284c7', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
                   Research Deliverables Package:
                 </h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    <Microscope size={20} color="#00e5ff" style={{ flexShrink: 0 }} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(2, 132, 199, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0284c7', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>01</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.9rem' }}>Experimental Testbed / Simulation Rig:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#888' }}>
+                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Experimental Testbed / Simulation Rig:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
                         Reproducible simulation notebooks, testbed instrumentation, and real sensor calibration datasets.
                       </p>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    <FileText size={20} color="#00e5ff" style={{ flexShrink: 0 }} />
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(2, 132, 199, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0284c7', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>02</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.9rem' }}>Camera-Ready LaTeX Manuscript:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#888' }}>
+                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Camera-Ready LaTeX Manuscript:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
                         IEEE/Springer/Elsevier formatted LaTeX manuscript, vector graphs, and comprehensive bibtex references.
                       </p>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    <CheckCircle2 size={20} color="#00e5ff" style={{ flexShrink: 0 }} />
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(2, 132, 199, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#0284c7', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>03</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.9rem' }}>Peer-Review Rebuttal Pack:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#888' }}>
+                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Peer-Review Rebuttal Pack:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
                         Follow-up experiments, statistical comparative tables, and reviewer comment responses.
                       </p>
                     </div>
@@ -310,24 +305,26 @@ export default function ServicesWork({ onNavigate }) {
 
           {selectedTrack === 'startups' && (
             <div
+              className="mobile-card-compact"
               style={{
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid rgba(255, 60, 172, 0.3)',
-                borderRadius: '10px',
-                padding: '40px',
+                background: '#ffffff',
+                border: '1.5px solid #4f46e5',
+                borderRadius: '16px',
+                padding: 'clamp(20px, 4vw, 44px)',
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '36px'
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+                gap: '32px',
+                boxShadow: '0 10px 30px rgba(79, 70, 229, 0.06)'
               }}
             >
               <div>
-                <div style={{ color: 'var(--accent2)', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '10px' }}>
+                <div style={{ color: '#4f46e5', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>
                   Startup Track • Founders &amp; Deep-Tech Innovators
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.4rem', color: 'var(--white)', marginBottom: '16px' }}>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 800, color: '#090d16', marginBottom: '16px', lineHeight: 1.2 }}>
                   Turnkey Minimum Viable Products &amp; Investor Packs
                 </h3>
-                <p style={{ color: '#aaa', fontSize: '0.94rem', lineHeight: 1.8, marginBottom: '24px' }}>
+                <p style={{ color: '#475569', fontSize: '0.96rem', lineHeight: 1.8, marginBottom: '24px' }}>
                   Transform your napkin sketch into a commercial-grade working prototype in 2 to 4 weeks. We engineer production-ready multi-layer PCBs, custom 3D enclosure CAD, low-power firmware, cloud dashboards, and investor technical dossiers.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -339,41 +336,41 @@ export default function ServicesWork({ onNavigate }) {
                     'Investor-ready Technical Whitepapers & System Architecture Dossiers',
                     'Bill of Materials (BOM) optimization with component sourcing links'
                   ].map((item, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', color: '#ddd' }}>
-                      <CheckCircle2 size={16} color="var(--accent2)" /> {item}
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.92rem', color: '#1e293b' }}>
+                      <span style={{ color: '#4f46e5', fontWeight: 800 }}>—</span> {item}
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div style={{ background: '#0a0a0e', border: '1px solid rgba(255, 255, 255, 0.06)', borderRadius: '8px', padding: '30px' }}>
-                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--accent2)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
+              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '32px' }}>
+                <h4 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 700, color: '#4f46e5', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '20px' }}>
                   Commercial MVP Pack:
                 </h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    <Rocket size={20} color="var(--accent2)" style={{ flexShrink: 0 }} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(79, 70, 229, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#4f46e5', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>01</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.9rem' }}>Deployable Hardware MVP:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#888' }}>
+                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Deployable Hardware MVP:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
                         Custom assembled PCB, tested sensor array, and fitted 3D printed enclosure.
                       </p>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    <FileText size={20} color="var(--accent2)" style={{ flexShrink: 0 }} />
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(79, 70, 229, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#4f46e5', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>02</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.9rem' }}>Investor Technical Dossier:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#888' }}>
+                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>Investor Technical Dossier:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
                         Executive architecture whitepaper, system specs, BOM pricing per 1k units, and patent draft.
                       </p>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', gap: '12px' }}>
-                    <CheckCircle2 size={20} color="var(--accent2)" style={{ flexShrink: 0 }} />
+                  <div style={{ display: 'flex', gap: '14px' }}>
+                    <span style={{ width: '30px', height: '30px', borderRadius: '6px', background: 'rgba(79, 70, 229, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#4f46e5', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800 }}>03</span>
                     <div>
-                      <strong style={{ color: 'var(--white)', fontSize: '0.9rem' }}>100% IP &amp; Source Ownership:</strong>
-                      <p style={{ margin: '4px 0 0', fontSize: '0.82rem', color: '#888' }}>
+                      <strong style={{ color: '#090d16', fontSize: '0.92rem' }}>100% IP &amp; Source Ownership:</strong>
+                      <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5 }}>
                         Full transfer of Gerber files, CAD STEP models, firmware Git repository, and cloud accounts.
                       </p>
                     </div>
@@ -386,17 +383,17 @@ export default function ServicesWork({ onNavigate }) {
       </section>
 
       {/* Part 2: Core Technological Competencies (6 Pillars) */}
-      <section style={{ padding: '80px 48px', background: 'var(--black)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section style={{ padding: '80px 48px', background: '#ffffff' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div className="section-label">Engineering Capabilities</div>
           <h2 className="section-title">
-            SIX CORE <span style={{ color: 'var(--accent)' }}>DOMAINS</span>
+            SIX CORE <span style={{ color: '#0052ff' }}>DOMAINS</span>
           </h2>
 
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
               gap: '24px',
               marginTop: '48px'
             }}
@@ -405,41 +402,46 @@ export default function ServicesWork({ onNavigate }) {
               <div
                 key={item.num}
                 style={{
-                  background: 'var(--card)',
+                  background: '#ffffff',
                   padding: '36px 30px',
-                  border: '1px solid var(--border)',
-                  borderRadius: '6px',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '12px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  transition: 'all 0.3s'
+                  boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)',
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(200,255,0,0.4)';
+                  e.currentTarget.style.borderColor = '#0052ff';
                   e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 82, 255, 0.09)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.borderColor = '#e2e8f0';
                   e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(15, 23, 42, 0.04)';
                 }}
               >
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                    <div style={{ color: 'var(--accent)' }}>{getCoreIcon(item.iconName)}</div>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--gray)', letterSpacing: '2px' }}>
-                      {item.num}
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', fontWeight: 800, color: '#0052ff', letterSpacing: '1px' }}>
+                      {item.num} //
+                    </span>
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#64748b', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                      R&amp;D DOMAIN
                     </span>
                   </div>
 
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#0052ff', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>
                     {item.badge}
                   </div>
 
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--white)', marginBottom: '14px' }}>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.65rem', fontWeight: 800, color: '#090d16', marginBottom: '14px', lineHeight: 1.25 }}>
                     {item.title}
                   </h3>
 
-                  <p style={{ color: '#888', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: '24px' }}>
+                  <p style={{ color: '#475569', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '24px' }}>
                     {item.desc}
                   </p>
                 </div>
@@ -450,12 +452,12 @@ export default function ServicesWork({ onNavigate }) {
                       key={tag}
                       style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '0.64rem',
+                        fontSize: '0.7rem',
                         padding: '4px 10px',
-                        background: 'rgba(255, 255, 255, 0.04)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        color: '#bbb',
-                        borderRadius: '2px'
+                        background: '#f1f5f9',
+                        border: '1px solid #e2e8f0',
+                        color: '#334155',
+                        borderRadius: '6px'
                       }}
                     >
                       {tag}
@@ -469,17 +471,17 @@ export default function ServicesWork({ onNavigate }) {
       </section>
 
       {/* Part 3: Interactive Work & Prototype Showcase (The "Our Work" Section) */}
-      <section id="work-gallery" style={{ padding: '90px 48px', background: 'var(--dark)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section id="work-gallery" style={{ padding: '90px 48px', background: '#f8fafc', borderTop: '1px solid #e2e8f0' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '32px' }}>
             <div>
               <div className="section-label">Showcase &amp; Portfolio</div>
               <h2 className="section-title">
-                OUR PROVEN <span style={{ color: 'var(--accent)' }}>WORK</span>
+                OUR PROVEN <span style={{ color: '#0052ff' }}>WORK</span>
               </h2>
             </div>
-            <p style={{ maxWidth: '520px', color: '#999', fontSize: '0.96rem', lineHeight: 1.7, margin: 0 }}>
-              Browse real prototypes engineered by Protomates Lab across academic capstones, doctoral scientific research testbeds, and startup hardware products.
+            <p style={{ maxWidth: '520px', color: '#64748b', fontSize: '1rem', lineHeight: 1.7, margin: 0 }}>
+              Browse real prototypes engineered by FSK across academic capstones, doctoral scientific research testbeds, and startup hardware products.
             </p>
           </div>
 
@@ -487,9 +489,9 @@ export default function ServicesWork({ onNavigate }) {
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '40px' }}>
             {[
               { id: 'all', label: `All Work (${ALL_PROTOTYPES.length})` },
-              { id: 'students', label: '🎓 Students (Academic)' },
-              { id: 'scholars', label: '🔬 Professional Scholars' },
-              { id: 'startups', label: '🚀 Startup MVPs' },
+              { id: 'students', label: 'Students (Academic)' },
+              { id: 'scholars', label: 'Professional Scholars' },
+              { id: 'startups', label: 'Startup MVPs' },
               { id: 'pcb', label: 'PCB & Hardware' },
               { id: 'iot', label: 'IoT & Telemetry' },
               { id: 'ai', label: 'Edge AI / Vision' }
@@ -498,16 +500,17 @@ export default function ServicesWork({ onNavigate }) {
                 key={f.id}
                 onClick={() => setActiveFilter(f.id)}
                 style={{
-                  background: activeFilter === f.id ? 'var(--accent)' : 'rgba(255, 255, 255, 0.03)',
-                  color: activeFilter === f.id ? 'var(--black)' : '#aaa',
-                  border: activeFilter === f.id ? '1px solid var(--accent)' : '1px solid var(--border)',
+                  background: activeFilter === f.id ? '#0052ff' : '#ffffff',
+                  color: activeFilter === f.id ? '#ffffff' : '#475569',
+                  border: activeFilter === f.id ? '1px solid #0052ff' : '1px solid #e2e8f0',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.72rem',
-                  letterSpacing: '1px',
-                  padding: '8px 16px',
-                  borderRadius: '4px',
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.5px',
+                  padding: '9px 18px',
+                  borderRadius: '8px',
                   cursor: 'pointer',
-                  fontWeight: activeFilter === f.id ? '700' : '400',
+                  fontWeight: activeFilter === f.id ? '700' : '500',
+                  boxShadow: activeFilter === f.id ? '0 4px 12px rgba(0, 82, 255, 0.2)' : '0 1px 3px rgba(0,0,0,0.03)',
                   transition: 'all 0.2s'
                 }}
               >
@@ -520,7 +523,7 @@ export default function ServicesWork({ onNavigate }) {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
               gap: '28px'
             }}
           >
@@ -528,61 +531,72 @@ export default function ServicesWork({ onNavigate }) {
               <div
                 key={proto.id}
                 style={{
-                  background: 'var(--card)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '8px',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '16px',
                   overflow: 'hidden',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  transition: 'all 0.35s ease'
+                  boxShadow: '0 4px 16px rgba(15, 23, 42, 0.05)',
+                  transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(200, 255, 0, 0.4)';
+                  e.currentTarget.style.borderColor = '#0052ff';
                   e.currentTarget.style.transform = 'translateY(-6px)';
-                  e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.8), 0 0 20px rgba(200,255,0,0.08)';
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 82, 255, 0.12)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.borderColor = '#e2e8f0';
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(15, 23, 42, 0.05)';
                 }}
               >
-                <div style={{ position: 'relative', overflow: 'hidden', height: '230px' }}>
-                  <img
-                    src={proto.img}
-                    alt={proto.title}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      display: 'block',
-                      transition: 'transform 0.5s ease'
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.06)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1.0)')}
-                  />
-
-                  {/* Top Badges */}
+                {/* Technical Blueprint & Spec Header (Zero AI imagery) */}
+                <div
+                  style={{
+                    padding: '24px 24px 20px',
+                    background: '#f8fafc',
+                    borderBottom: '1px solid #e2e8f0',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                >
+                  {/* Subtle Precision CAD Grid */}
                   <div
                     style={{
                       position: 'absolute',
-                      top: '14px',
-                      left: '14px',
+                      inset: 0,
+                      backgroundImage:
+                        'radial-gradient(circle at 1px 1px, rgba(0, 82, 255, 0.08) 1px, transparent 0)',
+                      backgroundSize: '16px 16px',
+                      pointerEvents: 'none'
+                    }}
+                  />
+
+                  {/* Top Metadata Badges */}
+                  <div
+                    style={{
                       display: 'flex',
-                      gap: '8px'
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      gap: '8px',
+                      marginBottom: '12px',
+                      position: 'relative',
+                      zIndex: 1
                     }}
                   >
                     <span
                       style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '0.62rem',
+                        fontSize: '0.68rem',
+                        fontWeight: 800,
                         padding: '4px 10px',
-                        background: 'rgba(0, 0, 0, 0.85)',
-                        border: '1px solid var(--accent)',
-                        color: 'var(--accent)',
-                        borderRadius: '2px',
-                        letterSpacing: '1px'
+                        background: '#ffffff',
+                        border: '1.5px solid #0052ff',
+                        color: '#0052ff',
+                        borderRadius: '6px',
+                        letterSpacing: '0.8px'
                       }}
                     >
                       {proto.badge}
@@ -590,48 +604,69 @@ export default function ServicesWork({ onNavigate }) {
                     <span
                       style={{
                         fontFamily: 'var(--font-mono)',
-                        fontSize: '0.62rem',
+                        fontSize: '0.68rem',
+                        fontWeight: 600,
                         padding: '4px 10px',
-                        background: 'rgba(0, 0, 0, 0.85)',
-                        border: '1px solid rgba(255, 255, 255, 0.2)',
-                        color: 'var(--white)',
-                        borderRadius: '2px',
-                        letterSpacing: '1px'
+                        background: '#ffffff',
+                        border: '1px solid #cbd5e1',
+                        color: '#475569',
+                        borderRadius: '6px'
                       }}
                     >
                       {proto.targetAudience}
                     </span>
                   </div>
+
+                  {/* Technical Spec Summary Tag */}
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.74rem',
+                      color: '#334155',
+                      lineHeight: 1.5,
+                      background: '#ffffff',
+                      padding: '10px 14px',
+                      borderRadius: '8px',
+                      border: '1px solid #e2e8f0',
+                      position: 'relative',
+                      zIndex: 1
+                    }}
+                  >
+                    <span style={{ color: '#0052ff', fontWeight: 700, display: 'block', fontSize: '0.65rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '3px' }}>
+                      Interface &amp; Hardware Specs:
+                    </span>
+                    {proto.specs}
+                  </div>
                 </div>
 
                 <div style={{ padding: '28px', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' }}>
                   <div>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#0052ff', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '8px' }}>
                       {proto.category || proto.cat}
                     </div>
 
-                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', color: 'var(--white)', lineHeight: 1.15, marginBottom: '12px' }}>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', fontWeight: 800, color: '#090d16', lineHeight: 1.25, marginBottom: '12px' }}>
                       {proto.title}
                     </h3>
 
-                    <p style={{ color: '#888', fontSize: '0.88rem', lineHeight: 1.6, marginBottom: '18px' }}>
+                    <p style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '18px' }}>
                       {proto.desc}
                     </p>
 
                     {proto.deliverables && (
                       <div
                         style={{
-                          background: 'rgba(255, 255, 255, 0.03)',
-                          border: '1px solid rgba(255, 255, 255, 0.07)',
-                          padding: '10px 14px',
-                          borderRadius: '4px',
-                          fontSize: '0.78rem',
-                          color: '#bbb',
+                          background: '#f8fafc',
+                          border: '1px solid #e2e8f0',
+                          padding: '12px 16px',
+                          borderRadius: '8px',
+                          fontSize: '0.82rem',
+                          color: '#334155',
                           marginBottom: '20px',
                           lineHeight: 1.5
                         }}
                       >
-                        <strong style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono)', fontSize: '0.68rem', letterSpacing: '1px', textTransform: 'uppercase', display: 'block', marginBottom: '3px' }}>
+                        <strong style={{ color: '#0052ff', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '1px', textTransform: 'uppercase', display: 'block', marginBottom: '3px' }}>
                           Delivered Pack:
                         </strong>
                         {proto.deliverables}
@@ -646,12 +681,12 @@ export default function ServicesWork({ onNavigate }) {
                           key={chip}
                           style={{
                             fontFamily: 'var(--font-mono)',
-                            fontSize: '0.62rem',
-                            padding: '3px 8px',
-                            background: 'rgba(255, 255, 255, 0.04)',
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
-                            color: '#999',
-                            borderRadius: '2px'
+                            fontSize: '0.66rem',
+                            padding: '4px 10px',
+                            background: '#f1f5f9',
+                            border: '1px solid #e2e8f0',
+                            color: '#475569',
+                            borderRadius: '6px'
                           }}
                         >
                           {chip}
@@ -664,14 +699,15 @@ export default function ServicesWork({ onNavigate }) {
                       style={{
                         width: '100%',
                         padding: '12px',
-                        background: 'transparent',
-                        border: '1px solid var(--accent)',
-                        color: 'var(--accent)',
+                        background: '#ffffff',
+                        border: '1.5px solid #0052ff',
+                        color: '#0052ff',
                         fontFamily: 'var(--font-mono)',
                         fontSize: '0.75rem',
-                        letterSpacing: '2px',
+                        fontWeight: 700,
+                        letterSpacing: '1px',
                         textTransform: 'uppercase',
-                        borderRadius: '3px',
+                        borderRadius: '8px',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
@@ -680,15 +716,15 @@ export default function ServicesWork({ onNavigate }) {
                         transition: 'all 0.2s'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--accent)';
-                        e.currentTarget.style.color = 'var(--black)';
+                        e.currentTarget.style.background = '#0052ff';
+                        e.currentTarget.style.color = '#ffffff';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                        e.currentTarget.style.color = 'var(--accent)';
+                        e.currentTarget.style.background = '#ffffff';
+                        e.currentTarget.style.color = '#0052ff';
                       }}
                     >
-                      <Eye size={15} /> Inspect Specs &amp; Deliverables
+                      Inspect Specs &amp; Deliverables
                     </button>
                   </div>
                 </div>
@@ -699,36 +735,35 @@ export default function ServicesWork({ onNavigate }) {
       </section>
 
       {/* Part 4: Deliverables Matrix Comparison Table */}
-      <section id="services-matrix" style={{ padding: '80px 48px', background: 'var(--black)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section id="services-matrix" style={{ padding: '80px 48px', background: '#ffffff', borderTop: '1px solid #e2e8f0' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div className="section-label">Deliverables Comparison</div>
           <h2 className="section-title">
-            WHAT EACH TRACK <span style={{ color: 'var(--accent)' }}>RECEIVES</span>
+            WHAT EACH TRACK <span style={{ color: '#0052ff' }}>RECEIVES</span>
           </h2>
 
-          <div style={{ overflowX: 'auto', marginTop: '36px' }}>
+          <div style={{ overflowX: 'auto', marginTop: '36px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 16px rgba(15, 23, 42, 0.03)' }}>
             <table
               style={{
                 width: '100%',
                 borderCollapse: 'collapse',
                 textAlign: 'left',
-                background: 'rgba(255, 255, 255, 0.02)',
-                border: '1px solid var(--border)'
+                background: '#ffffff'
               }}
             >
               <thead>
-                <tr style={{ borderBottom: '1px solid var(--border)', background: 'rgba(255, 255, 255, 0.04)' }}>
-                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '2px', color: 'var(--accent)' }}>
+                <tr style={{ borderBottom: '1px solid #e2e8f0', background: '#f8fafc' }}>
+                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#090d16' }}>
                     DELIVERABLE ITEM
                   </th>
-                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '2px', color: '#c8ff00' }}>
-                    🎓 STUDENTS
+                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#0052ff' }}>
+                    STUDENTS
                   </th>
-                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '2px', color: '#00e5ff' }}>
-                    🔬 SCHOLARS
+                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#0284c7' }}>
+                    SCHOLARS
                   </th>
-                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', letterSpacing: '2px', color: '#ff3cac' }}>
-                    🚀 STARTUP MVPS
+                  <th style={{ padding: '18px 24px', fontFamily: 'var(--font-mono)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '1.5px', color: '#4f46e5' }}>
+                    STARTUP MVPS
                   </th>
                 </tr>
               </thead>
@@ -741,13 +776,13 @@ export default function ServicesWork({ onNavigate }) {
                   { item: '1-on-1 Defense / Coaching', student: 'Viva Defense Prep & Q&A', scholar: 'Reviewer Rebuttal Strategy', startup: 'Investor Pitch Tech Defense' },
                   { item: 'IP & Source Ownership', student: 'Full Student Ownership', scholar: 'Full Author Ownership', startup: '100% Commercial IP Transfer' }
                 ].map((row, idx) => (
-                  <tr key={idx} style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <td style={{ padding: '16px 24px', fontWeight: '600', fontSize: '0.88rem', color: 'var(--white)' }}>
+                  <tr key={idx} style={{ borderBottom: idx === 5 ? 'none' : '1px solid #f1f5f9', background: idx % 2 === 0 ? '#ffffff' : '#fafafa' }}>
+                    <td style={{ padding: '16px 24px', fontWeight: '700', fontSize: '0.92rem', color: '#090d16' }}>
                       {row.item}
                     </td>
-                    <td style={{ padding: '16px 24px', fontSize: '0.85rem', color: '#bbb' }}>{row.student}</td>
-                    <td style={{ padding: '16px 24px', fontSize: '0.85rem', color: '#bbb' }}>{row.scholar}</td>
-                    <td style={{ padding: '16px 24px', fontSize: '0.85rem', color: '#bbb' }}>{row.startup}</td>
+                    <td style={{ padding: '16px 24px', fontSize: '0.88rem', color: '#475569' }}>{row.student}</td>
+                    <td style={{ padding: '16px 24px', fontSize: '0.88rem', color: '#475569' }}>{row.scholar}</td>
+                    <td style={{ padding: '16px 24px', fontSize: '0.88rem', color: '#475569' }}>{row.startup}</td>
                   </tr>
                 ))}
               </tbody>
@@ -757,11 +792,11 @@ export default function ServicesWork({ onNavigate }) {
       </section>
 
       {/* Part 5: The 5-Stage Engineering Workflow */}
-      <section style={{ padding: '80px 48px', background: 'var(--dark)', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section style={{ padding: '80px 48px', background: '#f8fafc', borderTop: '1px solid #e2e8f0' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <div className="section-label">Execution Lifecycle</div>
           <h2 className="section-title">
-            FROM CONCEPT TO <span style={{ color: 'var(--accent)' }}>DELIVERY</span>
+            FROM CONCEPT TO <span style={{ color: '#0052ff' }}>DELIVERY</span>
           </h2>
 
           <div
@@ -782,23 +817,25 @@ export default function ServicesWork({ onNavigate }) {
               <div
                 key={st.step}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  border: '1px solid rgba(255, 255, 255, 0.07)',
-                  borderRadius: '6px',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '12px',
                   padding: '28px 22px',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between'
+                  justifyContent: 'space-between',
+                  boxShadow: '0 4px 12px rgba(15, 23, 42, 0.04)',
+                  transition: 'all 0.2s'
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', color: 'var(--accent)', marginBottom: '14px' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.25rem', fontWeight: 800, color: '#0052ff', marginBottom: '14px' }}>
                     {st.step}
                   </div>
-                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--white)', margin: '0 0 10px' }}>
+                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', fontWeight: 800, color: '#090d16', margin: '0 0 10px' }}>
                     {st.title}
                   </h4>
-                  <p style={{ fontSize: '0.84rem', color: '#888', lineHeight: 1.6, margin: 0 }}>{st.desc}</p>
+                  <p style={{ fontSize: '0.86rem', color: '#64748b', lineHeight: 1.6, margin: 0 }}>{st.desc}</p>
                 </div>
               </div>
             ))}
@@ -807,16 +844,16 @@ export default function ServicesWork({ onNavigate }) {
       </section>
 
       {/* CTA Footer */}
-      <section style={{ padding: '90px 48px', textAlign: 'center', background: 'var(--black)' }}>
-        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+      <section style={{ padding: '90px 48px', textAlign: 'center', background: '#ffffff', borderTop: '1px solid #e2e8f0' }}>
+        <div style={{ maxWidth: '780px', margin: '0 auto', width: '100%' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>
             Book Your Engineering Slot
           </div>
           <h2 className="section-title">
             HAVE A PROJECT OR <br />
-            <span style={{ color: 'var(--accent)' }}>PAPER IN MIND?</span>
+            <span style={{ color: '#0052ff' }}>PAPER IN MIND?</span>
           </h2>
-          <p style={{ color: '#999', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '36px' }}>
+          <p style={{ color: '#475569', fontSize: '1.08rem', lineHeight: 1.8, marginBottom: '36px' }}>
             Share your title, abstract, or requirement statement today. Our lead engineers review incoming scopes within 2 hours.
           </p>
           <button
@@ -824,7 +861,7 @@ export default function ServicesWork({ onNavigate }) {
             className="btn-primary"
             style={{ cursor: 'pointer' }}
           >
-            Start Project Consultation Now <ArrowRight size={16} />
+            Start Project Consultation Now
           </button>
         </div>
       </section>

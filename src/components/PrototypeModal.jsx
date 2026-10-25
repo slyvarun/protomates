@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, CheckCircle, Package, ArrowRight } from 'lucide-react';
+import { X } from 'lucide-react';
 
 export default function PrototypeModal({ prototype, onClose, onNavigateContact }) {
   if (!prototype) return null;
@@ -19,8 +19,8 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
       style={{
         position: 'fixed',
         inset: 0,
-        background: 'rgba(3, 3, 5, 0.94)',
-        backdropFilter: 'blur(12px)',
+        background: 'rgba(15, 23, 42, 0.6)',
+        backdropFilter: 'blur(8px)',
         zIndex: 10000,
         display: 'flex',
         alignItems: 'center',
@@ -31,15 +31,15 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: '#0d0d12',
-          border: '1px solid rgba(255, 255, 255, 0.12)',
+          background: '#ffffff',
+          border: '1px solid #e2e8f0',
           maxWidth: '920px',
           width: '100%',
           maxHeight: '92vh',
           overflowY: 'auto',
           position: 'relative',
-          borderRadius: '8px',
-          boxShadow: '0 25px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(200, 255, 0, 0.1)'
+          borderRadius: '16px',
+          boxShadow: '0 30px 80px rgba(15, 23, 42, 0.2), 0 4px 16px rgba(0, 82, 255, 0.08)'
         }}
       >
         <button
@@ -48,76 +48,118 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
             position: 'absolute',
             top: '20px',
             right: '20px',
-            background: 'rgba(0, 0, 0, 0.8)',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            color: 'var(--white)',
-            width: '38px',
-            height: '38px',
-            borderRadius: '4px',
+            background: '#ffffff',
+            border: '1px solid #e2e8f0',
+            color: '#090d16',
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
             zIndex: 10,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
             transition: 'all 0.2s'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'var(--accent)';
-            e.currentTarget.style.color = 'var(--black)';
+            e.currentTarget.style.background = '#f1f5f9';
+            e.currentTarget.style.borderColor = '#cbd5e1';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(0, 0, 0, 0.8)';
-            e.currentTarget.style.color = 'var(--white)';
+            e.currentTarget.style.background = '#ffffff';
+            e.currentTarget.style.borderColor = '#e2e8f0';
           }}
         >
-          <X size={20} />
+          <X size={18} />
         </button>
 
-        <div style={{ position: 'relative' }}>
-          <img
-            src={prototype.img}
-            alt={prototype.title}
+        {/* Technical Blueprint & Spec Header (Zero AI imagery) */}
+        <div
+          style={{
+            padding: '36px 36px 28px',
+            background: '#f8fafc',
+            borderBottom: '1px solid #e2e8f0',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          <div
             style={{
-              width: '100%',
-              height: 'auto',
-              maxHeight: '440px',
-              objectFit: 'cover',
-              display: 'block',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+              position: 'absolute',
+              inset: 0,
+              backgroundImage:
+                'radial-gradient(circle at 1px 1px, rgba(0, 82, 255, 0.08) 1px, transparent 0)',
+              backgroundSize: '20px 20px',
+              pointerEvents: 'none'
             }}
           />
-          {prototype.targetAudience && (
-            <div
+
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '16px', position: 'relative', zIndex: 1 }}>
+            <span
               style={{
-                position: 'absolute',
-                bottom: '16px',
-                left: '24px',
-                background: 'rgba(5, 5, 8, 0.88)',
-                backdropFilter: 'blur(8px)',
-                border: '1px solid var(--accent)',
-                padding: '6px 14px',
-                borderRadius: '4px',
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.72rem',
-                color: 'var(--accent)',
-                letterSpacing: '2px',
-                textTransform: 'uppercase'
+                fontSize: '0.75rem',
+                fontWeight: 800,
+                padding: '5px 12px',
+                background: '#ffffff',
+                border: '1.5px solid #0052ff',
+                color: '#0052ff',
+                borderRadius: '6px',
+                letterSpacing: '1px'
               }}
             >
-              Audience: {prototype.targetAudience}
-            </div>
-          )}
+              {prototype.badge}
+            </span>
+            {prototype.targetAudience && (
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  padding: '5px 12px',
+                  background: '#ffffff',
+                  border: '1px solid #cbd5e1',
+                  color: '#334155',
+                  borderRadius: '6px'
+                }}
+              >
+                Track: {prototype.targetAudience}
+              </span>
+            )}
+          </div>
+
+          <div
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.85rem',
+              color: '#1e293b',
+              lineHeight: 1.6,
+              background: '#ffffff',
+              padding: '14px 20px',
+              borderRadius: '8px',
+              border: '1px solid #e2e8f0',
+              position: 'relative',
+              zIndex: 1
+            }}
+          >
+            <span style={{ color: '#0052ff', fontWeight: 700, display: 'block', fontSize: '0.7rem', letterSpacing: '1.2px', textTransform: 'uppercase', marginBottom: '4px' }}>
+              Hardware Specifications &amp; Interface Standards:
+            </span>
+            {prototype.specs}
+          </div>
         </div>
 
         <div style={{ padding: '36px' }}>
           <div
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.72rem',
-              color: 'var(--accent)',
-              letterSpacing: '3px',
+              fontSize: '0.75rem',
+              color: '#0052ff',
+              letterSpacing: '2px',
+              fontWeight: 700,
               textTransform: 'uppercase',
-              marginBottom: '8px'
+              marginBottom: '10px'
             }}
           >
             {prototype.category || prototype.cat}
@@ -126,36 +168,38 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
           <h3
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2.2rem, 4vw, 3rem)',
-              letterSpacing: '1.5px',
-              color: 'var(--white)',
-              lineHeight: 1.05,
+              fontSize: 'clamp(2rem, 3.5vw, 2.6rem)',
+              fontWeight: 800,
+              letterSpacing: '-0.5px',
+              color: '#090d16',
+              lineHeight: 1.15,
               marginBottom: '16px'
             }}
           >
             {prototype.title}
           </h3>
 
-          <p style={{ color: '#aaa', fontSize: '1rem', lineHeight: 1.8, marginBottom: '24px' }}>
+          <p style={{ color: '#475569', fontSize: '1.02rem', lineHeight: 1.7, marginBottom: '24px' }}>
             {prototype.desc}
           </p>
 
           {prototype.deliverables && (
             <div
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                background: '#f8fafc',
+                border: '1px solid #e2e8f0',
                 padding: '18px 24px',
-                borderRadius: '6px',
+                borderRadius: '12px',
                 marginBottom: '26px'
               }}
             >
               <div
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.72rem',
-                  color: 'var(--white)',
-                  letterSpacing: '2px',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  color: '#090d16',
+                  letterSpacing: '1.5px',
                   textTransform: 'uppercase',
                   display: 'flex',
                   alignItems: 'center',
@@ -163,9 +207,9 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
                   marginBottom: '8px'
                 }}
               >
-                <Package size={16} color="var(--accent)" /> Included Deliverables Pack:
+                Included Deliverables Pack:
               </div>
-              <p style={{ color: '#ccc', fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>
+              <p style={{ color: '#334155', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
                 {prototype.deliverables}
               </p>
             </div>
@@ -177,12 +221,13 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
                 key={chip}
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.68rem',
+                  fontSize: '0.72rem',
                   padding: '6px 12px',
-                  background: 'rgba(200, 255, 0, 0.06)',
-                  border: '1px solid rgba(200, 255, 0, 0.25)',
-                  color: 'var(--accent)',
-                  borderRadius: '2px'
+                  background: '#f1f5f9',
+                  border: '1px solid #e2e8f0',
+                  color: '#0052ff',
+                  fontWeight: 600,
+                  borderRadius: '6px'
                 }}
               >
                 {chip}
@@ -192,9 +237,13 @@ export default function PrototypeModal({ prototype, onClose, onNavigateContact }
 
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <button onClick={handleInquire} className="btn-primary" style={{ cursor: 'pointer' }}>
-              Inquire About Similar Project <ArrowRight size={16} />
+              Inquire About Similar Project
             </button>
-            <button onClick={onClose} className="btn-ghost" style={{ cursor: 'pointer', border: '1px solid var(--border)' }}>
+            <button
+              onClick={onClose}
+              className="btn-ghost"
+              style={{ cursor: 'pointer', border: '1px solid #cbd5e1', color: '#090d16', background: '#ffffff' }}
+            >
               Close Inspection
             </button>
           </div>

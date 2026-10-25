@@ -1,23 +1,15 @@
 import React, { useState } from 'react';
-import {
-  Mail,
-  MessageSquare,
-  ShieldCheck,
-  ArrowRight,
-  Clock,
-  Sparkles,
-  Send,
-  Lock
-} from 'lucide-react';
+import FSKLogo from './FSKLogo';
+import { Mail, Clock, Shield, Lock, Send, CheckCircle2 } from 'lucide-react';
 
-export default function Footer({ onNavigate, isVisible = true }) {
+export default function Footer({ onNavigate }) {
   const [quickTopic, setQuickTopic] = useState('');
   const [quickContact, setQuickContact] = useState('');
   const [quickSent, setQuickSent] = useState(false);
 
-  const handleNav = (pageId, extra = {}) => {
+  const handleNav = (pageId) => {
     if (onNavigate) {
-      onNavigate(pageId, extra);
+      onNavigate(pageId);
     } else {
       window.location.hash = pageId === 'home' ? '' : `#${pageId}`;
     }
@@ -25,11 +17,10 @@ export default function Footer({ onNavigate, isVisible = true }) {
 
   const handleQuickSubmit = (e) => {
     e.preventDefault();
-    if (!quickTopic || !quickContact) return;
+    if (!quickContact) return;
     setQuickSent(true);
 
-    // Send email dispatch to info.protomates@gmail.com
-    fetch('https://formsubmit.co/ajax/info.protomates@gmail.com', {
+    fetch('https://formsubmit.co/ajax/consultant.fsk@gmail.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +29,7 @@ export default function Footer({ onNavigate, isVisible = true }) {
       body: JSON.stringify({
         topic: quickTopic,
         contact: quickContact,
-        _subject: `New Protomates Quick Inquiry from ${quickContact}`,
+        _subject: `New FSK Quick Inquiry from ${quickContact}`,
         _template: 'table',
         _captcha: 'false'
       })
@@ -48,31 +39,15 @@ export default function Footer({ onNavigate, isVisible = true }) {
   return (
     <footer
       style={{
-        background: '#040407',
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+        background: '#f8fafc',
+        borderTop: '1px solid #e2e8f0',
         position: 'relative',
-        color: 'var(--white)',
-        paddingTop: '60px',
-        opacity: isVisible ? 1 : 0,
-        visibility: isVisible ? 'visible' : 'hidden',
-        pointerEvents: isVisible ? 'auto' : 'none',
+        color: 'var(--text-primary)',
+        padding: '60px 48px 0'
       }}
     >
-      {/* Top Refined Studio Accent Line */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '1px',
-          background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent)',
-          opacity: 0.8
-        }}
-      />
-
-      <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '0 48px' }}>
-        {/* Top Telemetry Banner */}
+      <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+        {/* Top Header Banner */}
         <div
           style={{
             display: 'flex',
@@ -80,31 +55,22 @@ export default function Footer({ onNavigate, isVisible = true }) {
             alignItems: 'center',
             flexWrap: 'wrap',
             gap: '16px',
-            paddingBottom: '36px',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.06)'
+            paddingBottom: '28px',
+            borderBottom: '1px solid #e2e8f0'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span
-              style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                background: 'var(--accent)',
-                boxShadow: '0 0 10px var(--accent)',
-                display: 'inline-block'
-              }}
-            />
+          <div>
             <span
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.74rem',
-                letterSpacing: '2px',
+                fontWeight: 700,
+                letterSpacing: '1.5px',
                 color: 'var(--accent)',
                 textTransform: 'uppercase'
               }}
             >
-              PROTOMATES LAB ACTIVE // RAPID PROJECT &amp; RESEARCH INTAKE ONLINE
+              FSK // PROTOTYPING SERVICES &amp; RESEARCH INTAKE
             </span>
           </div>
 
@@ -114,16 +80,13 @@ export default function Footer({ onNavigate, isVisible = true }) {
               alignItems: 'center',
               gap: '20px',
               fontFamily: 'var(--font-mono)',
-              fontSize: '0.72rem',
-              color: '#888'
+              fontSize: '0.74rem',
+              color: '#64748b'
             }}
           >
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Clock size={13} color="var(--accent)" /> Average Review: &lt; 2 Hours
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Lock size={13} color="#00e5ff" /> 100% NDA Protected
-            </span>
+            <span>Average Review: &lt; 2 Hours</span>
+            <span>•</span>
+            <span>100% NDA Protected</span>
           </div>
         </div>
 
@@ -131,9 +94,9 @@ export default function Footer({ onNavigate, isVisible = true }) {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '50px',
-            padding: '50px 0 40px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+            gap: '28px',
+            padding: '40px 0 32px'
           }}
         >
           {/* Column 1: Brand & Identity */}
@@ -141,68 +104,96 @@ export default function Footer({ onNavigate, isVisible = true }) {
             <div
               onClick={() => handleNav('home')}
               style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '2.5rem',
-                letterSpacing: '3px',
-                color: 'var(--accent)',
                 cursor: 'pointer',
                 display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
                 marginBottom: '16px'
               }}
             >
-              <span>PROTO<span style={{ color: 'var(--white)' }}>MATES</span></span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.62rem',
-                  border: '1px solid var(--accent)',
-                  color: 'var(--accent)',
-                  padding: '2px 6px',
-                  borderRadius: '2px'
-                }}
-              >
-                LAB
-              </span>
+              <FSKLogo size="large" />
             </div>
 
-            <p style={{ color: '#888', fontSize: '0.88rem', lineHeight: 1.7, marginBottom: '24px', maxWidth: '320px' }}>
-              Specialized engineering and documentation laboratory building working hardware systems and university/Scopus-grade papers for Students, Scholars, and Startups.
+            <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '20px', maxWidth: '340px' }}>
+              Specialized engineering laboratory building physical working hardware, custom PCBs, and university/Scopus-grade documentation for Students, Scholars, and Startups.
             </p>
 
             <div style={{ display: 'flex', gap: '12px' }}>
               <a
-                href="mailto:info.protomates@gmail.com"
+                href="mailto:consultant.fsk@gmail.com"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '8px 14px',
-                  background: 'rgba(0, 229, 255, 0.08)',
-                  border: '1px solid rgba(0, 229, 255, 0.3)',
-                  borderRadius: '4px',
-                  color: '#00e5ff',
+                  padding: '9px 16px',
+                  background: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: '6px',
+                  color: 'var(--accent)',
                   textDecoration: 'none',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.72rem',
-                  letterSpacing: '1px'
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.5px',
+                  boxShadow: 'var(--shadow-sm)'
                 }}
               >
-                <Mail size={14} /> Email Lab
+                Email Engineering Team
               </a>
             </div>
           </div>
 
-
-          {/* Column 4: Quick Feasibility Callback Widget */}
+          {/* Column 2: Navigation Links */}
           <div>
             <div
               style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.72rem',
+                fontWeight: 700,
+                color: 'var(--text-primary)',
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                marginBottom: '16px'
+              }}
+            >
+              Navigation
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[
+                { id: 'home', label: 'Home Studio' },
+                { id: 'about', label: 'About FSK' },
+                { id: 'services', label: 'Hardware Services & Portfolio' },
+                { id: 'contact', label: 'Start Project Intake' }
+              ].map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => handleNav(link.id)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    textAlign: 'left',
+                    color: '#64748b',
+                    fontSize: '0.88rem',
+                    cursor: 'pointer',
+                    padding: 0,
+                    transition: 'color 0.2s'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#64748b')}
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 3: Quick Feasibility Callback Widget */}
+          <div>
+            <div
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                fontWeight: 700,
                 color: 'var(--accent)',
-                letterSpacing: '2px',
+                letterSpacing: '1.5px',
                 textTransform: 'uppercase',
                 marginBottom: '14px'
               }}
@@ -213,15 +204,18 @@ export default function Footer({ onNavigate, isVisible = true }) {
             {quickSent ? (
               <div
                 style={{
-                  background: 'rgba(200, 255, 0, 0.08)',
-                  border: '1px solid rgba(200, 255, 0, 0.3)',
+                  background: '#ffffff',
+                  border: '1px solid #059669',
                   padding: '16px',
-                  borderRadius: '6px',
-                  fontSize: '0.84rem',
-                  color: 'var(--accent)'
+                  borderRadius: '8px',
+                  fontSize: '0.85rem',
+                  color: '#059669',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
                 }}
               >
-                Inquiry dispatched to info.protomates@gmail.com! Our engineers will review and reply promptly.
+                Inquiry dispatched! Our engineers will review within 2 hours.
               </div>
             ) : (
               <form onSubmit={handleQuickSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -233,59 +227,49 @@ export default function Footer({ onNavigate, isVisible = true }) {
                   onChange={(e) => setQuickTopic(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '9px 12px',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '4px',
-                    color: 'var(--white)',
-                    fontSize: '0.82rem',
+                    padding: '10px 14px',
+                    background: '#ffffff',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '6px',
+                    color: 'var(--text-primary)',
+                    fontSize: '0.84rem',
                     outline: 'none'
                   }}
                 />
                 <input
                   type="text"
                   required
-                  placeholder="Your Email or Contact..."
+                  placeholder="Your Email or WhatsApp..."
                   value={quickContact}
                   onChange={(e) => setQuickContact(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '9px 12px',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '4px',
-                    color: 'var(--white)',
-                    fontSize: '0.82rem',
+                    padding: '10px 14px',
+                    background: '#ffffff',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '6px',
+                    color: 'var(--text-primary)',
+                    fontSize: '0.84rem',
                     outline: 'none'
                   }}
                 />
                 <button
                   type="submit"
+                  className="btn-primary"
                   style={{
-                    background: 'var(--accent)',
-                    color: 'var(--black)',
-                    border: 'none',
-                    padding: '10px 14px',
-                    borderRadius: '4px',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.74rem',
-                    fontWeight: 700,
-                    letterSpacing: '1px',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
+                    padding: '11px 16px',
+                    fontSize: '0.78rem',
                     justifyContent: 'center',
-                    gap: '6px'
+                    cursor: 'pointer'
                   }}
                 >
-                  Get Instant Review <Send size={12} />
+                  Request Feasibility Review
                 </button>
               </form>
             )}
 
-            <div style={{ marginTop: '12px', fontSize: '0.72rem', color: '#666', lineHeight: 1.5 }}>
-              Strict confidentiality. Zero spam. 100% NDA guarantee.
+            <div style={{ marginTop: '12px', fontSize: '0.75rem', color: '#94a3b8', lineHeight: 1.5 }}>
+              Strict confidentiality. Zero spam. 100% Non-Disclosure guarantee.
             </div>
           </div>
         </div>
@@ -293,7 +277,7 @@ export default function Footer({ onNavigate, isVisible = true }) {
         {/* Bottom Bar: Copyright & Compliance */}
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+            borderTop: '1px solid #e2e8f0',
             padding: '24px 0 32px',
             display: 'flex',
             justifyContent: 'space-between',
@@ -301,13 +285,13 @@ export default function Footer({ onNavigate, isVisible = true }) {
             flexWrap: 'wrap',
             gap: '14px',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.68rem',
-            color: '#666',
-            letterSpacing: '1px'
+            fontSize: '0.72rem',
+            color: '#64748b',
+            letterSpacing: '0.5px'
           }}
         >
-          <div>© 2026 PROTOMATES LAB — ALL HARDWARE &amp; INTELLECTUAL PROPERTY RIGHTS RESERVED.</div>
-          <div style={{ display: 'flex', gap: '20px' }}>
+          <div>© 2026 FSK — PROTOTYPING SERVICES. ALL RIGHTS RESERVED.</div>
+          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
             <span>IEEE STANDARDS COMPLIANT</span>
             <span>•</span>
             <span>SCOPUS / SCI ACADEMIC INTEGRITY</span>

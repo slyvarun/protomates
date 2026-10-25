@@ -240,30 +240,22 @@ export default function Footer({ onNavigate }) {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Compliance */}
+        {/* Bottom Bar: Copyright */}
         <div
           style={{
             borderTop: '1px solid #e2e8f0',
             padding: '24px 0 32px',
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '14px',
+            textAlign: 'center',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.72rem',
+            fontSize: '0.74rem',
             color: '#64748b',
             letterSpacing: '0.5px'
           }}
         >
           <div>© 2026 FSK — PROTOTYPING SERVICES. ALL RIGHTS RESERVED.</div>
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-            <span>IEEE STANDARDS COMPLIANT</span>
-            <span>•</span>
-            <span>SCOPUS / SCI ACADEMIC INTEGRITY</span>
-            <span>•</span>
-            <span>FULL IP TRANSFER</span>
-          </div>
         </div>
       </div>
     </footer>

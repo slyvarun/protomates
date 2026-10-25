@@ -44,14 +44,45 @@ export default function RoleIntakeForm({
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage('');
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/consultant.fsk@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `New FSK Prototyping Lead: [${formData.track.toUpperCase()}] ${formData.projectTitle}`,
+          _template: 'table',
+          _captcha: 'false',
+          Track: formData.track,
+          "Project / Paper Scope": formData.projectTitle,
+          "Client Name": formData.name,
+          "WhatsApp / Phone": formData.phone,
+          "Email Address": formData.email || 'Not provided',
+          "Institution / Company": formData.institutionOrCompany || 'Not provided',
+          "Key Requirements & Deadlines": formData.description || 'None specified'
+        })
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.warn('Form dispatch notice:', err);
       setSubmitted(true);
-    }, 600);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const TRACKS = [

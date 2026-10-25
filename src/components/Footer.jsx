@@ -154,7 +154,7 @@ export default function Footer({ onNavigate }) {
                 }}
               >
                 <LinkedInIcon size={14} color="#0a66c2" />
-                <span>LinkedIn</span>
+                <span>FSK Prototyping Services</span>
               </a>
             </div>
           </div>
@@ -304,8 +304,8 @@ export default function Footer({ onNavigate }) {
                 }}
               >
                 <LinkedInIcon size={16} color="#0a66c2" />
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.78rem' }}>
-                  linkedin.com/company/fskprototypingservices
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.86rem', fontWeight: 700, color: '#090d16' }}>
+                  FSK Prototyping Services
                 </span>
               </a>
             </div>

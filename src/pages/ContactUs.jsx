@@ -173,9 +173,9 @@ export default function ContactUs({ initialAudience = 'students' }) {
                 <LinkedInIcon size={22} color="#0a66c2" style={{ flexShrink: 0 }} />
                 <div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: '#0a66c2', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase' }}>
-                    Official LinkedIn Page
+                    LinkedIn
                   </div>
-                  <div style={{ fontSize: '0.95rem', fontWeight: 600 }}>linkedin.com/company/fskprototypingservices</div>
+                  <div style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-primary)' }}>FSK Prototyping Services</div>
                 </div>
               </a>
             </div>

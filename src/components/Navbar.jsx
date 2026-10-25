@@ -55,11 +55,13 @@ export default function Navbar({
           right: 0,
           zIndex: 1000,
           padding: isMobile ? '12px 18px' : '14px 48px',
-          background: 'transparent',
-          backdropFilter: 'none',
-          WebkitBackdropFilter: 'none',
-          borderBottom: 'none',
-          boxShadow: 'none',
+          background: scrolled ? 'rgba(255, 255, 255, 0.88)' : 'rgba(255, 255, 255, 0.75)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          borderBottom: '1px solid rgba(226, 232, 240, 0.85)',
+          boxShadow: scrolled
+            ? '0 10px 30px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03)'
+            : '0 4px 20px -2px rgba(15, 23, 42, 0.04)',
           transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
         }}
       >
@@ -73,32 +75,21 @@ export default function Navbar({
             alignItems: 'center'
           }}
         >
-          {/* FSK Bespoke Logo Design — Frosted Glass Island */}
+          {/* FSK Bespoke Logo Design */}
           <div
             id="navbar-brand-logo"
             onClick={() => handleNavClick('home')}
             style={{
               cursor: 'pointer',
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
-              padding: isMobile ? '6px 14px' : '7px 20px',
-              background: 'rgba(255, 255, 255, 0.65)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              border: '1px solid rgba(255, 255, 255, 0.85)',
-              borderRadius: '999px',
-              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 4px 16px rgba(0, 82, 255, 0.05)',
-              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
+              transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-1px)';
-              e.currentTarget.style.borderColor = 'rgba(0, 82, 255, 0.25)';
-              e.currentTarget.style.boxShadow = 'inset 0 1px 1px rgba(255, 255, 255, 1), 0 6px 20px rgba(0, 82, 255, 0.1)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.85)';
-              e.currentTarget.style.boxShadow = 'inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 4px 16px rgba(0, 82, 255, 0.05)';
             }}
           >
             <FSKLogo compact={isMobile} />

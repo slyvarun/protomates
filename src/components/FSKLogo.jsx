@@ -22,6 +22,15 @@ export default function FSKLogo({ compact = false, size = 'default', showTagline
       <img
         src={getAssetUrl('fsk_emblem.png')}
         alt="FSK Emblem"
+        onError={(e) => {
+          if (!e.currentTarget.dataset.retried) {
+            e.currentTarget.dataset.retried = '1';
+            e.currentTarget.src = './fsk_emblem.png';
+          } else if (e.currentTarget.dataset.retried === '1') {
+            e.currentTarget.dataset.retried = '2';
+            e.currentTarget.src = '/fsk_emblem.png';
+          }
+        }}
         style={{
           height: `${emblemHeight}px`,
           width: 'auto',

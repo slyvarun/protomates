@@ -55,17 +55,11 @@ export default function Navbar({
           right: 0,
           zIndex: 1000,
           padding: isMobile ? '12px 18px' : '14px 48px',
-          background: scrolled
-            ? 'rgba(255, 255, 255, 0.72)'
-            : 'rgba(255, 255, 255, 0.55)',
-          backdropFilter: 'blur(24px) saturate(190%)',
-          WebkitBackdropFilter: 'blur(24px) saturate(190%)',
-          borderBottom: scrolled
-            ? '1px solid rgba(255, 255, 255, 0.8)'
-            : '1px solid rgba(255, 255, 255, 0.5)',
-          boxShadow: scrolled
-            ? '0 12px 35px -5px rgba(0, 82, 255, 0.08), 0 2px 8px rgba(15, 23, 42, 0.03)'
-            : '0 4px 20px -2px rgba(15, 23, 42, 0.03)',
+          background: 'transparent',
+          backdropFilter: 'none',
+          WebkitBackdropFilter: 'none',
+          borderBottom: 'none',
+          boxShadow: 'none',
           transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
         }}
       >

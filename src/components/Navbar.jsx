@@ -78,6 +78,7 @@ export default function Navbar({
         >
           {/* FSK Bespoke Logo Design */}
           <div
+            id="navbar-brand-logo"
             onClick={() => handleNavClick('home')}
             style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
           >

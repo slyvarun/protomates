@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle2, ChevronDown } from 'lucide-react';
+import RoleIntakeForm from '../components/RoleIntakeForm';
 
 const FAQS = [
   {
@@ -29,56 +30,11 @@ const FAQS = [
 ];
 
 export default function ContactUs({ initialAudience = 'students' }) {
-  const [role, setRole] = useState(initialAudience || 'students');
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    topic: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!formData.name && !formData.phone) return;
-    setIsSubmitting(true);
-
-    const roleLabel =
-      role === 'students'
-        ? 'Students (Academic Project)'
-        : role === 'scholars'
-        ? 'Professional Scholars'
-        : 'Startup MVP';
-
-    try {
-      await fetch('https://formsubmit.co/ajax/consultant.fsk@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name || 'Anonymous',
-          phone: formData.phone,
-          track: roleLabel,
-          topic: formData.topic,
-          _subject: `New FSK Project Inquiry from ${formData.name || 'Visitor'} [${roleLabel}]`,
-          _template: 'table',
-          _captcha: 'false'
-        })
-      });
-    } catch (err) {
-      console.error('Email dispatch error:', err);
-    } finally {
-      setIsSubmitting(false);
-      setSubmitted(true);
-    }
-  };
 
   return (
     <div style={{ background: 'transparent', minHeight: '100vh', color: 'var(--text-primary)' }}>
@@ -131,207 +87,9 @@ export default function ContactUs({ initialAudience = 'students' }) {
             alignItems: 'start'
           }}
         >
-          {/* Left Column: Interactive Project Inquiry Form */}
-          <div
-            className="mobile-card-compact"
-            style={{
-              background: '#ffffff',
-              border: '1px solid #e2e8f0',
-              borderRadius: '16px',
-              padding: 'clamp(20px, 4vw, 36px)',
-              boxShadow: 'var(--shadow-md)'
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 700, color: 'var(--accent)', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                Engineering Intake Wizard
-              </span>
-            </div>
-
-            {submitted ? (
-              <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-                <div
-                  style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: '50%',
-                    background: 'rgba(5, 150, 105, 0.1)',
-                    border: '1px solid #059669',
-                    color: '#059669',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 20px'
-                  }}
-                >
-                  <CheckCircle2 size={34} />
-                </div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '12px' }}>
-                  INTAKE RECEIVED!
-                </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '28px' }}>
-                  Thank you, <strong style={{ color: 'var(--text-primary)' }}>{formData.name || 'Innovator'}</strong>. Your project specifications have been dispatched to our engineering leads. We will review your scope and follow up promptly.
-                </p>
-
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <button
-                    onClick={() => {
-                      setSubmitted(false);
-                      setFormData({ name: '', phone: '', topic: '' });
-                    }}
-                    className="btn-primary"
-                    style={{ cursor: 'pointer' }}
-                  >
-                    Submit Another Inquiry
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {/* 1. Target Role Tabs */}
-                <div>
-                  <label
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.7rem',
-                      fontWeight: 700,
-                      letterSpacing: '1px',
-                      color: 'var(--accent)',
-                      textTransform: 'uppercase',
-                      display: 'block',
-                      marginBottom: '8px'
-                    }}
-                  >
-                    Select Your Track
-                  </label>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
-                    {[
-                      { id: 'students', label: 'Students', sub: 'Academic Capstone' },
-                      { id: 'scholars', label: 'Scholars', sub: 'Research Paper' },
-                      { id: 'startups', label: 'Startups', sub: 'Commercial MVP' }
-                    ].map((p) => (
-                      <button
-                        type="button"
-                        key={p.id}
-                        onClick={() => setRole(p.id)}
-                        style={{
-                          background: role === p.id ? 'var(--accent)' : '#f8fafc',
-                          color: role === p.id ? '#ffffff' : 'var(--text-secondary)',
-                          border: role === p.id ? '1px solid var(--accent)' : '1px solid #e2e8f0',
-                          padding: '10px 8px',
-                          borderRadius: '8px',
-                          fontFamily: 'var(--font-body)',
-                          fontSize: '0.78rem',
-                          fontWeight: role === p.id ? '700' : '500',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s',
-                          textAlign: 'center'
-                        }}
-                      >
-                        <div>{p.label}</div>
-                        <div style={{ fontSize: '0.62rem', opacity: 0.85 }}>{p.sub}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 2. Name & Phone */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '14px' }}>
-                  <div>
-                    <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Rahul Sharma"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      style={{
-                        width: '100%',
-                        padding: '12px 14px',
-                        background: '#ffffff',
-                        border: '1px solid #cbd5e1',
-                        borderRadius: '8px',
-                        color: 'var(--text-primary)',
-                        fontSize: '0.88rem',
-                        outline: 'none'
-                      }}
-                    />
-                  </div>
-
-                  <div>
-                    <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>
-                      Contact Email / Phone
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Your email or phone..."
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      style={{
-                        width: '100%',
-                        padding: '12px 14px',
-                        background: '#ffffff',
-                        border: '1px solid #cbd5e1',
-                        borderRadius: '8px',
-                        color: 'var(--text-primary)',
-                        fontSize: '0.88rem',
-                        outline: 'none'
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* 3. Project Topic or Scope */}
-                <div>
-                  <label style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 600, color: '#64748b', display: 'block', marginBottom: '6px' }}>
-                    Project Topic / Paper Details
-                  </label>
-                  <textarea
-                    rows={3}
-                    required
-                    placeholder="Briefly describe your hardware idea, base paper topic, or required deliverables..."
-                    value={formData.topic}
-                    onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '12px 14px',
-                      background: '#ffffff',
-                      border: '1px solid #cbd5e1',
-                      borderRadius: '8px',
-                      color: 'var(--text-primary)',
-                      fontSize: '0.88rem',
-                      outline: 'none',
-                      resize: 'vertical',
-                      lineHeight: 1.5
-                    }}
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn-primary"
-                  style={{
-                    width: '100%',
-                    justifyContent: 'center',
-                    padding: '14px',
-                    fontSize: '0.85rem',
-                    cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                    opacity: isSubmitting ? 0.7 : 1
-                  }}
-                >
-                  {isSubmitting ? (
-                    <>Sending to consultant.fsk@gmail.com...</>
-                  ) : (
-                    <>Submit Inquiry To Engineering Team</>
-                  )}
-                </button>
-              </form>
-            )}
+          {/* Left Column: Interactive Tailored Project Inquiry Form */}
+          <div className="mobile-card-compact">
+            <RoleIntakeForm initialRole={initialAudience || 'students'} />
           </div>
 
           {/* Right Column: Direct Channels & Guarantees */}

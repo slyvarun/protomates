@@ -38,7 +38,7 @@ export default function InteractiveHeroTrackButtons({ onNavigate }) {
 
   return (
     <div style={{ width: '100%', position: 'relative' }}>
-      {/* Three Direct Track Selector Cards - Pure Typography, No Icons */}
+      {/* Three Direct Track Selector Cards - Redirect to tailored Contact page */}
       <div
         style={{
           display: 'grid',

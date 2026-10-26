@@ -12,6 +12,7 @@ import FlowingBlurAura from './components/FlowingBlurAura';
 
 // Helper to determine initial page from URL pathname or hash
 function getPageFromPath() {
+  if (typeof window === 'undefined') return 'home';
   const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '');
   const path = window.location.pathname.toLowerCase().replace(/^\/|\/$/g, '');
   const cleanPath = path.split('/').filter((p) => p && p !== 'protomates' && p !== 'fsk').join('/');
@@ -23,8 +24,8 @@ function getPageFromPath() {
   return '404';
 }
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState(getPageFromPath);
+export default function App({ initialPage = null }) {
+  const [currentPage, setCurrentPage] = useState(() => initialPage || getPageFromPath());
   const [pageProps, setPageProps] = useState({});
 
   // Lenis smooth scroll

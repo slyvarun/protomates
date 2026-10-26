@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:client": "vite build",
+    "build:ssr": "vite build --ssr src/entry-server.jsx --outDir dist-ssr",
+    "prerender": "node prerender.js",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender.js",
     "lint": "oxlint",
     "preview": "vite preview"
   },

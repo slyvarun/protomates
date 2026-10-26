@@ -115,9 +115,11 @@ async function runPrerender() {
       fs.writeFileSync(path.resolve(docsTargetFolder, 'index.html'), html, 'utf-8')
     }
 
-    // Also sync nested route folders directly to repository root (about/, services/, contact/)
+    // Also sync route files/folders directly to repository root (index.html, about/, services/, contact/)
     // ensuring GitHub Pages serves them whether configured from root, docs, or actions
-    if (!isRoot) {
+    if (isRoot) {
+      fs.writeFileSync(path.resolve(__dirname, 'index.html'), html, 'utf-8')
+    } else {
       const rootTargetFolder = path.resolve(__dirname, route.path.replace(/^\//, ''))
       if (!fs.existsSync(rootTargetFolder)) {
         fs.mkdirSync(rootTargetFolder, { recursive: true })

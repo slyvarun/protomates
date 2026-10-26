@@ -11,6 +11,16 @@
     gtag('config', 'G-86B0CZ0CYB');
   </script>
 
+  <!-- Instant URL normalizer: rewrites legacy /#about, /#services, /#contact to clean paths -->
+  <script>
+    (function() {
+      var h = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase();
+      if (h === 'about' || h === 'services' || h === 'contact') {
+        window.location.replace('/' + h + '/');
+      }
+    })();
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services & Our Proven Work Catalog | FSK | Turnkey Hardware & Documentation</title>

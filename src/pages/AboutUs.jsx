@@ -58,14 +58,14 @@ export default function AboutUs({ onNavigate }) {
 
           <div style={{ display: 'flex', gap: '14px', alignItems: 'center', flexWrap: 'wrap' }}>
             <button
-              onClick={() => (onNavigate ? onNavigate('services') : (window.location.hash = '#services'))}
+              onClick={() => (onNavigate ? onNavigate('services') : (window.location.href = '/services/'))}
               className="btn-primary"
               style={{ cursor: 'pointer', padding: '12px 26px', fontSize: '0.92rem', fontWeight: 700 }}
             >
               Explore Our Services &amp; Work
             </button>
             <button
-              onClick={() => (onNavigate ? onNavigate('contact') : (window.location.hash = '#contact'))}
+              onClick={() => (onNavigate ? onNavigate('contact') : (window.location.href = '/contact/'))}
               className="btn-ghost"
               style={{
                 cursor: 'pointer',
@@ -516,14 +516,14 @@ export default function AboutUs({ onNavigate }) {
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
             <button
-              onClick={() => (onNavigate ? onNavigate('contact') : (window.location.hash = '#contact'))}
+              onClick={() => (onNavigate ? onNavigate('contact') : (window.location.href = '/contact/'))}
               className="btn-primary"
               style={{ cursor: 'pointer' }}
             >
               Start Project Consultation
             </button>
             <button
-              onClick={() => (onNavigate ? onNavigate('services') : (window.location.hash = '#services'))}
+              onClick={() => (onNavigate ? onNavigate('services') : (window.location.href = '/services/'))}
               className="btn-ghost"
               style={{ cursor: 'pointer' }}
             >

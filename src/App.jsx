@@ -102,16 +102,23 @@ export default function App({ initialPage = null }) {
     if (ogDesc) ogDesc.setAttribute('content', currentMeta.desc);
   }, [currentPage]);
 
-  // Navigation handler with URL sync
+  // Clean up any legacy '#' hash on initial load and replace with clean path
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const page = getPageFromPath();
+      const targetPath = page === 'home' ? '/' : `/${page}/`;
+      window.history.replaceState({}, '', targetPath);
+    }
+  }, []);
+
+  // Navigation handler with clean URL sync (no hash)
   const handleNavigate = useCallback((pageId, extraProps = {}) => {
     setCurrentPage(pageId);
     setPageProps(extraProps);
 
-    const targetHash = pageId === 'home' ? '' : `#${pageId}`;
-    const basePath = window.location.pathname.split('#')[0];
-    const newUrl = targetHash ? `${basePath}${targetHash}` : basePath;
-    if (window.location.hash !== targetHash) {
-      window.history.pushState({}, '', newUrl);
+    const targetPath = pageId === 'home' ? '/' : `/${pageId}/`;
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({}, '', targetPath);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);

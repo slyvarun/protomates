@@ -8,7 +8,7 @@ export default function Footer({ onNavigate }) {
     if (onNavigate) {
       onNavigate(pageId);
     } else {
-      window.location.hash = pageId === 'home' ? '' : `#${pageId}`;
+      window.location.href = pageId === 'home' ? '/' : `/${pageId}/`;
     }
   };
 

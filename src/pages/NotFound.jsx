@@ -73,7 +73,7 @@ export default function NotFound({ onNavigate }) {
         >
           <button
             type="button"
-            onClick={() => (onNavigate ? onNavigate('home') : (window.location.hash = ''))}
+            onClick={() => (onNavigate ? onNavigate('home') : (window.location.href = '/'))}
             className="btn-primary"
             style={{
               padding: '12px 24px',
@@ -87,7 +87,7 @@ export default function NotFound({ onNavigate }) {
 
           <button
             type="button"
-            onClick={() => (onNavigate ? onNavigate('contact') : (window.location.hash = '#contact'))}
+            onClick={() => (onNavigate ? onNavigate('contact') : (window.location.href = '/contact/'))}
             className="btn-ghost"
             style={{
               padding: '12px 22px',

@@ -21,7 +21,7 @@
       var isAsset = /\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|json|glb|woff2?)$/i.test(path);
       if (!isAsset) {
         var clean = path.replace(/^(protomates|fsk)\/?/i, '');
-        var target = l.protocol + '//' + l.host + '/' + (clean ? '#' + clean : '') + l.search;
+        var target = l.protocol + '//' + l.host + '/' + (clean ? clean + '/' : '') + l.search;
         l.replace(target);
       }
     </script>

@@ -96,7 +96,7 @@ export default function Hero({ onNavigate }) {
           }}
         >
           <button
-            onClick={() => (onNavigate ? onNavigate('contact') : (window.location.hash = '#contact'))}
+            onClick={() => (onNavigate ? onNavigate('contact') : (window.location.href = '/contact/'))}
             className="btn-primary"
             style={{
               cursor: 'pointer',
@@ -111,7 +111,7 @@ export default function Hero({ onNavigate }) {
             onClick={() =>
               onNavigate
                 ? onNavigate('services', { scrollToSection: 'work-gallery' })
-                : (window.location.hash = '#work-gallery')
+                : (window.location.href = '/services/')
             }
             className="btn-ghost"
             style={{

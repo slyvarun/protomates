@@ -114,6 +114,16 @@ async function runPrerender() {
       }
       fs.writeFileSync(path.resolve(docsTargetFolder, 'index.html'), html, 'utf-8')
     }
+
+    // Also sync nested route folders directly to repository root (about/, services/, contact/)
+    // ensuring GitHub Pages serves them whether configured from root, docs, or actions
+    if (!isRoot) {
+      const rootTargetFolder = path.resolve(__dirname, route.path.replace(/^\//, ''))
+      if (!fs.existsSync(rootTargetFolder)) {
+        fs.mkdirSync(rootTargetFolder, { recursive: true })
+      }
+      fs.writeFileSync(path.resolve(rootTargetFolder, 'index.html'), html, 'utf-8')
+    }
   }
 
   // Also prerender custom 404 page with prerendered app
@@ -126,6 +136,7 @@ async function runPrerender() {
   html404 = html404.replace(/<title>.*?<\/title>/i, `<title>404 - Resource Not Found | FSK Prototyping Services</title>`)
   const out404 = path.resolve(distDir, '404.html')
   fs.writeFileSync(out404, html404, 'utf-8')
+  fs.writeFileSync(path.resolve(__dirname, '404.html'), html404, 'utf-8')
   if (fs.existsSync(docsDir)) {
     fs.writeFileSync(path.resolve(docsDir, '404.html'), html404, 'utf-8')
     if (fs.existsSync(path.resolve(distDir, 'sitemap.xml'))) {
@@ -133,6 +144,15 @@ async function runPrerender() {
     }
     if (fs.existsSync(path.resolve(distDir, 'robots.txt'))) {
       fs.copyFileSync(path.resolve(distDir, 'robots.txt'), path.resolve(docsDir, 'robots.txt'))
+    }
+  }
+
+  // Sync compiled assets to root assets/ and docs/assets/
+  const distAssetsDir = path.resolve(distDir, 'assets')
+  if (fs.existsSync(distAssetsDir)) {
+    fs.cpSync(distAssetsDir, path.resolve(__dirname, 'assets'), { recursive: true })
+    if (fs.existsSync(docsDir)) {
+      fs.cpSync(distAssetsDir, path.resolve(docsDir, 'assets'), { recursive: true })
     }
   }
   generatedFiles.push({ file: out404, size: Buffer.byteLength(html404, 'utf-8') })

@@ -1,79 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-86B0CZ0CYB"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-86B0CZ0CYB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag('config', 'G-86B0CZ0CYB');
-    </script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Resource Not Found | FSK Prototyping Services</title>
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-    <script type="text/javascript">
-      // SPA route handler
-      var l = window.location;
-      var path = l.pathname.replace(/^\/|\/$/g, '');
-      var isAsset = /\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|json|glb|woff2?)$/i.test(path);
-      if (!isAsset) {
-        var clean = path.replace(/^(protomates|fsk)\/?/i, '');
-        var target = l.protocol + '//' + l.host + '/' + (clean ? '#' + clean : '') + l.search;
-        l.replace(target);
+    gtag('config', 'G-86B0CZ0CYB');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Resource Not Found | FSK Prototyping Services</title>
+  
+  <!-- Resource 404 Fallback: Displays 404 error on screen if any static asset fails to load -->
+  <script>
+    window.addEventListener('error', function(e) {
+      if (e.target && (e.target.tagName === 'LINK' || e.target.tagName === 'SCRIPT')) {
+        var root = document.getElementById('root');
+        if (root && (!root.children.length || root.innerHTML.trim() === '')) {
+          var url = e.target.src || e.target.href || 'Static Resource';
+          var filename = url.split('/').pop() || url;
+          root.innerHTML = '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,sans-serif;padding:24px;text-align:center;background:#f6f8f8;color:#012A2D;">' +
+            '<div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:40px 32px;max-width:520px;box-shadow:0 10px 25px -5px rgba(1,42,45,0.08);">' +
+            '<div style="font-family:monospace;font-weight:700;color:#012A2D;letter-spacing:2px;margin-bottom:12px;">404 // RESOURCE LOAD ERROR</div>' +
+            '<h1 style="margin:0 0 12px;font-size:1.6rem;font-weight:800;color:#012A2D;">Resource Failed to Load</h1>' +
+            '<p style="color:#435355;line-height:1.6;margin:0 0 12px;font-size:0.95rem;">Failed to load resource: the server responded with a status of 404 (' + filename + ').</p>' +
+            '<p style="color:#64748b;line-height:1.5;margin:0 0 24px;font-size:0.82rem;font-family:monospace;background:#f8fafc;padding:8px 12px;border-radius:6px;word-break:break-all;">' + url + '</p>' +
+            '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">' +
+            '<button onclick="window.location.reload(true)" style="background:#012A2D;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-weight:600;font-size:0.9rem;cursor:pointer;">Reload Page</button>' +
+            '<a href="./" style="background:#f1f5f9;color:#012A2D;border:1px solid #cbd5e1;padding:12px 24px;border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;display:inline-block;">Go to Laboratory Home</a>' +
+            '</div></div></div>';
+        }
       }
-    </script>
-    <style>
-      body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #f6f8f8;
-        color: #012A2D;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        text-align: center;
-        padding: 24px;
-        box-sizing: border-box;
+    }, true);
+  </script>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="google-site-verification" content="zCvfI8uXSlleVzxR2xMVPA-gRKOV_31e3PkxfE7cVU8">
+  <meta name="title" content="FSK Prototyping Services | Hardware Prototypes, Custom PCBs &amp; Scientific Research">
+  <meta name="description" content="FSK is an engineering prototyping laboratory building physical working hardware, custom multi-layer PCBs, and publication-ready documentation for Students, Scholars, and Startup Founders.">
+  <meta name="keywords" content="FSK prototyping, hardware prototyping, custom PCB design, IEEE capstone projects, Scopus research papers, SCI journal testbeds, hardware MVP development, embedded systems, IoT prototypes, edge AI hardware">
+  <meta name="author" content="FSK Prototyping Services">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://fskps.tech/">
+
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fskps.tech/">
+  <meta property="og:site_name" content="FSK Prototyping Services">
+  <meta property="og:title" content="FSK Prototyping Services | Engineering Hardware &amp; Research Documentation">
+  <meta property="og:description" content="Turn abstractions into working physical hardware, custom PCBs, and peer-reviewed scientific papers. Serving Academic Students, Doctoral Scholars, and Hardware Startups.">
+  <meta property="og:image" content="https://fskps.tech/fsk_logo.png">
+  <meta property="og:image:alt" content="FSK Prototyping Services Official Logo">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://fskps.tech/">
+  <meta name="twitter:title" content="FSK Prototyping Services | Engineering Hardware &amp; Research Documentation">
+  <meta name="twitter:description" content="Turn abstractions into working physical hardware, custom PCBs, and peer-reviewed scientific papers. Serving Academic Students, Doctoral Scholars, and Hardware Startups.">
+  <meta name="twitter:image" content="https://fskps.tech/fsk_logo.png">
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon-DTgwmtP4-DTgwmtP4.svg?v=2">
+  <link rel="icon" type="image/png" href="./assets/favicon-CCtV8PFf-CCtV8PFf.png?v=2">
+  <link rel="shortcut icon" href="./assets/favicon-W3Z09lpR-W3Z09lpR.ico?v=2">
+  <link rel="apple-touch-icon" href="./assets/fsk_emblem-CUNGipjU-CUNGipjU.png?v=2">
+
+  <!-- Structured Data: Schema.org (Organization & ProfessionalService) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://fskps.tech/#organization",
+        "name": "FSK Prototyping Services",
+        "url": "https://fskps.tech/",
+        "logo": "https://fskps.tech/fsk_logo.png",
+        "image": "https://fskps.tech/fsk_logo.png",
+        "description": "Integrated R&D engineering laboratory building working hardware prototypes, custom multi-layer PCBs, and university/research-grade documentation.",
+        "email": "consultant.fsk@gmail.com",
+        "priceRange": "$$",
+        "areaServed": "Global",
+        "knowsAbout": [
+          "Hardware Prototyping",
+          "PCB Design and Fabrication",
+          "Embedded Firmware Development",
+          "IoT Telemetry and Cloud Dashboards",
+          "Edge AI and Computer Vision",
+          "IEEE Academic Capstone Projects",
+          "Scopus and SCI Research Manuscripts"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Prototyping Engineering Tracks",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Student Capstone Hardware & Thesis Package",
+                "description": "100% functional hardware kit, 80-120 page thesis, PPT, and 1-on-1 viva defense preparation."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Scholar Research Testbed & SCI/Scopus Manuscript",
+                "description": "MATLAB/Python numerical simulations, HIL experimental testbeds, and publication-ready LaTeX manuscripts."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Startup Hardware MVP & Investor Dossier",
+                "description": "Commercial multi-layer PCB Gerbers, 3D casing CAD, production firmware, and full IP transfer in 2-4 weeks."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://fskps.tech/#website",
+        "url": "https://fskps.tech/",
+        "name": "FSK Prototyping Services",
+        "description": "Hardware Prototyping & Scientific Documentation Services",
+        "publisher": {
+          "@id": "https://fskps.tech/#organization"
+        }
       }
-      .card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 40px 32px;
-        max-width: 480px;
-        box-shadow: 0 10px 25px -5px rgba(1, 42, 45, 0.08);
-      }
-      .code {
-        font-family: monospace;
-        font-weight: 700;
-        color: #012A2D;
-        letter-spacing: 2px;
-        margin-bottom: 12px;
-      }
-      h1 { margin: 0 0 12px; font-size: 1.8rem; font-weight: 800; }
-      p { color: #435355; line-height: 1.6; margin: 0 0 24px; font-size: 0.95rem; }
-      a {
-        display: inline-block;
-        background: #012A2D;
-        color: #ffffff;
-        text-decoration: none;
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.9rem;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <div class="code">404 // NOT FOUND</div>
-      <h1>Resource Not Found</h1>
-      <p>The requested file or page route was not found on this server.</p>
-      <a href="./">Return to Laboratory Home</a>
+    ]
+  }
+  </script>
+      <script type="module" crossorigin src="./assets/index-DFME0FJV.js"></script>
+      <link rel="stylesheet" crossorigin href="./assets/index-BHfGyk5I.css">
+    </head>
+<body>
+  <!-- Fallback Semantic HTML for Web Crawlers and Users with JavaScript Disabled -->
+  <noscript>
+    <div style="font-family: sans-serif; padding: 40px; max-width: 900px; margin: 0 auto; line-height: 1.6;">
+      <h1>FSK Prototyping Services</h1>
+      <p><strong>We build physical working hardware. We author research papers. For three innovators:</strong></p>
+      <ul>
+        <li><strong>Students:</strong> Undergraduate &amp; Masters capstones, 100% working hardware, 80-120p IEEE thesis, and viva defense coaching.</li>
+        <li><strong>Scholars:</strong> PhD research testbeds, MATLAB/Simulink simulations, and publication-ready LaTeX manuscripts for Scopus &amp; SCI journals.</li>
+        <li><strong>Startups:</strong> Commercial MVP prototyping, custom PCB Gerbers, 3D CAD casing design, and complete IP source transfer in 2-4 weeks.</li>
+      </ul>
+      <h2>Core Engineering Capabilities</h2>
+      <p>Custom Multi-layer PCBs, Edge AI Inference, IoT Sensor Networks, High-Precision SMT Assembly, and Multiphysics Simulation.</p>
+      <h2>Contact Engineering Desk</h2>
+      <p>Email: <a href="mailto:consultant.fsk@gmail.com">consultant.fsk@gmail.com</a></p>
+      <p>Average Technical Feasibility Review: Under 2 Hours.</p>
     </div>
-  </body>
+  </noscript>
+
+  <div id="root"><link rel="preload" as="image" href="/fsk_emblem.png"/><div class="protomates-app" style="position:relative;min-height:100vh;background:transparent"><div aria-hidden="true" style="position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;background:#ffffff"><div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(1, 42, 45, 0.04) 1px, transparent 0);background-size:24px 24px;opacity:0.8"></div></div><nav style="position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 48px;background:rgba(255, 255, 255, 0.75);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(226, 232, 240, 0.85);box-shadow:0 4px 20px -2px rgba(15, 23, 42, 0.04);transition:all 0.25s cubic-bezier(0.16, 1, 0.3, 1)"><div style="max-width:1200px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center"><div id="navbar-brand-logo" style="cursor:pointer;display:flex;align-items:center;transition:transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)"><div style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;user-select:none;line-height:1"><img src="/fsk_emblem.png" alt="FSK Emblem" style="height:42px;width:auto;display:block;object-fit:contain;flex-shrink:0"/><div style="display:flex;flex-direction:column;justify-content:center"><div style="display:flex;align-items:baseline;gap:3px"><span style="font-family:var(--font-display);font-size:1.65rem;font-weight:900;letter-spacing:-0.025em;color:#012A2D;line-height:0.95">FSK</span><span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#012A2D;margin-left:2px"></span></div><span style="font-family:var(--font-mono);font-size:0.56rem;font-weight:700;letter-spacing:1.8px;color:#435355;text-transform:uppercase;margin-top:4px;line-height:1">Prototyping Services</span></div></div></div><ul style="display:flex;gap:6px;list-style:none;margin:0;padding:4px 6px;background:rgba(255, 255, 255, 0.60);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255, 255, 255, 0.85);border-radius:999px;align-items:center;box-shadow:inset 0 1px 1px rgba(255, 255, 255, 0.95), 0 4px 16px rgba(1, 42, 45,  0.04)"><li><button style="background:transparent;border:1px solid transparent;border-radius:999px;padding:8px 18px;cursor:pointer;font-family:var(--font-body);font-size:0.84rem;font-weight:500;color:var(--text-secondary);box-shadow:none;transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1);display:inline-flex;align-items:center;gap:6px"><span>Home</span></button></li><li><button style="background:transparent;border:1px solid transparent;border-radius:999px;padding:8px 18px;cursor:pointer;font-family:var(--font-body);font-size:0.84rem;font-weight:500;color:var(--text-secondary);box-shadow:none;transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1);display:inline-flex;align-items:center;gap:6px"><span>About Us</span></button></li><li><button style="background:transparent;border:1px solid transparent;border-radius:999px;padding:8px 18px;cursor:pointer;font-family:var(--font-body);font-size:0.84rem;font-weight:500;color:var(--text-secondary);box-shadow:none;transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1);display:inline-flex;align-items:center;gap:6px"><span>Services &amp; Work</span></button></li><li><button style="background:transparent;border:1px solid transparent;border-radius:999px;padding:8px 18px;cursor:pointer;font-family:var(--font-body);font-size:0.84rem;font-weight:500;color:var(--text-secondary);box-shadow:none;transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1);display:inline-flex;align-items:center;gap:6px"><span>Contact Us</span></button></li></ul></div></nav><main style="position:relative;z-index:1"><div class="page-transition-container"><section style="min-height:75vh;display:flex;align-items:center;justify-content:center;padding:120px 24px 80px;text-align:center;background:transparent"><div style="max-width:580px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:clamp(32px, 6vw, 48px);box-shadow:var(--shadow-md)"><div style="font-family:var(--font-mono);font-size:0.82rem;font-weight:800;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:12px">404 // Specification Not Found</div><h1 style="font-family:var(--font-display);font-size:clamp(2rem, 5vw, 2.8rem);font-weight:900;color:var(--text-primary);line-height:1.15;margin:0 0 16px">PAGE NOT FOUND</h1><p style="color:var(--text-secondary);font-size:0.96rem;line-height:1.6;margin-bottom:28px">The requested engineering resource or page route does not exist. It may have been relocated or updated during our laboratory catalog refresh.</p><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><button type="button" class="btn-primary" style="padding:12px 24px;cursor:pointer;font-size:0.88rem"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house lucide-home" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg><span>Return to Laboratory</span></button><button type="button" class="btn-ghost" style="padding:12px 22px;cursor:pointer;font-size:0.88rem"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span>Contact Engineers</span></button></div></div></section></div></main><footer style="background:#f8fafc;border-top:1px solid #e2e8f0;position:relative;color:var(--text-primary);padding:60px 48px 0"><div style="max-width:1200px;margin:0 auto;width:100%"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-bottom:28px;border-bottom:1px solid #e2e8f0"><div><span style="font-family:var(--font-mono);font-size:0.74rem;font-weight:700;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase">FSK // PROTOTYPING SERVICES &amp; RESEARCH INTAKE</span></div><div style="display:flex;align-items:center;gap:20px;font-family:var(--font-mono);font-size:0.74rem;color:#64748b"><span>Average Review: &lt; 2 Hours</span></div></div><div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 250px), 1fr));gap:28px;padding:40px 0 32px"><div><div style="cursor:pointer;display:inline-flex;margin-bottom:16px"><div style="display:inline-flex;align-items:center;gap:14px;text-decoration:none;user-select:none;line-height:1"><img src="/fsk_emblem.png" alt="FSK Emblem" style="height:54px;width:auto;display:block;object-fit:contain;flex-shrink:0"/><div style="display:flex;flex-direction:column;justify-content:center"><div style="display:flex;align-items:baseline;gap:3px"><span style="font-family:var(--font-display);font-size:2.2rem;font-weight:900;letter-spacing:-0.025em;color:#012A2D;line-height:0.95">FSK</span><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#012A2D;margin-left:2px"></span></div><span style="font-family:var(--font-mono);font-size:0.68rem;font-weight:700;letter-spacing:1.8px;color:#435355;text-transform:uppercase;margin-top:4px;line-height:1">Prototyping Services</span></div></div></div><p style="color:#64748b;font-size:0.9rem;line-height:1.7;margin-bottom:20px;max-width:340px">Specialized engineering laboratory building physical working hardware, custom PCBs, and university/Scopus-grade documentation for Students, Scholars, and Startups.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a href="mailto:consultant.fsk@gmail.com" style="display:inline-flex;align-items:center;gap:8px;padding:9px 14px;background:#ffffff;border:1px solid #e2e8f0;border-radius:6px;color:var(--accent);text-decoration:none;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;letter-spacing:0.5px;box-shadow:var(--shadow-sm);transition:all 0.2s"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span>Email Lab</span></a><a href="https://linkedin.com/company/fskprototypingservices" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:9px 14px;background:#ffffff;border:1px solid #e2e8f0;border-radius:6px;color:#0a66c2;text-decoration:none;font-family:var(--font-mono);font-size:0.75rem;font-weight:600;letter-spacing:0.5px;box-shadow:var(--shadow-sm);transition:all 0.2s"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:inline-block;flex-shrink:0"><rect width="24" height="24" rx="4.5" fill="#0a66c2"></rect><circle cx="6.5" cy="6.5" r="1.8" fill="#ffffff"></circle><rect x="5" y="10" width="3" height="9" fill="#ffffff"></rect><path d="M10.8 10h2.9v1.25h.05c.42-.78 1.45-1.55 2.9-1.55 3.1 0 3.65 2.05 3.65 4.7V19h-3v-4.15c0-1-.02-2.25-1.4-2.25-1.4 0-1.6 1.07-1.6 2.2V19h-3V10z" fill="#ffffff"></path></svg><span>FSK Prototyping Services</span></a></div></div><div><div style="font-family:var(--font-mono);font-size:0.72rem;font-weight:700;color:var(--text-primary);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px">Navigation</div><div style="display:flex;flex-direction:column;gap:10px"><button style="background:none;border:none;text-align:left;color:#64748b;font-size:0.88rem;cursor:pointer;padding:0;transition:color 0.2s">Home Studio</button><button style="background:none;border:none;text-align:left;color:#64748b;font-size:0.88rem;cursor:pointer;padding:0;transition:color 0.2s">About FSK</button><button style="background:none;border:none;text-align:left;color:#64748b;font-size:0.88rem;cursor:pointer;padding:0;transition:color 0.2s">Hardware Services &amp; Portfolio</button><button style="background:none;border:none;text-align:left;color:#64748b;font-size:0.88rem;cursor:pointer;padding:0;transition:color 0.2s">Start Project Intake</button></div></div><div><div style="font-family:var(--font-mono);font-size:0.72rem;font-weight:700;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px">Connect With Us</div><p style="color:#64748b;font-size:0.88rem;line-height:1.6;margin-bottom:18px">Have an academic topic, thesis requirement, or prototype statement? Connect with our engineering lab for a rapid feasibility review.</p><div style="display:flex;flex-direction:column;gap:10px"><button class="btn-primary" style="padding:11px 18px;font-size:0.82rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 14px rgba(1, 42, 45,  0.25)"><span>Start Project Intake &amp; 1-on-1 Meet</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg></button><a href="mailto:consultant.fsk@gmail.com" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#ffffff;border:1px solid #e2e8f0;border-radius:8px;color:#090d16;text-decoration:none;font-size:0.84rem;font-weight:600;transition:all 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.03)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><span style="font-family:var(--font-mono);font-size:0.78rem">consultant.fsk@gmail.com</span></a><a href="https://linkedin.com/company/fskprototypingservices" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#ffffff;border:1px solid #e2e8f0;border-radius:8px;color:#090d16;text-decoration:none;font-size:0.84rem;font-weight:600;transition:all 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.03)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" style="display:inline-block;flex-shrink:0"><rect width="24" height="24" rx="4.5" fill="#0a66c2"></rect><circle cx="6.5" cy="6.5" r="1.8" fill="#ffffff"></circle><rect x="5" y="10" width="3" height="9" fill="#ffffff"></rect><path d="M10.8 10h2.9v1.25h.05c.42-.78 1.45-1.55 2.9-1.55 3.1 0 3.65 2.05 3.65 4.7V19h-3v-4.15c0-1-.02-2.25-1.4-2.25-1.4 0-1.6 1.07-1.6 2.2V19h-3V10z" fill="#ffffff"></path></svg><span style="font-family:var(--font-body);font-size:0.9rem;font-weight:700;color:#090d16">FSK Prototyping Services</span></a></div><div style="display:flex;align-items:center;gap:8px;margin-top:14px;font-size:0.75rem;color:#64748b"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg><span>Response time: Under 2 hours • 100% Confidential</span></div></div></div><div style="border-top:1px solid #e2e8f0;padding:24px 0 32px;display:flex;justify-content:center;align-items:center;text-align:center;font-family:var(--font-mono);font-size:0.74rem;color:#64748b;letter-spacing:0.5px"><div>© 2026 FSK PROTOTYPING SERVICES. ALL RIGHTS RESERVED.</div></div></div></footer></div></div>
+</body>
 </html>
